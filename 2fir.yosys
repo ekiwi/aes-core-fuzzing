@@ -1,0 +1,13 @@
+read_verilog rtl/aes_ip.v
+read_verilog rtl/datapath.v
+read_verilog rtl/host_interface.v
+read_verilog rtl/mix_columns.v
+read_verilog rtl/sBox.v
+read_verilog rtl/aes_core.v
+read_verilog rtl/control_unit.v
+read_verilog rtl/data_swap.v
+read_verilog rtl/key_expander.v
+read_verilog rtl/sBox_8.v
+read_verilog rtl/shift_rows.v
+proc; opt; hierarchy -top aes_core
+write_firrtl aes_core.fir
