@@ -305,7 +305,7 @@ generate
 
 	for(l = 0; l < 4;l=l+1)
 	begin:IV_BKP_REGISTERS
-		always @(posedge clk, negedge rst_n)
+		always @(posedge clk)
 		begin
 				if(!rst_n)
 				begin
@@ -372,7 +372,7 @@ generate
 	genvar i;
 	for(i = 0; i < 4; i = i + 1)
 	begin:CD
-		always @(posedge clk, negedge rst_n)
+		always @(posedge clk)
 			begin
 				if(!rst_n)
 					col[3 - i] <= {32{1'b0}};
@@ -438,7 +438,7 @@ generate
 	genvar j;
 	for(j = 0; j < 4; j = j + 1)
 	begin:KR
-		always @(posedge clk, negedge rst_n)
+		always @(posedge clk)
 			begin
 				if(!rst_n)
 					begin
@@ -524,7 +524,7 @@ assign add_rk_out = (add_rk_sel) ? add_rd : (last_round_pp2 ? sbox_pp2 : mix_out
 assign end_aes = end_comp;
 
 // Pipeline Registers for Control Signals
-always @(posedge clk, negedge rst_n)
+always @(posedge clk)
 	begin
 		if(!rst_n)
 			begin

@@ -217,7 +217,7 @@ assign aes_cr_wr_en = (PADDR == AES_CR) & write_en;
 assign mode_in  = PWDATA[4:3];
 assign chmod_in = PWDATA[6:5];
 
-always @(posedge PCLK, negedge PRESETn)
+always @(posedge PCLK)
 	begin
 		if(!PRESETn)
 			aes_cr <= AES_CR_RESET[10:0];
@@ -245,7 +245,7 @@ always @(posedge PCLK, negedge PRESETn)
 // Status Register Logic
 //assign aes_sr_wr_en = (PADDR == AES_SR) & write_en & access_permission;
 
-always @(posedge PCLK, negedge PRESETn)
+always @(posedge PCLK)
 	begin
 		if(!PRESETn)
 		begin
@@ -289,7 +289,7 @@ assign iv_sel = (4'b1000 >> PADDR[1:0]) & {4{(PADDR[3] & ~PADDR[2] & access_perm
 assign iv_en = iv_sel & {4{write_en}};
 
 // State Register
-always @(posedge PCLK, negedge PRESETn)
+always @(posedge PCLK)
 	begin
 		if(!PRESETn)
 			state <= IDLE;
@@ -373,7 +373,7 @@ always @(*)
 	end
 
 // First Block Signal indicates when IV register is used
-always @(posedge PCLK, negedge PRESETn)
+always @(posedge PCLK)
 	begin
 		if(!PRESETn)
 			first_block <= 1'b1;
@@ -385,7 +385,7 @@ always @(posedge PCLK, negedge PRESETn)
 					first_block <= 1'b0;
 	end
 
-always @(posedge PCLK, negedge PRESETn)
+always @(posedge PCLK)
 	begin
 		if(!PRESETn)
 			cnt <= 2'b11;
@@ -406,7 +406,7 @@ assign wr_err_en = (PADDR == AES_DINR  && write_en && (state != INPUT  && state 
 assign rd_err_en = (PADDR == AES_DOUTR && read_en  && (state != OUTPUT && state != IDLE));
 
 // DMA Requests Logic
-always @(posedge PCLK, negedge PRESETn)
+always @(posedge PCLK)
 	begin
 		if(!PRESETn)
 			dma_req <= 1'b0;
@@ -449,7 +449,7 @@ always @(*)
 assign bus_out =(read_en)? bus_out_mux:32'd0;
 
 /*
-always @(posedge PCLK, negedge PRESETn)
+always @(posedge PCLK)
 	begin
 		if(!PRESETn)
 			bus_out <= 32'd0;

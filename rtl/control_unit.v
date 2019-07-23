@@ -240,7 +240,7 @@ wire [1:0] op_mode;
 wire enc_dec;
 
 // State Flops Definition
-always @(posedge clk, negedge rst_n)
+always @(posedge clk)
 	begin
 		if(!rst_n)
 			state <= IDLE;
@@ -365,7 +365,7 @@ always @(*)
 assign end_comp = (state == READY)?ENABLE:DISABLE;
 
 /*
-always @(posedge clk, negedge rst_n)
+always @(posedge clk)
 begin
 		if(!rst_n)
 		begin
@@ -583,7 +583,7 @@ always @(*)
 	end
 
 // Round Counter
-always @(posedge clk, negedge rst_n)
+always @(posedge clk)
 	begin
 		if(!rst_n)
 			rd_count <= INITIAL_ROUND;
