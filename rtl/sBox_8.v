@@ -258,17 +258,17 @@ function [15:0] isomorphism;
   reg [7:0] enc, dec;
   begin
     r1 = in[7]  ^ in[5];
-    r2 = in[7] ~^ in[4];
+    r2 = ~(in[7] ^ in[4]);
     r3 = in[6]  ^ in[0];
-    r4 = in[5] ~^ r3;
+    r4 = ~(in[5] ^ r3);
     r5 = in[4]  ^ r4;
     r6 = in[3]  ^ in[0];
     r7 = in[2]  ^ r1;
     r8 = in[1]  ^ r3;
     r9 = in[3]  ^ r8;
     
-    enc = {r7 ~^ r8, r5, in[1] ^ r4, r1 ~^ r3, in[1] ^ r2 ^ r6, ~in[0], r4, in[2] ~^ r9};
-    dec = {r2, in[4] ^ r8, in[6] ^ in[4], r9, in[6] ~^ r2, r7, in[4] ^ r6, in[1] ^ r5};
+    enc = {~(r7 ^ r8), r5, in[1] ^ r4, ~(r1 ^ r3), in[1] ^ r2 ^ r6, ~in[0], r4, ~(in[2] ^ r9)};
+    dec = {r2, in[4] ^ r8, in[6] ^ in[4], r9, ~(in[6] ^ r2), r7, in[4] ^ r6, in[1] ^ r5};
     
     isomorphism = {enc, dec};
   end
@@ -282,10 +282,10 @@ function [7:0] isomorphism_inv;
     r1  = in[7]  ^ in[3];
     r2  = in[6]  ^ in[4];
     r3  = in[6]  ^ in[0];
-    r4  = in[5] ~^ in[3];
-    r5  = in[5] ~^ r1;
-    r6  = in[5] ~^ in[1];
-    r7  = in[4] ~^ r6;
+    r4  = ~(in[5] ^ in[3]);
+    r5  = ~(in[5] ^ r1);
+    r6  = ~(in[5] ^ in[1]);
+    r7  = ~(in[4] ^ r6);
     r8  = in[2]  ^ r4;
     r9  = in[1]  ^ r2;
     r10 = r3     ^ r5;
@@ -293,7 +293,7 @@ function [7:0] isomorphism_inv;
 		if(op_type == ENC)
     	isomorphism_inv = {r4, r1, r3, r5, r2 ^ r5, r3 ^ r8, r7, r9};
 		else
-    	isomorphism_inv = {in[4] ~^ in[1], in[1] ^ r10, in[2] ^ r10, in[6] ~^ in[1], r8 ^ r9, in[7] ~^ r7, r6, ~in[2]};
+    	isomorphism_inv = {~(in[4] ^ in[1]), in[1] ^ r10, in[2] ^ r10, ~(in[6] ^ in[1]), r8 ^ r9, ~(in[7] ^ r7), r6, ~in[2]};
     
   end
 endfunction
