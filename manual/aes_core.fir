@@ -782,7 +782,12 @@ circuit aes_core:
     round <= bits(_2, 3, 0)
     sbox_sel <= bits(_6, 2, 0)
     state <= bits(_procdff_2124, 3, 0)
-  module data_swap:
+
+
+
+
+
+  module data_swap_0:
     input data_in: UInt<32>
     output data_swap: UInt<32>
     input swap_type: UInt<2>
@@ -841,6 +846,73 @@ circuit aes_core:
     words_1_ <= bits(_12, 31, 0)
     words_2_ <= bits(_13, 31, 0)
     words_3_ <= bits(_14, 31, 0)
+
+
+  module data_swap_1:
+    input data_in: UInt<32>
+    output data_swap: UInt<32>
+    input swap_type: UInt<2>
+
+    wire _auto_rtlil_cc_1906_Mux_2370: UInt<32>
+    wire _auto_rtlil_cc_1863_Or_2368: UInt<1>
+    wire _auto_rtlil_cc_1906_Mux_2366: UInt<32>
+    wire _auto_rtlil_cc_1906_Mux_2364: UInt<32>
+    wire _procmux_1147_CMP: UInt<1>
+    wire _procmux_1148_CMP: UInt<1>
+    wire _procmux_1149_CMP: UInt<1>
+    wire _procmux_1150_CMP: UInt<1>
+    wire words_0_: UInt<32>
+    wire words_1_: UInt<32>
+    wire words_2_: UInt<32>
+    wire words_3_: UInt<32>
+    wire _auto_pmuxtree_cc_35_or_generator_2367: UInt<1>
+    wire _auto_pmuxtree_cc_65_recursive_mux_generator_2365: UInt<32>
+    wire _auto_pmuxtree_cc_65_recursive_mux_generator_2363: UInt<32>
+    wire _auto_pmuxtree_cc_65_recursive_mux_generator_2369: UInt<32>
+    wire _procmux_1147_CMP0: UInt<1>
+    wire _procmux_1148_CMP0: UInt<1>
+    wire _procmux_1149_CMP0: UInt<1>
+    wire _procmux_1150_CMP0: UInt<1>
+    wire _11: UInt<32>
+    wire _12: UInt<32>
+    wire _13: UInt<32>
+    wire _14: UInt<32>
+    wire _15: UInt<32>
+
+
+    _auto_pmuxtree_cc_35_or_generator_2367 <= or(_procmux_1148_CMP, asUInt(_procmux_1147_CMP))
+    _auto_pmuxtree_cc_65_recursive_mux_generator_2365 <= mux(_procmux_1149_CMP, cat(bits(data_in, 15, 0), bits(data_in, 31, 16)), data_in)
+    _auto_pmuxtree_cc_65_recursive_mux_generator_2363 <= mux(_procmux_1147_CMP, cat(bits(data_in, 0, 0), cat(bits(data_in, 1, 1), cat(bits(data_in, 2, 2), cat(bits(data_in, 3, 3), cat(bits(data_in, 4, 4), cat(bits(data_in, 5, 5), cat(bits(data_in, 6, 6), cat(bits(data_in, 7, 7), cat(bits(data_in, 8, 8), cat(bits(data_in, 9, 9), cat(bits(data_in, 10, 10), cat(bits(data_in, 11, 11), cat(bits(data_in, 12, 12), cat(bits(data_in, 13, 13), cat(bits(data_in, 14, 14), cat(bits(data_in, 15, 15), cat(bits(data_in, 16, 16), cat(bits(data_in, 17, 17), cat(bits(data_in, 18, 18), cat(bits(data_in, 19, 19), cat(bits(data_in, 20, 20), cat(bits(data_in, 21, 21), cat(bits(data_in, 22, 22), cat(bits(data_in, 23, 23), cat(bits(data_in, 24, 24), cat(bits(data_in, 25, 25), cat(bits(data_in, 26, 26), cat(bits(data_in, 27, 27), cat(bits(data_in, 28, 28), cat(bits(data_in, 29, 29), cat(bits(data_in, 30, 30), bits(data_in, 31, 31)))))))))))))))))))))))))))))))), cat(bits(data_in, 7, 0), cat(bits(data_in, 15, 8), cat(bits(data_in, 23, 16), bits(data_in, 31, 24)))))
+    _auto_pmuxtree_cc_65_recursive_mux_generator_2369 <= mux(_auto_rtlil_cc_1863_Or_2368, _auto_rtlil_cc_1906_Mux_2364, _auto_rtlil_cc_1906_Mux_2366)
+    _procmux_1147_CMP0 <= eq(swap_type, asUInt(UInt<2>("h3")))
+    _procmux_1148_CMP0 <= eq(swap_type, asUInt(UInt<2>("h2")))
+    _procmux_1149_CMP0 <= eq(swap_type, asUInt(UInt<2>("h1")))
+    _procmux_1150_CMP0 <= eq(swap_type, UInt(0))
+    _11 <= data_in
+    _12 <= cat(bits(data_in, 15, 0), bits(data_in, 31, 16))
+    _13 <= cat(bits(data_in, 7, 0), cat(bits(data_in, 15, 8), cat(bits(data_in, 23, 16), bits(data_in, 31, 24))))
+    _14 <= cat(bits(data_in, 0, 0), cat(bits(data_in, 1, 1), cat(bits(data_in, 2, 2), cat(bits(data_in, 3, 3), cat(bits(data_in, 4, 4), cat(bits(data_in, 5, 5), cat(bits(data_in, 6, 6), cat(bits(data_in, 7, 7), cat(bits(data_in, 8, 8), cat(bits(data_in, 9, 9), cat(bits(data_in, 10, 10), cat(bits(data_in, 11, 11), cat(bits(data_in, 12, 12), cat(bits(data_in, 13, 13), cat(bits(data_in, 14, 14), cat(bits(data_in, 15, 15), cat(bits(data_in, 16, 16), cat(bits(data_in, 17, 17), cat(bits(data_in, 18, 18), cat(bits(data_in, 19, 19), cat(bits(data_in, 20, 20), cat(bits(data_in, 21, 21), cat(bits(data_in, 22, 22), cat(bits(data_in, 23, 23), cat(bits(data_in, 24, 24), cat(bits(data_in, 25, 25), cat(bits(data_in, 26, 26), cat(bits(data_in, 27, 27), cat(bits(data_in, 28, 28), cat(bits(data_in, 29, 29), cat(bits(data_in, 30, 30), bits(data_in, 31, 31))))))))))))))))))))))))))))))))
+    _15 <= _auto_rtlil_cc_1906_Mux_2370
+
+    _auto_rtlil_cc_1906_Mux_2370 <= bits(_auto_pmuxtree_cc_65_recursive_mux_generator_2369, 31, 0)
+    _auto_rtlil_cc_1863_Or_2368 <= bits(_auto_pmuxtree_cc_35_or_generator_2367, 0, 0)
+    _auto_rtlil_cc_1906_Mux_2366 <= bits(_auto_pmuxtree_cc_65_recursive_mux_generator_2365, 31, 0)
+    _auto_rtlil_cc_1906_Mux_2364 <= bits(_auto_pmuxtree_cc_65_recursive_mux_generator_2363, 31, 0)
+    _procmux_1147_CMP <= bits(_procmux_1147_CMP0, 0, 0)
+    _procmux_1148_CMP <= bits(_procmux_1148_CMP0, 0, 0)
+    _procmux_1149_CMP <= bits(_procmux_1149_CMP0, 0, 0)
+    _procmux_1150_CMP <= bits(_procmux_1150_CMP0, 0, 0)
+    data_swap <= bits(_15, 31, 0)
+    words_0_ <= bits(_11, 31, 0)
+    words_1_ <= bits(_12, 31, 0)
+    words_2_ <= bits(_13, 31, 0)
+    words_3_ <= bits(_14, 31, 0)
+
+
+
+
+
+
   module datapath:
     input bus_in: UInt<32>
     input bypass_key_en: UInt<1>
@@ -1663,11 +1735,11 @@ circuit aes_core:
     SHIFT_ROW.data_in <= cat(sr_input_0, cat(col_1_, cat(col_2_, sr_input_3)))
     sr_dec <= SHIFT_ROW.data_out_dec
     sr_enc <= SHIFT_ROW.data_out_enc
-    inst SWAP_IN of data_swap
+    inst SWAP_IN of data_swap_0
     SWAP_IN.data_in <= bus_in
     bus_swap <= SWAP_IN.data_swap
     SWAP_IN.swap_type <= data_type
-    inst SWAP_OUT of data_swap
+    inst SWAP_OUT of data_swap_1
     SWAP_OUT.data_in <= sbox_input
     col_bus <= SWAP_OUT.data_swap
     SWAP_OUT.swap_type <= data_type
@@ -2383,25 +2455,31 @@ circuit aes_core:
 
 
 
-    inst SBOX_0_ of sBox_8
+    inst SBOX_0_ of sBox_8_0
     SBOX_0_.clk <= clk
     SBOX_0_.enc_dec <= enc_dec
     SBOX_0_.sbox_in <= bits(sbox_in, 7, 0)
-    inst SBOX_1_ of sBox_8
+    inst SBOX_1_ of sBox_8_1
     SBOX_1_.clk <= clk
     SBOX_1_.enc_dec <= enc_dec
     SBOX_1_.sbox_in <= bits(sbox_in, 15, 8)
-    inst SBOX_2_ of sBox_8
+    inst SBOX_2_ of sBox_8_2
     SBOX_2_.clk <= clk
     SBOX_2_.enc_dec <= enc_dec
     SBOX_2_.sbox_in <= bits(sbox_in, 23, 16)
-    inst SBOX_3_ of sBox_8
+    inst SBOX_3_ of sBox_8_3
     SBOX_3_.clk <= clk
     SBOX_3_.enc_dec <= enc_dec
     SBOX_3_.sbox_in <= bits(sbox_in, 31, 24)
     sbox_out_dec <= cat(bits(SBOX_3_.sbox_out_dec, 7, 0), cat(bits(SBOX_2_.sbox_out_dec, 7, 0), cat(bits(SBOX_1_.sbox_out_dec, 7, 0), bits(SBOX_0_.sbox_out_dec, 7, 0))))
     sbox_out_enc <= cat(bits(SBOX_3_.sbox_out_enc, 7, 0), cat(bits(SBOX_2_.sbox_out_enc, 7, 0), cat(bits(SBOX_1_.sbox_out_enc, 7, 0), bits(SBOX_0_.sbox_out_enc, 7, 0))))
-  module sBox_8:
+
+
+
+
+
+
+  module sBox_8_0:
     input clk: UInt<1>
     input enc_dec: UInt<1>
     input sbox_in: UInt<8>
@@ -3041,6 +3119,1952 @@ circuit aes_core:
     out_gf_pp <= bits(_procdff_2121, 3, 0)
     sbox_out_dec <= bits(_not_rtl_sBox_8_v_327_603, 7, 0)
     sbox_out_enc <= bits(_not_rtl_sBox_8_v_326_602, 7, 0)
+
+
+
+
+
+  module sBox_8_1:
+    input clk: UInt<1>
+    input enc_dec: UInt<1>
+    input sbox_in: UInt<8>
+    output sbox_out_dec: UInt<8>
+    output sbox_out_enc: UInt<8>
+
+    wire _0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717: UInt<4>
+    wire _0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724: UInt<2>
+    wire _0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_hg_0_0__725: UInt<1>
+    wire _0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_lw_0_0__726: UInt<1>
+    wire _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c1_0_0__652: UInt<1>
+    wire _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c2_0_0__653: UInt<1>
+    wire _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c3_0_0__654: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_154_587__in3_0_0__732: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_202_590__gf_muls_2_1_0__751: UInt<2>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_202_590__in3_0_0__754: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_202_590__in4_0_0__755: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_202_594__gf_muls_2_1_0__780: UInt<2>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_202_594__in4_0_0__784: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_203_591__gf_muls_2_1_0__756: UInt<2>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_203_591__in3_0_0__759: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_203_591__in4_0_0__760: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_203_595__gf_muls_2_1_0__785: UInt<2>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_203_595__in4_0_0__789: UInt<1>
+    wire _0_func__gf_muls_4_rtl_sBox_8_v_248_589__out_gf_mul_scl_1_1_0__750: UInt<2>
+    wire _0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in1_hl_1_0__746: UInt<2>
+    wire _0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in2_hl_1_0__747: UInt<2>
+    wire _0_func__gf_muls_4_rtl_sBox_8_v_249_593__out_gf_mul_scl_1_1_0__779: UInt<2>
+    wire _0_func__gf_muls_4_rtl_sBox_8_v_249_593__xor_in2_hl_1_0__776: UInt<2>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in3_0_0__764: UInt<1>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in4_0_0__765: UInt<1>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in1_in2_1_0__766: UInt<2>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in3_in4_0_0__767: UInt<1>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__in4_0_0__794: UInt<1>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in1_in2_1_0__795: UInt<2>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in3_in4_0_0__796: UInt<1>
+    wire _0_func__isomorphism_rtl_sBox_8_v_313_582__r1_0_0__608: UInt<1>
+    wire _0_func__isomorphism_rtl_sBox_8_v_313_582__r3_0_0__610: UInt<1>
+    wire _0_func__isomorphism_rtl_sBox_8_v_313_582__r6_0_0__613: UInt<1>
+    wire _0_func__isomorphism_rtl_sBox_8_v_313_582__r8_0_0__615: UInt<1>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874: UInt<8>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r10_0_0__887: UInt<1>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r2_0_0__879: UInt<1>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r6_0_0__883: UInt<1>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r8_0_0__885: UInt<1>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_327_581__isomorphism_inv_7_0__917: UInt<8>
+    wire _and_rtl_sBox_8_v_121_810_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_812_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_121_816_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_818_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_121_825_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_827_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_121_832_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_834_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_121_851_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_853_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_121_858_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_860_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_131_839_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_131_865_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_132_841_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_132_867_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_151_801_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_151_806_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_222_657_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_223_661_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_224_665_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_227_702_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_228_693_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_229_684_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_230_671_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_230_676_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_811_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_813_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_817_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_819_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_826_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_828_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_833_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_835_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_852_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_854_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_859_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_861_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_151_800_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_151_802_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_151_805_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_151_807_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_227_701_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_227_703_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_228_692_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_228_694_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_229_683_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_229_685_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_230_668_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_230_672_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_230_677_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_151_799_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_151_804_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_227_700_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_228_691_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_229_682_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_230_667_Y: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_224_663_Y: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_224_664_Y: UInt<1>
+    wire _ternary_rtl_sBox_8_v_315_599_Y: UInt<8>
+    wire _xor_rtl_sBox_8_v_222_655_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_222_656_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_223_659_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_223_660_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_704_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_705_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_689_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_690_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_695_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_696_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_680_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_681_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_686_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_687_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_230_673_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_230_678_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_261_620_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_263_623_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_630_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_633_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_635_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_638_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_642_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_285_891_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_286_893_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_287_895_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_288_897_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_907_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_910_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_914_Y: UInt<1>
+    wire base_new: UInt<8>
+    wire base_new_dec: UInt<8>
+    wire base_new_enc: UInt<8>
+    wire base_new_pp: UInt<8>
+    wire out_gf_inv8_1: UInt<8>
+    wire out_gf_inv8_stage1: UInt<4>
+    wire out_gf_pp: UInt<4>
+    wire _and_rtl_sBox_8_v_121_810: UInt<2>
+    wire _and_rtl_sBox_8_v_121_812: UInt<1>
+    wire _and_rtl_sBox_8_v_121_816: UInt<2>
+    wire _and_rtl_sBox_8_v_121_818: UInt<1>
+    wire _and_rtl_sBox_8_v_121_825: UInt<2>
+    wire _and_rtl_sBox_8_v_121_827: UInt<1>
+    wire _and_rtl_sBox_8_v_121_832: UInt<2>
+    wire _and_rtl_sBox_8_v_121_834: UInt<1>
+    wire _and_rtl_sBox_8_v_121_851: UInt<2>
+    wire _and_rtl_sBox_8_v_121_853: UInt<1>
+    wire _and_rtl_sBox_8_v_121_858: UInt<2>
+    wire _and_rtl_sBox_8_v_121_860: UInt<1>
+    wire _and_rtl_sBox_8_v_131_839: UInt<2>
+    wire _and_rtl_sBox_8_v_131_865: UInt<2>
+    wire _and_rtl_sBox_8_v_132_841: UInt<1>
+    wire _and_rtl_sBox_8_v_132_867: UInt<1>
+    wire _and_rtl_sBox_8_v_151_801: UInt<1>
+    wire _and_rtl_sBox_8_v_151_806: UInt<1>
+    wire _and_rtl_sBox_8_v_222_657: UInt<1>
+    wire _and_rtl_sBox_8_v_223_661: UInt<1>
+    wire _and_rtl_sBox_8_v_224_665: UInt<1>
+    wire _and_rtl_sBox_8_v_227_702: UInt<1>
+    wire _and_rtl_sBox_8_v_228_693: UInt<1>
+    wire _and_rtl_sBox_8_v_229_684: UInt<1>
+    wire _and_rtl_sBox_8_v_230_671: UInt<1>
+    wire _and_rtl_sBox_8_v_230_676: UInt<1>
+    wire _not_rtl_sBox_8_v_121_811: UInt<2>
+    wire _not_rtl_sBox_8_v_121_813: UInt<1>
+    wire _not_rtl_sBox_8_v_121_817: UInt<2>
+    wire _not_rtl_sBox_8_v_121_819: UInt<1>
+    wire _not_rtl_sBox_8_v_121_826: UInt<2>
+    wire _not_rtl_sBox_8_v_121_828: UInt<1>
+    wire _not_rtl_sBox_8_v_121_833: UInt<2>
+    wire _not_rtl_sBox_8_v_121_835: UInt<1>
+    wire _not_rtl_sBox_8_v_121_852: UInt<2>
+    wire _not_rtl_sBox_8_v_121_854: UInt<1>
+    wire _not_rtl_sBox_8_v_121_859: UInt<2>
+    wire _not_rtl_sBox_8_v_121_861: UInt<1>
+    wire _not_rtl_sBox_8_v_131_840: UInt<2>
+    wire _not_rtl_sBox_8_v_131_866: UInt<2>
+    wire _not_rtl_sBox_8_v_132_842: UInt<1>
+    wire _not_rtl_sBox_8_v_132_868: UInt<1>
+    wire _not_rtl_sBox_8_v_151_800: UInt<1>
+    wire _not_rtl_sBox_8_v_151_802: UInt<1>
+    wire _not_rtl_sBox_8_v_151_805: UInt<1>
+    wire _not_rtl_sBox_8_v_151_807: UInt<1>
+    wire _not_rtl_sBox_8_v_222_658: UInt<1>
+    wire _not_rtl_sBox_8_v_223_662: UInt<1>
+    wire _not_rtl_sBox_8_v_224_666: UInt<1>
+    wire _not_rtl_sBox_8_v_227_701: UInt<1>
+    wire _not_rtl_sBox_8_v_227_703: UInt<1>
+    wire _not_rtl_sBox_8_v_228_692: UInt<1>
+    wire _not_rtl_sBox_8_v_228_694: UInt<1>
+    wire _not_rtl_sBox_8_v_229_683: UInt<1>
+    wire _not_rtl_sBox_8_v_229_685: UInt<1>
+    wire _not_rtl_sBox_8_v_230_668: UInt<1>
+    wire _not_rtl_sBox_8_v_230_672: UInt<1>
+    wire _not_rtl_sBox_8_v_230_677: UInt<1>
+    wire _not_rtl_sBox_8_v_261_621: UInt<1>
+    wire _not_rtl_sBox_8_v_263_624: UInt<1>
+    wire _not_rtl_sBox_8_v_270_631: UInt<1>
+    wire _not_rtl_sBox_8_v_270_632: UInt<1>
+    wire _not_rtl_sBox_8_v_270_636: UInt<1>
+    wire _not_rtl_sBox_8_v_270_639: UInt<1>
+    wire _not_rtl_sBox_8_v_271_643: UInt<1>
+    wire _not_rtl_sBox_8_v_285_935: UInt<1>
+    wire _not_rtl_sBox_8_v_286_894: UInt<1>
+    wire _not_rtl_sBox_8_v_287_939: UInt<1>
+    wire _not_rtl_sBox_8_v_288_898: UInt<1>
+    wire _not_rtl_sBox_8_v_296_911: UInt<1>
+    wire _not_rtl_sBox_8_v_296_915: UInt<1>
+    wire _not_rtl_sBox_8_v_296_949: UInt<1>
+    wire _not_rtl_sBox_8_v_296_951: UInt<1>
+    wire _not_rtl_sBox_8_v_315_600: UInt<8>
+    wire _not_rtl_sBox_8_v_326_602: UInt<8>
+    wire _not_rtl_sBox_8_v_327_603: UInt<8>
+    wire _or_rtl_sBox_8_v_151_799: UInt<1>
+    wire _or_rtl_sBox_8_v_151_804: UInt<1>
+    wire _or_rtl_sBox_8_v_227_700: UInt<1>
+    wire _or_rtl_sBox_8_v_228_691: UInt<1>
+    wire _or_rtl_sBox_8_v_229_682: UInt<1>
+    wire _or_rtl_sBox_8_v_230_667: UInt<1>
+    reg _procdff_2121: UInt<4>, asClock(clk)
+    reg _procdff_2122: UInt<8>, asClock(clk)
+    wire _reduce_xor_rtl_sBox_8_v_133_843: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_133_869: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_149_797: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_150_798: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_155_815: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_204_838: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_204_863: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_204_864: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_224_663: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_224_664: UInt<1>
+    wire _ternary_rtl_sBox_8_v_315_599: UInt<8>
+    wire _xor_rtl_sBox_8_v_121_814: UInt<2>
+    wire _xor_rtl_sBox_8_v_121_820: UInt<2>
+    wire _xor_rtl_sBox_8_v_121_829: UInt<2>
+    wire _xor_rtl_sBox_8_v_121_836: UInt<2>
+    wire _xor_rtl_sBox_8_v_121_855: UInt<2>
+    wire _xor_rtl_sBox_8_v_121_862: UInt<2>
+    wire _xor_rtl_sBox_8_v_133_844: UInt<1>
+    wire _xor_rtl_sBox_8_v_133_870: UInt<1>
+    wire _xor_rtl_sBox_8_v_151_803: UInt<1>
+    wire _xor_rtl_sBox_8_v_151_808: UInt<1>
+    wire _xor_rtl_sBox_8_v_199_847: UInt<2>
+    wire _xor_rtl_sBox_8_v_200_822: UInt<2>
+    wire _xor_rtl_sBox_8_v_200_848: UInt<2>
+    wire _xor_rtl_sBox_8_v_202_824: UInt<1>
+    wire _xor_rtl_sBox_8_v_202_849: UInt<1>
+    wire _xor_rtl_sBox_8_v_202_850: UInt<1>
+    wire _xor_rtl_sBox_8_v_203_831: UInt<1>
+    wire _xor_rtl_sBox_8_v_203_856: UInt<1>
+    wire _xor_rtl_sBox_8_v_203_857: UInt<1>
+    wire _xor_rtl_sBox_8_v_206_845: UInt<2>
+    wire _xor_rtl_sBox_8_v_206_846: UInt<2>
+    wire _xor_rtl_sBox_8_v_206_871: UInt<2>
+    wire _xor_rtl_sBox_8_v_206_872: UInt<2>
+    wire _xor_rtl_sBox_8_v_222_655: UInt<1>
+    wire _xor_rtl_sBox_8_v_222_656: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_698: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_699: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_704: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_705: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_706: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_689: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_690: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_695: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_696: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_697: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_680: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_681: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_686: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_687: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_688: UInt<1>
+    wire _xor_rtl_sBox_8_v_230_673: UInt<1>
+    wire _xor_rtl_sBox_8_v_230_678: UInt<1>
+    wire _xor_rtl_sBox_8_v_230_679: UInt<1>
+    wire _xor_rtl_sBox_8_v_260_619: UInt<1>
+    wire _xor_rtl_sBox_8_v_261_620: UInt<1>
+    wire _xor_rtl_sBox_8_v_262_622: UInt<1>
+    wire _xor_rtl_sBox_8_v_263_623: UInt<1>
+    wire _xor_rtl_sBox_8_v_264_625: UInt<1>
+    wire _xor_rtl_sBox_8_v_265_626: UInt<1>
+    wire _xor_rtl_sBox_8_v_266_627: UInt<1>
+    wire _xor_rtl_sBox_8_v_267_628: UInt<1>
+    wire _xor_rtl_sBox_8_v_268_629: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_630: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_633: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_634: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_635: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_637: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_638: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_640: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_641: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_642: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_644: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_645: UInt<1>
+    wire _xor_rtl_sBox_8_v_282_931: UInt<1>
+    wire _xor_rtl_sBox_8_v_283_932: UInt<1>
+    wire _xor_rtl_sBox_8_v_284_933: UInt<1>
+    wire _xor_rtl_sBox_8_v_285_934: UInt<1>
+    wire _xor_rtl_sBox_8_v_286_936: UInt<1>
+    wire _xor_rtl_sBox_8_v_287_938: UInt<1>
+    wire _xor_rtl_sBox_8_v_288_897: UInt<1>
+    wire _xor_rtl_sBox_8_v_289_899: UInt<1>
+    wire _xor_rtl_sBox_8_v_290_900: UInt<1>
+    wire _xor_rtl_sBox_8_v_291_901: UInt<1>
+    wire _xor_rtl_sBox_8_v_294_904: UInt<1>
+    wire _xor_rtl_sBox_8_v_294_905: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_907: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_909: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_912: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_953: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_956: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_957: UInt<1>
+    wire _74: UInt<1>
+
+
+    _and_rtl_sBox_8_v_121_810 <= and(cat(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 0, 0), bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 1, 1)), asUInt(bits(out_gf_pp, 1, 0)))
+    _and_rtl_sBox_8_v_121_812 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_154_587__in3_0_0__732, asUInt(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_lw_0_0__726))
+    _and_rtl_sBox_8_v_121_816 <= and(cat(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 0, 0), bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 1, 1)), asUInt(bits(out_gf_pp, 3, 2)))
+    _and_rtl_sBox_8_v_121_818 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_154_587__in3_0_0__732, asUInt(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_hg_0_0__725))
+    _and_rtl_sBox_8_v_121_825 <= and(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 3, 2), asUInt(bits(base_new_pp, 3, 2)))
+    _and_rtl_sBox_8_v_121_827 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_202_590__in3_0_0__754, asUInt(_0_func__gf_muls_2_rtl_sBox_8_v_202_590__in4_0_0__755))
+    _and_rtl_sBox_8_v_121_832 <= and(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 1, 0), asUInt(bits(base_new_pp, 1, 0)))
+    _and_rtl_sBox_8_v_121_834 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_203_591__in3_0_0__759, asUInt(_0_func__gf_muls_2_rtl_sBox_8_v_203_591__in4_0_0__760))
+    _and_rtl_sBox_8_v_121_851 <= and(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 3, 2), asUInt(bits(base_new_pp, 7, 6)))
+    _and_rtl_sBox_8_v_121_853 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_202_590__in3_0_0__754, asUInt(_0_func__gf_muls_2_rtl_sBox_8_v_202_594__in4_0_0__784))
+    _and_rtl_sBox_8_v_121_858 <= and(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 1, 0), asUInt(bits(base_new_pp, 5, 4)))
+    _and_rtl_sBox_8_v_121_860 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_203_591__in3_0_0__759, asUInt(_0_func__gf_muls_2_rtl_sBox_8_v_203_595__in4_0_0__789))
+    _and_rtl_sBox_8_v_131_839 <= and(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in1_hl_1_0__746, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in2_hl_1_0__747))
+    _and_rtl_sBox_8_v_131_865 <= and(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in1_hl_1_0__746, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_249_593__xor_in2_hl_1_0__776))
+    _and_rtl_sBox_8_v_132_841 <= and(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in3_0_0__764, asUInt(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in4_0_0__765))
+    _and_rtl_sBox_8_v_132_867 <= and(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in3_0_0__764, asUInt(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__in4_0_0__794))
+    _and_rtl_sBox_8_v_151_801 <= and(bits(out_gf_pp, 2, 2), asUInt(bits(out_gf_pp, 0, 0)))
+    _and_rtl_sBox_8_v_151_806 <= and(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_hg_0_0__725, asUInt(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_lw_0_0__726))
+    _and_rtl_sBox_8_v_222_657 <= and(_xor_rtl_sBox_8_v_222_655_Y, asUInt(_xor_rtl_sBox_8_v_222_656_Y))
+    _and_rtl_sBox_8_v_223_661 <= and(_xor_rtl_sBox_8_v_223_659_Y, asUInt(_xor_rtl_sBox_8_v_223_660_Y))
+    _and_rtl_sBox_8_v_224_665 <= and(_reduce_xor_rtl_sBox_8_v_224_663_Y, asUInt(_reduce_xor_rtl_sBox_8_v_224_664_Y))
+    _and_rtl_sBox_8_v_227_702 <= and(bits(base_new, 7, 7), asUInt(bits(base_new, 3, 3)))
+    _and_rtl_sBox_8_v_228_693 <= and(bits(base_new, 6, 6), asUInt(bits(base_new, 2, 2)))
+    _and_rtl_sBox_8_v_229_684 <= and(bits(base_new, 5, 5), asUInt(bits(base_new, 1, 1)))
+    _and_rtl_sBox_8_v_230_671 <= and(_xor_rtl_sBox_8_v_229_680_Y, asUInt(_xor_rtl_sBox_8_v_229_681_Y))
+    _and_rtl_sBox_8_v_230_676 <= and(_xor_rtl_sBox_8_v_228_689_Y, asUInt(_xor_rtl_sBox_8_v_228_690_Y))
+    _not_rtl_sBox_8_v_121_811 <= not(pad(_and_rtl_sBox_8_v_121_810_Y, 2))
+    _not_rtl_sBox_8_v_121_813 <= not(pad(_and_rtl_sBox_8_v_121_812_Y, 1))
+    _not_rtl_sBox_8_v_121_817 <= not(pad(_and_rtl_sBox_8_v_121_816_Y, 2))
+    _not_rtl_sBox_8_v_121_819 <= not(pad(_and_rtl_sBox_8_v_121_818_Y, 1))
+    _not_rtl_sBox_8_v_121_826 <= not(pad(_and_rtl_sBox_8_v_121_825_Y, 2))
+    _not_rtl_sBox_8_v_121_828 <= not(pad(_and_rtl_sBox_8_v_121_827_Y, 1))
+    _not_rtl_sBox_8_v_121_833 <= not(pad(_and_rtl_sBox_8_v_121_832_Y, 2))
+    _not_rtl_sBox_8_v_121_835 <= not(pad(_and_rtl_sBox_8_v_121_834_Y, 1))
+    _not_rtl_sBox_8_v_121_852 <= not(pad(_and_rtl_sBox_8_v_121_851_Y, 2))
+    _not_rtl_sBox_8_v_121_854 <= not(pad(_and_rtl_sBox_8_v_121_853_Y, 1))
+    _not_rtl_sBox_8_v_121_859 <= not(pad(_and_rtl_sBox_8_v_121_858_Y, 2))
+    _not_rtl_sBox_8_v_121_861 <= not(pad(_and_rtl_sBox_8_v_121_860_Y, 1))
+    _not_rtl_sBox_8_v_131_840 <= not(pad(_and_rtl_sBox_8_v_131_839_Y, 2))
+    _not_rtl_sBox_8_v_131_866 <= not(pad(_and_rtl_sBox_8_v_131_865_Y, 2))
+    _not_rtl_sBox_8_v_132_842 <= not(pad(_and_rtl_sBox_8_v_132_841_Y, 1))
+    _not_rtl_sBox_8_v_132_868 <= not(pad(_and_rtl_sBox_8_v_132_867_Y, 1))
+    _not_rtl_sBox_8_v_151_800 <= not(pad(_or_rtl_sBox_8_v_151_799_Y, 1))
+    _not_rtl_sBox_8_v_151_802 <= not(pad(_and_rtl_sBox_8_v_151_801_Y, 1))
+    _not_rtl_sBox_8_v_151_805 <= not(pad(_or_rtl_sBox_8_v_151_804_Y, 1))
+    _not_rtl_sBox_8_v_151_807 <= not(pad(_and_rtl_sBox_8_v_151_806_Y, 1))
+    _not_rtl_sBox_8_v_222_658 <= not(pad(_and_rtl_sBox_8_v_222_657_Y, 1))
+    _not_rtl_sBox_8_v_223_662 <= not(pad(_and_rtl_sBox_8_v_223_661_Y, 1))
+    _not_rtl_sBox_8_v_224_666 <= not(pad(_and_rtl_sBox_8_v_224_665_Y, 1))
+    _not_rtl_sBox_8_v_227_701 <= not(pad(_or_rtl_sBox_8_v_227_700_Y, 1))
+    _not_rtl_sBox_8_v_227_703 <= not(pad(_and_rtl_sBox_8_v_227_702_Y, 1))
+    _not_rtl_sBox_8_v_228_692 <= not(pad(_or_rtl_sBox_8_v_228_691_Y, 1))
+    _not_rtl_sBox_8_v_228_694 <= not(pad(_and_rtl_sBox_8_v_228_693_Y, 1))
+    _not_rtl_sBox_8_v_229_683 <= not(pad(_or_rtl_sBox_8_v_229_682_Y, 1))
+    _not_rtl_sBox_8_v_229_685 <= not(pad(_and_rtl_sBox_8_v_229_684_Y, 1))
+    _not_rtl_sBox_8_v_230_668 <= not(pad(_or_rtl_sBox_8_v_230_667_Y, 1))
+    _not_rtl_sBox_8_v_230_672 <= not(pad(_and_rtl_sBox_8_v_230_671_Y, 1))
+    _not_rtl_sBox_8_v_230_677 <= not(pad(_and_rtl_sBox_8_v_230_676_Y, 1))
+    _not_rtl_sBox_8_v_261_621 <= not(pad(_xor_rtl_sBox_8_v_261_620_Y, 1))
+    _not_rtl_sBox_8_v_263_624 <= not(pad(_xor_rtl_sBox_8_v_263_623_Y, 1))
+    _not_rtl_sBox_8_v_270_631 <= not(pad(_xor_rtl_sBox_8_v_270_630_Y, 1))
+    _not_rtl_sBox_8_v_270_632 <= not(pad(bits(sbox_in, 0, 0), 1))
+    _not_rtl_sBox_8_v_270_636 <= not(pad(_xor_rtl_sBox_8_v_270_635_Y, 1))
+    _not_rtl_sBox_8_v_270_639 <= not(pad(_xor_rtl_sBox_8_v_270_638_Y, 1))
+    _not_rtl_sBox_8_v_271_643 <= not(pad(_xor_rtl_sBox_8_v_271_642_Y, 1))
+    _not_rtl_sBox_8_v_285_935 <= not(pad(_xor_rtl_sBox_8_v_285_891_Y, 1))
+    _not_rtl_sBox_8_v_286_894 <= not(pad(_xor_rtl_sBox_8_v_286_893_Y, 1))
+    _not_rtl_sBox_8_v_287_939 <= not(pad(_xor_rtl_sBox_8_v_287_895_Y, 1))
+    _not_rtl_sBox_8_v_288_898 <= not(pad(_xor_rtl_sBox_8_v_288_897_Y, 1))
+    _not_rtl_sBox_8_v_296_911 <= not(pad(_xor_rtl_sBox_8_v_296_910_Y, 1))
+    _not_rtl_sBox_8_v_296_915 <= not(pad(_xor_rtl_sBox_8_v_296_914_Y, 1))
+    _not_rtl_sBox_8_v_296_949 <= not(pad(bits(out_gf_inv8_1, 2, 2), 1))
+    _not_rtl_sBox_8_v_296_951 <= not(pad(_xor_rtl_sBox_8_v_296_907_Y, 1))
+    _not_rtl_sBox_8_v_315_600 <= not(pad(_ternary_rtl_sBox_8_v_315_599_Y, 8))
+    _not_rtl_sBox_8_v_326_602 <= not(pad(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 8))
+    _not_rtl_sBox_8_v_327_603 <= not(pad(cat(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_327_581__isomorphism_inv_7_0__917, 7, 2), cat(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r6_0_0__883, bits(_0_func__isomorphism_inv_rtl_sBox_8_v_327_581__isomorphism_inv_7_0__917, 0, 0))), 8))
+    _or_rtl_sBox_8_v_151_799 <= or(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_hg_0_0__725, asUInt(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_lw_0_0__726))
+    _or_rtl_sBox_8_v_151_804 <= or(bits(out_gf_pp, 3, 3), asUInt(bits(out_gf_pp, 1, 1)))
+    _or_rtl_sBox_8_v_227_700 <= or(_xor_rtl_sBox_8_v_223_659_Y, asUInt(_xor_rtl_sBox_8_v_223_660_Y))
+    _or_rtl_sBox_8_v_228_691 <= or(_xor_rtl_sBox_8_v_228_689_Y, asUInt(_xor_rtl_sBox_8_v_228_690_Y))
+    _or_rtl_sBox_8_v_229_682 <= or(_xor_rtl_sBox_8_v_229_680_Y, asUInt(_xor_rtl_sBox_8_v_229_681_Y))
+    _or_rtl_sBox_8_v_230_667 <= or(bits(base_new, 4, 4), asUInt(bits(base_new, 0, 0)))
+    _procdff_2121 <= out_gf_inv8_stage1
+    _procdff_2122 <= base_new
+    _reduce_xor_rtl_sBox_8_v_133_843 <= xorr(pad(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in1_in2_1_0__766, 1))
+    _reduce_xor_rtl_sBox_8_v_133_869 <= xorr(pad(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in1_in2_1_0__795, 1))
+    _reduce_xor_rtl_sBox_8_v_149_797 <= xorr(pad(bits(out_gf_pp, 3, 2), 1))
+    _reduce_xor_rtl_sBox_8_v_150_798 <= xorr(pad(bits(out_gf_pp, 1, 0), 1))
+    _reduce_xor_rtl_sBox_8_v_155_815 <= xorr(pad(cat(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 0, 0), bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 1, 1)), 1))
+    _reduce_xor_rtl_sBox_8_v_204_838 <= xorr(pad(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in2_hl_1_0__747, 1))
+    _reduce_xor_rtl_sBox_8_v_204_863 <= xorr(pad(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in1_hl_1_0__746, 1))
+    _reduce_xor_rtl_sBox_8_v_204_864 <= xorr(pad(_0_func__gf_muls_4_rtl_sBox_8_v_249_593__xor_in2_hl_1_0__776, 1))
+    _reduce_xor_rtl_sBox_8_v_224_663 <= xorr(pad(bits(base_new, 7, 4), 1))
+    _reduce_xor_rtl_sBox_8_v_224_664 <= xorr(pad(bits(base_new, 3, 0), 1))
+    _ternary_rtl_sBox_8_v_315_599 <= mux(enc_dec, base_new_enc, base_new_dec)
+    _xor_rtl_sBox_8_v_121_814 <= xor(_not_rtl_sBox_8_v_121_811_Y, asUInt(cat(_not_rtl_sBox_8_v_121_813_Y, _not_rtl_sBox_8_v_121_813_Y)))
+    _xor_rtl_sBox_8_v_121_820 <= xor(_not_rtl_sBox_8_v_121_817_Y, asUInt(cat(_not_rtl_sBox_8_v_121_819_Y, _not_rtl_sBox_8_v_121_819_Y)))
+    _xor_rtl_sBox_8_v_121_829 <= xor(_not_rtl_sBox_8_v_121_826_Y, asUInt(cat(_not_rtl_sBox_8_v_121_828_Y, _not_rtl_sBox_8_v_121_828_Y)))
+    _xor_rtl_sBox_8_v_121_836 <= xor(_not_rtl_sBox_8_v_121_833_Y, asUInt(cat(_not_rtl_sBox_8_v_121_835_Y, _not_rtl_sBox_8_v_121_835_Y)))
+    _xor_rtl_sBox_8_v_121_855 <= xor(_not_rtl_sBox_8_v_121_852_Y, asUInt(cat(_not_rtl_sBox_8_v_121_854_Y, _not_rtl_sBox_8_v_121_854_Y)))
+    _xor_rtl_sBox_8_v_121_862 <= xor(_not_rtl_sBox_8_v_121_859_Y, asUInt(cat(_not_rtl_sBox_8_v_121_861_Y, _not_rtl_sBox_8_v_121_861_Y)))
+    _xor_rtl_sBox_8_v_133_844 <= xor(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in3_in4_0_0__767, asUInt(bits(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in1_in2_1_0__766, 0, 0)))
+    _xor_rtl_sBox_8_v_133_870 <= xor(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in3_in4_0_0__796, asUInt(bits(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in1_in2_1_0__795, 0, 0)))
+    _xor_rtl_sBox_8_v_151_803 <= xor(_not_rtl_sBox_8_v_151_800_Y, asUInt(_not_rtl_sBox_8_v_151_802_Y))
+    _xor_rtl_sBox_8_v_151_808 <= xor(_not_rtl_sBox_8_v_151_805_Y, asUInt(_not_rtl_sBox_8_v_151_807_Y))
+    _xor_rtl_sBox_8_v_199_847 <= xor(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 3, 2), asUInt(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 1, 0)))
+    _xor_rtl_sBox_8_v_200_822 <= xor(bits(base_new_pp, 3, 2), asUInt(bits(base_new_pp, 1, 0)))
+    _xor_rtl_sBox_8_v_200_848 <= xor(bits(base_new_pp, 7, 6), asUInt(bits(base_new_pp, 5, 4)))
+    _xor_rtl_sBox_8_v_202_824 <= xor(bits(base_new_pp, 3, 3), asUInt(bits(base_new_pp, 2, 2)))
+    _xor_rtl_sBox_8_v_202_849 <= xor(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 3, 3), asUInt(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 2, 2)))
+    _xor_rtl_sBox_8_v_202_850 <= xor(bits(base_new_pp, 7, 7), asUInt(bits(base_new_pp, 6, 6)))
+    _xor_rtl_sBox_8_v_203_831 <= xor(bits(base_new_pp, 1, 1), asUInt(bits(base_new_pp, 0, 0)))
+    _xor_rtl_sBox_8_v_203_856 <= xor(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 1, 1), asUInt(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 0, 0)))
+    _xor_rtl_sBox_8_v_203_857 <= xor(bits(base_new_pp, 5, 5), asUInt(bits(base_new_pp, 4, 4)))
+    _xor_rtl_sBox_8_v_206_845 <= xor(_0_func__gf_muls_2_rtl_sBox_8_v_203_591__gf_muls_2_1_0__756, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__out_gf_mul_scl_1_1_0__750))
+    _xor_rtl_sBox_8_v_206_846 <= xor(_0_func__gf_muls_2_rtl_sBox_8_v_202_590__gf_muls_2_1_0__751, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__out_gf_mul_scl_1_1_0__750))
+    _xor_rtl_sBox_8_v_206_871 <= xor(_0_func__gf_muls_2_rtl_sBox_8_v_203_595__gf_muls_2_1_0__785, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_249_593__out_gf_mul_scl_1_1_0__779))
+    _xor_rtl_sBox_8_v_206_872 <= xor(_0_func__gf_muls_2_rtl_sBox_8_v_202_594__gf_muls_2_1_0__780, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_249_593__out_gf_mul_scl_1_1_0__779))
+    _xor_rtl_sBox_8_v_222_655 <= xor(bits(base_new, 7, 7), asUInt(bits(base_new, 6, 6)))
+    _xor_rtl_sBox_8_v_222_656 <= xor(bits(base_new, 3, 3), asUInt(bits(base_new, 2, 2)))
+    _xor_rtl_sBox_8_v_227_698 <= xor(bits(base_new, 6, 6), asUInt(bits(base_new, 4, 4)))
+    _xor_rtl_sBox_8_v_227_699 <= xor(bits(base_new, 2, 2), asUInt(bits(base_new, 0, 0)))
+    _xor_rtl_sBox_8_v_227_704 <= xor(_not_rtl_sBox_8_v_227_701_Y, asUInt(_not_rtl_sBox_8_v_227_703_Y))
+    _xor_rtl_sBox_8_v_227_705 <= xor(_xor_rtl_sBox_8_v_227_704_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c1_0_0__652))
+    _xor_rtl_sBox_8_v_227_706 <= xor(_xor_rtl_sBox_8_v_227_705_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c3_0_0__654))
+    _xor_rtl_sBox_8_v_228_689 <= xor(bits(base_new, 7, 7), asUInt(bits(base_new, 5, 5)))
+    _xor_rtl_sBox_8_v_228_690 <= xor(bits(base_new, 3, 3), asUInt(bits(base_new, 1, 1)))
+    _xor_rtl_sBox_8_v_228_695 <= xor(_not_rtl_sBox_8_v_228_692_Y, asUInt(_not_rtl_sBox_8_v_228_694_Y))
+    _xor_rtl_sBox_8_v_228_696 <= xor(_xor_rtl_sBox_8_v_228_695_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c1_0_0__652))
+    _xor_rtl_sBox_8_v_228_697 <= xor(_xor_rtl_sBox_8_v_228_696_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c2_0_0__653))
+    _xor_rtl_sBox_8_v_229_680 <= xor(bits(base_new, 5, 5), asUInt(bits(base_new, 4, 4)))
+    _xor_rtl_sBox_8_v_229_681 <= xor(bits(base_new, 1, 1), asUInt(bits(base_new, 0, 0)))
+    _xor_rtl_sBox_8_v_229_686 <= xor(_not_rtl_sBox_8_v_229_683_Y, asUInt(_not_rtl_sBox_8_v_229_685_Y))
+    _xor_rtl_sBox_8_v_229_687 <= xor(_xor_rtl_sBox_8_v_229_686_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c2_0_0__653))
+    _xor_rtl_sBox_8_v_229_688 <= xor(_xor_rtl_sBox_8_v_229_687_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c3_0_0__654))
+    _xor_rtl_sBox_8_v_230_673 <= xor(_not_rtl_sBox_8_v_230_668_Y, asUInt(_not_rtl_sBox_8_v_230_672_Y))
+    _xor_rtl_sBox_8_v_230_678 <= xor(_xor_rtl_sBox_8_v_230_673_Y, asUInt(_not_rtl_sBox_8_v_230_677_Y))
+    _xor_rtl_sBox_8_v_230_679 <= xor(_xor_rtl_sBox_8_v_230_678_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c2_0_0__653))
+    _xor_rtl_sBox_8_v_260_619 <= xor(bits(sbox_in, 7, 7), asUInt(bits(sbox_in, 5, 5)))
+    _xor_rtl_sBox_8_v_261_620 <= xor(bits(sbox_in, 7, 7), asUInt(bits(sbox_in, 4, 4)))
+    _xor_rtl_sBox_8_v_262_622 <= xor(bits(sbox_in, 6, 6), asUInt(bits(sbox_in, 0, 0)))
+    _xor_rtl_sBox_8_v_263_623 <= xor(bits(sbox_in, 5, 5), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r3_0_0__610))
+    _xor_rtl_sBox_8_v_264_625 <= xor(bits(sbox_in, 4, 4), asUInt(bits(base_new_enc, 1, 1)))
+    _xor_rtl_sBox_8_v_265_626 <= xor(bits(sbox_in, 3, 3), asUInt(bits(sbox_in, 0, 0)))
+    _xor_rtl_sBox_8_v_266_627 <= xor(bits(sbox_in, 2, 2), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r1_0_0__608))
+    _xor_rtl_sBox_8_v_267_628 <= xor(bits(sbox_in, 1, 1), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r3_0_0__610))
+    _xor_rtl_sBox_8_v_268_629 <= xor(bits(sbox_in, 3, 3), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r8_0_0__615))
+    _xor_rtl_sBox_8_v_270_630 <= xor(bits(sbox_in, 2, 2), asUInt(bits(base_new_dec, 4, 4)))
+    _xor_rtl_sBox_8_v_270_633 <= xor(bits(sbox_in, 1, 1), asUInt(bits(base_new_dec, 7, 7)))
+    _xor_rtl_sBox_8_v_270_634 <= xor(_xor_rtl_sBox_8_v_270_633_Y, asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r6_0_0__613))
+    _xor_rtl_sBox_8_v_270_635 <= xor(_0_func__isomorphism_rtl_sBox_8_v_313_582__r1_0_0__608, asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r3_0_0__610))
+    _xor_rtl_sBox_8_v_270_637 <= xor(bits(sbox_in, 1, 1), asUInt(bits(base_new_enc, 1, 1)))
+    _xor_rtl_sBox_8_v_270_638 <= xor(bits(base_new_dec, 2, 2), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r8_0_0__615))
+    _xor_rtl_sBox_8_v_271_640 <= xor(bits(sbox_in, 1, 1), asUInt(bits(base_new_enc, 6, 6)))
+    _xor_rtl_sBox_8_v_271_641 <= xor(bits(sbox_in, 4, 4), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r6_0_0__613))
+    _xor_rtl_sBox_8_v_271_642 <= xor(bits(sbox_in, 6, 6), asUInt(bits(base_new_dec, 7, 7)))
+    _xor_rtl_sBox_8_v_271_644 <= xor(bits(sbox_in, 6, 6), asUInt(bits(sbox_in, 4, 4)))
+    _xor_rtl_sBox_8_v_271_645 <= xor(bits(sbox_in, 4, 4), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r8_0_0__615))
+    _xor_rtl_sBox_8_v_282_931 <= xor(bits(out_gf_inv8_1, 7, 7), asUInt(bits(out_gf_inv8_1, 3, 3)))
+    _xor_rtl_sBox_8_v_283_932 <= xor(bits(out_gf_inv8_1, 6, 6), asUInt(bits(out_gf_inv8_1, 4, 4)))
+    _xor_rtl_sBox_8_v_284_933 <= xor(bits(out_gf_inv8_1, 6, 6), asUInt(bits(out_gf_inv8_1, 0, 0)))
+    _xor_rtl_sBox_8_v_285_934 <= xor(bits(out_gf_inv8_1, 5, 5), asUInt(bits(out_gf_inv8_1, 3, 3)))
+    _xor_rtl_sBox_8_v_286_936 <= xor(bits(out_gf_inv8_1, 5, 5), asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 6, 6)))
+    _xor_rtl_sBox_8_v_287_938 <= xor(bits(out_gf_inv8_1, 5, 5), asUInt(bits(out_gf_inv8_1, 1, 1)))
+    _xor_rtl_sBox_8_v_288_897 <= xor(bits(out_gf_inv8_1, 4, 4), asUInt(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r6_0_0__883))
+    _xor_rtl_sBox_8_v_289_899 <= xor(bits(out_gf_inv8_1, 2, 2), asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 7, 7)))
+    _xor_rtl_sBox_8_v_290_900 <= xor(bits(out_gf_inv8_1, 1, 1), asUInt(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r2_0_0__879))
+    _xor_rtl_sBox_8_v_291_901 <= xor(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 5, 5), asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 4, 4)))
+    _xor_rtl_sBox_8_v_294_904 <= xor(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 5, 5), asUInt(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r8_0_0__885))
+    _xor_rtl_sBox_8_v_294_905 <= xor(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r2_0_0__879, asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 4, 4)))
+    _xor_rtl_sBox_8_v_296_907 <= xor(bits(out_gf_inv8_1, 7, 7), asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 1, 1)))
+    _xor_rtl_sBox_8_v_296_909 <= xor(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r8_0_0__885, asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 0, 0)))
+    _xor_rtl_sBox_8_v_296_912 <= xor(bits(out_gf_inv8_1, 2, 2), asUInt(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r10_0_0__887))
+    _xor_rtl_sBox_8_v_296_953 <= xor(bits(out_gf_inv8_1, 6, 6), asUInt(bits(out_gf_inv8_1, 1, 1)))
+    _xor_rtl_sBox_8_v_296_956 <= xor(bits(out_gf_inv8_1, 1, 1), asUInt(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r10_0_0__887))
+    _xor_rtl_sBox_8_v_296_957 <= xor(bits(out_gf_inv8_1, 4, 4), asUInt(bits(out_gf_inv8_1, 1, 1)))
+    _74 <= _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r6_0_0__883
+
+    _0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717 <= cat(bits(_xor_rtl_sBox_8_v_121_814, 1, 0), bits(_xor_rtl_sBox_8_v_121_820, 1, 0))
+    _0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724 <= cat(bits(_xor_rtl_sBox_8_v_151_808, 0, 0), bits(_xor_rtl_sBox_8_v_151_803, 0, 0))
+    _0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_hg_0_0__725 <= bits(_reduce_xor_rtl_sBox_8_v_149_797, 0, 0)
+    _0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_lw_0_0__726 <= bits(_reduce_xor_rtl_sBox_8_v_150_798, 0, 0)
+    _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c1_0_0__652 <= bits(_not_rtl_sBox_8_v_222_658, 0, 0)
+    _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c2_0_0__653 <= bits(_not_rtl_sBox_8_v_223_662, 0, 0)
+    _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c3_0_0__654 <= bits(_not_rtl_sBox_8_v_224_666, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_154_587__in3_0_0__732 <= bits(_reduce_xor_rtl_sBox_8_v_155_815, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_202_590__gf_muls_2_1_0__751 <= bits(_xor_rtl_sBox_8_v_121_829, 1, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_202_590__in3_0_0__754 <= bits(_xor_rtl_sBox_8_v_202_849, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_202_590__in4_0_0__755 <= bits(_xor_rtl_sBox_8_v_202_824, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_202_594__gf_muls_2_1_0__780 <= bits(_xor_rtl_sBox_8_v_121_855, 1, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_202_594__in4_0_0__784 <= bits(_xor_rtl_sBox_8_v_202_850, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_203_591__gf_muls_2_1_0__756 <= bits(_xor_rtl_sBox_8_v_121_836, 1, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_203_591__in3_0_0__759 <= bits(_xor_rtl_sBox_8_v_203_856, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_203_591__in4_0_0__760 <= bits(_xor_rtl_sBox_8_v_203_831, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_203_595__gf_muls_2_1_0__785 <= bits(_xor_rtl_sBox_8_v_121_862, 1, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_203_595__in4_0_0__789 <= bits(_xor_rtl_sBox_8_v_203_857, 0, 0)
+    _0_func__gf_muls_4_rtl_sBox_8_v_248_589__out_gf_mul_scl_1_1_0__750 <= cat(bits(_xor_rtl_sBox_8_v_133_844, 0, 0), bits(_reduce_xor_rtl_sBox_8_v_133_843, 0, 0))
+    _0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in1_hl_1_0__746 <= bits(_xor_rtl_sBox_8_v_199_847, 1, 0)
+    _0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in2_hl_1_0__747 <= bits(_xor_rtl_sBox_8_v_200_822, 1, 0)
+    _0_func__gf_muls_4_rtl_sBox_8_v_249_593__out_gf_mul_scl_1_1_0__779 <= cat(bits(_xor_rtl_sBox_8_v_133_870, 0, 0), bits(_reduce_xor_rtl_sBox_8_v_133_869, 0, 0))
+    _0_func__gf_muls_4_rtl_sBox_8_v_249_593__xor_in2_hl_1_0__776 <= bits(_xor_rtl_sBox_8_v_200_848, 1, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in3_0_0__764 <= bits(_reduce_xor_rtl_sBox_8_v_204_863, 0, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in4_0_0__765 <= bits(_reduce_xor_rtl_sBox_8_v_204_838, 0, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in1_in2_1_0__766 <= bits(_not_rtl_sBox_8_v_131_840, 1, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in3_in4_0_0__767 <= bits(_not_rtl_sBox_8_v_132_842, 0, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__in4_0_0__794 <= bits(_reduce_xor_rtl_sBox_8_v_204_864, 0, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in1_in2_1_0__795 <= bits(_not_rtl_sBox_8_v_131_866, 1, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in3_in4_0_0__796 <= bits(_not_rtl_sBox_8_v_132_868, 0, 0)
+    _0_func__isomorphism_rtl_sBox_8_v_313_582__r1_0_0__608 <= bits(_xor_rtl_sBox_8_v_260_619, 0, 0)
+    _0_func__isomorphism_rtl_sBox_8_v_313_582__r3_0_0__610 <= bits(_xor_rtl_sBox_8_v_262_622, 0, 0)
+    _0_func__isomorphism_rtl_sBox_8_v_313_582__r6_0_0__613 <= bits(_xor_rtl_sBox_8_v_265_626, 0, 0)
+    _0_func__isomorphism_rtl_sBox_8_v_313_582__r8_0_0__615 <= bits(_xor_rtl_sBox_8_v_267_628, 0, 0)
+    _0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874 <= cat(bits(_not_rtl_sBox_8_v_285_935, 0, 0), cat(bits(_xor_rtl_sBox_8_v_282_931, 0, 0), cat(bits(_xor_rtl_sBox_8_v_284_933, 0, 0), cat(bits(_not_rtl_sBox_8_v_286_894, 0, 0), cat(bits(_xor_rtl_sBox_8_v_294_905, 0, 0), cat(bits(_xor_rtl_sBox_8_v_294_904, 0, 0), cat(bits(_not_rtl_sBox_8_v_288_898, 0, 0), bits(_xor_rtl_sBox_8_v_290_900, 0, 0))))))))
+    _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r10_0_0__887 <= bits(_xor_rtl_sBox_8_v_291_901, 0, 0)
+    _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r2_0_0__879 <= bits(_xor_rtl_sBox_8_v_283_932, 0, 0)
+    _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r6_0_0__883 <= bits(_not_rtl_sBox_8_v_287_939, 0, 0)
+    _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r8_0_0__885 <= bits(_xor_rtl_sBox_8_v_289_899, 0, 0)
+    _0_func__isomorphism_inv_rtl_sBox_8_v_327_581__isomorphism_inv_7_0__917 <= cat(bits(_not_rtl_sBox_8_v_296_915, 0, 0), cat(bits(_xor_rtl_sBox_8_v_296_956, 0, 0), cat(bits(_xor_rtl_sBox_8_v_296_912, 0, 0), cat(bits(_not_rtl_sBox_8_v_296_911, 0, 0), cat(bits(_xor_rtl_sBox_8_v_296_909, 0, 0), cat(bits(_not_rtl_sBox_8_v_296_951, 0, 0), cat(bits(_74, 0, 0), bits(_not_rtl_sBox_8_v_296_949, 0, 0))))))))
+    _and_rtl_sBox_8_v_121_810_Y <= bits(_and_rtl_sBox_8_v_121_810, 1, 0)
+    _and_rtl_sBox_8_v_121_812_Y <= bits(_and_rtl_sBox_8_v_121_812, 0, 0)
+    _and_rtl_sBox_8_v_121_816_Y <= bits(_and_rtl_sBox_8_v_121_816, 1, 0)
+    _and_rtl_sBox_8_v_121_818_Y <= bits(_and_rtl_sBox_8_v_121_818, 0, 0)
+    _and_rtl_sBox_8_v_121_825_Y <= bits(_and_rtl_sBox_8_v_121_825, 1, 0)
+    _and_rtl_sBox_8_v_121_827_Y <= bits(_and_rtl_sBox_8_v_121_827, 0, 0)
+    _and_rtl_sBox_8_v_121_832_Y <= bits(_and_rtl_sBox_8_v_121_832, 1, 0)
+    _and_rtl_sBox_8_v_121_834_Y <= bits(_and_rtl_sBox_8_v_121_834, 0, 0)
+    _and_rtl_sBox_8_v_121_851_Y <= bits(_and_rtl_sBox_8_v_121_851, 1, 0)
+    _and_rtl_sBox_8_v_121_853_Y <= bits(_and_rtl_sBox_8_v_121_853, 0, 0)
+    _and_rtl_sBox_8_v_121_858_Y <= bits(_and_rtl_sBox_8_v_121_858, 1, 0)
+    _and_rtl_sBox_8_v_121_860_Y <= bits(_and_rtl_sBox_8_v_121_860, 0, 0)
+    _and_rtl_sBox_8_v_131_839_Y <= bits(_and_rtl_sBox_8_v_131_839, 1, 0)
+    _and_rtl_sBox_8_v_131_865_Y <= bits(_and_rtl_sBox_8_v_131_865, 1, 0)
+    _and_rtl_sBox_8_v_132_841_Y <= bits(_and_rtl_sBox_8_v_132_841, 0, 0)
+    _and_rtl_sBox_8_v_132_867_Y <= bits(_and_rtl_sBox_8_v_132_867, 0, 0)
+    _and_rtl_sBox_8_v_151_801_Y <= bits(_and_rtl_sBox_8_v_151_801, 0, 0)
+    _and_rtl_sBox_8_v_151_806_Y <= bits(_and_rtl_sBox_8_v_151_806, 0, 0)
+    _and_rtl_sBox_8_v_222_657_Y <= bits(_and_rtl_sBox_8_v_222_657, 0, 0)
+    _and_rtl_sBox_8_v_223_661_Y <= bits(_and_rtl_sBox_8_v_223_661, 0, 0)
+    _and_rtl_sBox_8_v_224_665_Y <= bits(_and_rtl_sBox_8_v_224_665, 0, 0)
+    _and_rtl_sBox_8_v_227_702_Y <= bits(_and_rtl_sBox_8_v_227_702, 0, 0)
+    _and_rtl_sBox_8_v_228_693_Y <= bits(_and_rtl_sBox_8_v_228_693, 0, 0)
+    _and_rtl_sBox_8_v_229_684_Y <= bits(_and_rtl_sBox_8_v_229_684, 0, 0)
+    _and_rtl_sBox_8_v_230_671_Y <= bits(_and_rtl_sBox_8_v_230_671, 0, 0)
+    _and_rtl_sBox_8_v_230_676_Y <= bits(_and_rtl_sBox_8_v_230_676, 0, 0)
+    _not_rtl_sBox_8_v_121_811_Y <= bits(_not_rtl_sBox_8_v_121_811, 1, 0)
+    _not_rtl_sBox_8_v_121_813_Y <= bits(_not_rtl_sBox_8_v_121_813, 0, 0)
+    _not_rtl_sBox_8_v_121_817_Y <= bits(_not_rtl_sBox_8_v_121_817, 1, 0)
+    _not_rtl_sBox_8_v_121_819_Y <= bits(_not_rtl_sBox_8_v_121_819, 0, 0)
+    _not_rtl_sBox_8_v_121_826_Y <= bits(_not_rtl_sBox_8_v_121_826, 1, 0)
+    _not_rtl_sBox_8_v_121_828_Y <= bits(_not_rtl_sBox_8_v_121_828, 0, 0)
+    _not_rtl_sBox_8_v_121_833_Y <= bits(_not_rtl_sBox_8_v_121_833, 1, 0)
+    _not_rtl_sBox_8_v_121_835_Y <= bits(_not_rtl_sBox_8_v_121_835, 0, 0)
+    _not_rtl_sBox_8_v_121_852_Y <= bits(_not_rtl_sBox_8_v_121_852, 1, 0)
+    _not_rtl_sBox_8_v_121_854_Y <= bits(_not_rtl_sBox_8_v_121_854, 0, 0)
+    _not_rtl_sBox_8_v_121_859_Y <= bits(_not_rtl_sBox_8_v_121_859, 1, 0)
+    _not_rtl_sBox_8_v_121_861_Y <= bits(_not_rtl_sBox_8_v_121_861, 0, 0)
+    _not_rtl_sBox_8_v_151_800_Y <= bits(_not_rtl_sBox_8_v_151_800, 0, 0)
+    _not_rtl_sBox_8_v_151_802_Y <= bits(_not_rtl_sBox_8_v_151_802, 0, 0)
+    _not_rtl_sBox_8_v_151_805_Y <= bits(_not_rtl_sBox_8_v_151_805, 0, 0)
+    _not_rtl_sBox_8_v_151_807_Y <= bits(_not_rtl_sBox_8_v_151_807, 0, 0)
+    _not_rtl_sBox_8_v_227_701_Y <= bits(_not_rtl_sBox_8_v_227_701, 0, 0)
+    _not_rtl_sBox_8_v_227_703_Y <= bits(_not_rtl_sBox_8_v_227_703, 0, 0)
+    _not_rtl_sBox_8_v_228_692_Y <= bits(_not_rtl_sBox_8_v_228_692, 0, 0)
+    _not_rtl_sBox_8_v_228_694_Y <= bits(_not_rtl_sBox_8_v_228_694, 0, 0)
+    _not_rtl_sBox_8_v_229_683_Y <= bits(_not_rtl_sBox_8_v_229_683, 0, 0)
+    _not_rtl_sBox_8_v_229_685_Y <= bits(_not_rtl_sBox_8_v_229_685, 0, 0)
+    _not_rtl_sBox_8_v_230_668_Y <= bits(_not_rtl_sBox_8_v_230_668, 0, 0)
+    _not_rtl_sBox_8_v_230_672_Y <= bits(_not_rtl_sBox_8_v_230_672, 0, 0)
+    _not_rtl_sBox_8_v_230_677_Y <= bits(_not_rtl_sBox_8_v_230_677, 0, 0)
+    _or_rtl_sBox_8_v_151_799_Y <= bits(_or_rtl_sBox_8_v_151_799, 0, 0)
+    _or_rtl_sBox_8_v_151_804_Y <= bits(_or_rtl_sBox_8_v_151_804, 0, 0)
+    _or_rtl_sBox_8_v_227_700_Y <= bits(_or_rtl_sBox_8_v_227_700, 0, 0)
+    _or_rtl_sBox_8_v_228_691_Y <= bits(_or_rtl_sBox_8_v_228_691, 0, 0)
+    _or_rtl_sBox_8_v_229_682_Y <= bits(_or_rtl_sBox_8_v_229_682, 0, 0)
+    _or_rtl_sBox_8_v_230_667_Y <= bits(_or_rtl_sBox_8_v_230_667, 0, 0)
+    _reduce_xor_rtl_sBox_8_v_224_663_Y <= bits(_reduce_xor_rtl_sBox_8_v_224_663, 0, 0)
+    _reduce_xor_rtl_sBox_8_v_224_664_Y <= bits(_reduce_xor_rtl_sBox_8_v_224_664, 0, 0)
+    _ternary_rtl_sBox_8_v_315_599_Y <= bits(_ternary_rtl_sBox_8_v_315_599, 7, 0)
+    _xor_rtl_sBox_8_v_222_655_Y <= bits(_xor_rtl_sBox_8_v_222_655, 0, 0)
+    _xor_rtl_sBox_8_v_222_656_Y <= bits(_xor_rtl_sBox_8_v_222_656, 0, 0)
+    _xor_rtl_sBox_8_v_223_659_Y <= bits(_xor_rtl_sBox_8_v_227_698, 0, 0)
+    _xor_rtl_sBox_8_v_223_660_Y <= bits(_xor_rtl_sBox_8_v_227_699, 0, 0)
+    _xor_rtl_sBox_8_v_227_704_Y <= bits(_xor_rtl_sBox_8_v_227_704, 0, 0)
+    _xor_rtl_sBox_8_v_227_705_Y <= bits(_xor_rtl_sBox_8_v_227_705, 0, 0)
+    _xor_rtl_sBox_8_v_228_689_Y <= bits(_xor_rtl_sBox_8_v_228_689, 0, 0)
+    _xor_rtl_sBox_8_v_228_690_Y <= bits(_xor_rtl_sBox_8_v_228_690, 0, 0)
+    _xor_rtl_sBox_8_v_228_695_Y <= bits(_xor_rtl_sBox_8_v_228_695, 0, 0)
+    _xor_rtl_sBox_8_v_228_696_Y <= bits(_xor_rtl_sBox_8_v_228_696, 0, 0)
+    _xor_rtl_sBox_8_v_229_680_Y <= bits(_xor_rtl_sBox_8_v_229_680, 0, 0)
+    _xor_rtl_sBox_8_v_229_681_Y <= bits(_xor_rtl_sBox_8_v_229_681, 0, 0)
+    _xor_rtl_sBox_8_v_229_686_Y <= bits(_xor_rtl_sBox_8_v_229_686, 0, 0)
+    _xor_rtl_sBox_8_v_229_687_Y <= bits(_xor_rtl_sBox_8_v_229_687, 0, 0)
+    _xor_rtl_sBox_8_v_230_673_Y <= bits(_xor_rtl_sBox_8_v_230_673, 0, 0)
+    _xor_rtl_sBox_8_v_230_678_Y <= bits(_xor_rtl_sBox_8_v_230_678, 0, 0)
+    _xor_rtl_sBox_8_v_261_620_Y <= bits(_xor_rtl_sBox_8_v_261_620, 0, 0)
+    _xor_rtl_sBox_8_v_263_623_Y <= bits(_xor_rtl_sBox_8_v_263_623, 0, 0)
+    _xor_rtl_sBox_8_v_270_630_Y <= bits(_xor_rtl_sBox_8_v_270_630, 0, 0)
+    _xor_rtl_sBox_8_v_270_633_Y <= bits(_xor_rtl_sBox_8_v_270_633, 0, 0)
+    _xor_rtl_sBox_8_v_270_635_Y <= bits(_xor_rtl_sBox_8_v_270_635, 0, 0)
+    _xor_rtl_sBox_8_v_270_638_Y <= bits(_xor_rtl_sBox_8_v_270_638, 0, 0)
+    _xor_rtl_sBox_8_v_271_642_Y <= bits(_xor_rtl_sBox_8_v_271_642, 0, 0)
+    _xor_rtl_sBox_8_v_285_891_Y <= bits(_xor_rtl_sBox_8_v_285_934, 0, 0)
+    _xor_rtl_sBox_8_v_286_893_Y <= bits(_xor_rtl_sBox_8_v_286_936, 0, 0)
+    _xor_rtl_sBox_8_v_287_895_Y <= bits(_xor_rtl_sBox_8_v_287_938, 0, 0)
+    _xor_rtl_sBox_8_v_288_897_Y <= bits(_xor_rtl_sBox_8_v_288_897, 0, 0)
+    _xor_rtl_sBox_8_v_296_907_Y <= bits(_xor_rtl_sBox_8_v_296_907, 0, 0)
+    _xor_rtl_sBox_8_v_296_910_Y <= bits(_xor_rtl_sBox_8_v_296_953, 0, 0)
+    _xor_rtl_sBox_8_v_296_914_Y <= bits(_xor_rtl_sBox_8_v_296_957, 0, 0)
+    base_new <= bits(_not_rtl_sBox_8_v_315_600, 7, 0)
+    base_new_dec <= cat(bits(_not_rtl_sBox_8_v_261_621, 0, 0), cat(bits(_xor_rtl_sBox_8_v_271_645, 0, 0), cat(bits(_xor_rtl_sBox_8_v_271_644, 0, 0), cat(bits(_xor_rtl_sBox_8_v_268_629, 0, 0), cat(bits(_not_rtl_sBox_8_v_271_643, 0, 0), cat(bits(_xor_rtl_sBox_8_v_266_627, 0, 0), cat(bits(_xor_rtl_sBox_8_v_271_641, 0, 0), bits(_xor_rtl_sBox_8_v_271_640, 0, 0))))))))
+    base_new_enc <= cat(bits(_not_rtl_sBox_8_v_270_639, 0, 0), cat(bits(_xor_rtl_sBox_8_v_264_625, 0, 0), cat(bits(_xor_rtl_sBox_8_v_270_637, 0, 0), cat(bits(_not_rtl_sBox_8_v_270_636, 0, 0), cat(bits(_xor_rtl_sBox_8_v_270_634, 0, 0), cat(bits(_not_rtl_sBox_8_v_270_632, 0, 0), cat(bits(_not_rtl_sBox_8_v_263_624, 0, 0), bits(_not_rtl_sBox_8_v_270_631, 0, 0))))))))
+    base_new_pp <= bits(_procdff_2122, 7, 0)
+    out_gf_inv8_1 <= cat(bits(_xor_rtl_sBox_8_v_206_846, 1, 0), cat(bits(_xor_rtl_sBox_8_v_206_845, 1, 0), cat(bits(_xor_rtl_sBox_8_v_206_872, 1, 0), bits(_xor_rtl_sBox_8_v_206_871, 1, 0))))
+    out_gf_inv8_stage1 <= cat(bits(_xor_rtl_sBox_8_v_227_706, 0, 0), cat(bits(_xor_rtl_sBox_8_v_228_697, 0, 0), cat(bits(_xor_rtl_sBox_8_v_229_688, 0, 0), bits(_xor_rtl_sBox_8_v_230_679, 0, 0))))
+    out_gf_pp <= bits(_procdff_2121, 3, 0)
+    sbox_out_dec <= bits(_not_rtl_sBox_8_v_327_603, 7, 0)
+    sbox_out_enc <= bits(_not_rtl_sBox_8_v_326_602, 7, 0)
+
+
+
+
+  module sBox_8_2:
+    input clk: UInt<1>
+    input enc_dec: UInt<1>
+    input sbox_in: UInt<8>
+    output sbox_out_dec: UInt<8>
+    output sbox_out_enc: UInt<8>
+
+    wire _0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717: UInt<4>
+    wire _0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724: UInt<2>
+    wire _0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_hg_0_0__725: UInt<1>
+    wire _0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_lw_0_0__726: UInt<1>
+    wire _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c1_0_0__652: UInt<1>
+    wire _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c2_0_0__653: UInt<1>
+    wire _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c3_0_0__654: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_154_587__in3_0_0__732: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_202_590__gf_muls_2_1_0__751: UInt<2>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_202_590__in3_0_0__754: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_202_590__in4_0_0__755: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_202_594__gf_muls_2_1_0__780: UInt<2>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_202_594__in4_0_0__784: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_203_591__gf_muls_2_1_0__756: UInt<2>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_203_591__in3_0_0__759: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_203_591__in4_0_0__760: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_203_595__gf_muls_2_1_0__785: UInt<2>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_203_595__in4_0_0__789: UInt<1>
+    wire _0_func__gf_muls_4_rtl_sBox_8_v_248_589__out_gf_mul_scl_1_1_0__750: UInt<2>
+    wire _0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in1_hl_1_0__746: UInt<2>
+    wire _0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in2_hl_1_0__747: UInt<2>
+    wire _0_func__gf_muls_4_rtl_sBox_8_v_249_593__out_gf_mul_scl_1_1_0__779: UInt<2>
+    wire _0_func__gf_muls_4_rtl_sBox_8_v_249_593__xor_in2_hl_1_0__776: UInt<2>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in3_0_0__764: UInt<1>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in4_0_0__765: UInt<1>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in1_in2_1_0__766: UInt<2>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in3_in4_0_0__767: UInt<1>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__in4_0_0__794: UInt<1>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in1_in2_1_0__795: UInt<2>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in3_in4_0_0__796: UInt<1>
+    wire _0_func__isomorphism_rtl_sBox_8_v_313_582__r1_0_0__608: UInt<1>
+    wire _0_func__isomorphism_rtl_sBox_8_v_313_582__r3_0_0__610: UInt<1>
+    wire _0_func__isomorphism_rtl_sBox_8_v_313_582__r6_0_0__613: UInt<1>
+    wire _0_func__isomorphism_rtl_sBox_8_v_313_582__r8_0_0__615: UInt<1>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874: UInt<8>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r10_0_0__887: UInt<1>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r2_0_0__879: UInt<1>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r6_0_0__883: UInt<1>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r8_0_0__885: UInt<1>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_327_581__isomorphism_inv_7_0__917: UInt<8>
+    wire _and_rtl_sBox_8_v_121_810_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_812_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_121_816_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_818_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_121_825_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_827_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_121_832_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_834_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_121_851_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_853_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_121_858_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_860_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_131_839_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_131_865_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_132_841_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_132_867_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_151_801_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_151_806_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_222_657_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_223_661_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_224_665_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_227_702_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_228_693_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_229_684_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_230_671_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_230_676_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_811_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_813_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_817_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_819_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_826_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_828_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_833_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_835_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_852_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_854_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_859_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_861_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_151_800_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_151_802_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_151_805_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_151_807_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_227_701_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_227_703_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_228_692_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_228_694_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_229_683_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_229_685_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_230_668_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_230_672_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_230_677_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_151_799_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_151_804_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_227_700_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_228_691_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_229_682_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_230_667_Y: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_224_663_Y: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_224_664_Y: UInt<1>
+    wire _ternary_rtl_sBox_8_v_315_599_Y: UInt<8>
+    wire _xor_rtl_sBox_8_v_222_655_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_222_656_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_223_659_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_223_660_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_704_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_705_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_689_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_690_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_695_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_696_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_680_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_681_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_686_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_687_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_230_673_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_230_678_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_261_620_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_263_623_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_630_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_633_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_635_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_638_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_642_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_285_891_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_286_893_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_287_895_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_288_897_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_907_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_910_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_914_Y: UInt<1>
+    wire base_new: UInt<8>
+    wire base_new_dec: UInt<8>
+    wire base_new_enc: UInt<8>
+    wire base_new_pp: UInt<8>
+    wire out_gf_inv8_1: UInt<8>
+    wire out_gf_inv8_stage1: UInt<4>
+    wire out_gf_pp: UInt<4>
+    wire _and_rtl_sBox_8_v_121_810: UInt<2>
+    wire _and_rtl_sBox_8_v_121_812: UInt<1>
+    wire _and_rtl_sBox_8_v_121_816: UInt<2>
+    wire _and_rtl_sBox_8_v_121_818: UInt<1>
+    wire _and_rtl_sBox_8_v_121_825: UInt<2>
+    wire _and_rtl_sBox_8_v_121_827: UInt<1>
+    wire _and_rtl_sBox_8_v_121_832: UInt<2>
+    wire _and_rtl_sBox_8_v_121_834: UInt<1>
+    wire _and_rtl_sBox_8_v_121_851: UInt<2>
+    wire _and_rtl_sBox_8_v_121_853: UInt<1>
+    wire _and_rtl_sBox_8_v_121_858: UInt<2>
+    wire _and_rtl_sBox_8_v_121_860: UInt<1>
+    wire _and_rtl_sBox_8_v_131_839: UInt<2>
+    wire _and_rtl_sBox_8_v_131_865: UInt<2>
+    wire _and_rtl_sBox_8_v_132_841: UInt<1>
+    wire _and_rtl_sBox_8_v_132_867: UInt<1>
+    wire _and_rtl_sBox_8_v_151_801: UInt<1>
+    wire _and_rtl_sBox_8_v_151_806: UInt<1>
+    wire _and_rtl_sBox_8_v_222_657: UInt<1>
+    wire _and_rtl_sBox_8_v_223_661: UInt<1>
+    wire _and_rtl_sBox_8_v_224_665: UInt<1>
+    wire _and_rtl_sBox_8_v_227_702: UInt<1>
+    wire _and_rtl_sBox_8_v_228_693: UInt<1>
+    wire _and_rtl_sBox_8_v_229_684: UInt<1>
+    wire _and_rtl_sBox_8_v_230_671: UInt<1>
+    wire _and_rtl_sBox_8_v_230_676: UInt<1>
+    wire _not_rtl_sBox_8_v_121_811: UInt<2>
+    wire _not_rtl_sBox_8_v_121_813: UInt<1>
+    wire _not_rtl_sBox_8_v_121_817: UInt<2>
+    wire _not_rtl_sBox_8_v_121_819: UInt<1>
+    wire _not_rtl_sBox_8_v_121_826: UInt<2>
+    wire _not_rtl_sBox_8_v_121_828: UInt<1>
+    wire _not_rtl_sBox_8_v_121_833: UInt<2>
+    wire _not_rtl_sBox_8_v_121_835: UInt<1>
+    wire _not_rtl_sBox_8_v_121_852: UInt<2>
+    wire _not_rtl_sBox_8_v_121_854: UInt<1>
+    wire _not_rtl_sBox_8_v_121_859: UInt<2>
+    wire _not_rtl_sBox_8_v_121_861: UInt<1>
+    wire _not_rtl_sBox_8_v_131_840: UInt<2>
+    wire _not_rtl_sBox_8_v_131_866: UInt<2>
+    wire _not_rtl_sBox_8_v_132_842: UInt<1>
+    wire _not_rtl_sBox_8_v_132_868: UInt<1>
+    wire _not_rtl_sBox_8_v_151_800: UInt<1>
+    wire _not_rtl_sBox_8_v_151_802: UInt<1>
+    wire _not_rtl_sBox_8_v_151_805: UInt<1>
+    wire _not_rtl_sBox_8_v_151_807: UInt<1>
+    wire _not_rtl_sBox_8_v_222_658: UInt<1>
+    wire _not_rtl_sBox_8_v_223_662: UInt<1>
+    wire _not_rtl_sBox_8_v_224_666: UInt<1>
+    wire _not_rtl_sBox_8_v_227_701: UInt<1>
+    wire _not_rtl_sBox_8_v_227_703: UInt<1>
+    wire _not_rtl_sBox_8_v_228_692: UInt<1>
+    wire _not_rtl_sBox_8_v_228_694: UInt<1>
+    wire _not_rtl_sBox_8_v_229_683: UInt<1>
+    wire _not_rtl_sBox_8_v_229_685: UInt<1>
+    wire _not_rtl_sBox_8_v_230_668: UInt<1>
+    wire _not_rtl_sBox_8_v_230_672: UInt<1>
+    wire _not_rtl_sBox_8_v_230_677: UInt<1>
+    wire _not_rtl_sBox_8_v_261_621: UInt<1>
+    wire _not_rtl_sBox_8_v_263_624: UInt<1>
+    wire _not_rtl_sBox_8_v_270_631: UInt<1>
+    wire _not_rtl_sBox_8_v_270_632: UInt<1>
+    wire _not_rtl_sBox_8_v_270_636: UInt<1>
+    wire _not_rtl_sBox_8_v_270_639: UInt<1>
+    wire _not_rtl_sBox_8_v_271_643: UInt<1>
+    wire _not_rtl_sBox_8_v_285_935: UInt<1>
+    wire _not_rtl_sBox_8_v_286_894: UInt<1>
+    wire _not_rtl_sBox_8_v_287_939: UInt<1>
+    wire _not_rtl_sBox_8_v_288_898: UInt<1>
+    wire _not_rtl_sBox_8_v_296_911: UInt<1>
+    wire _not_rtl_sBox_8_v_296_915: UInt<1>
+    wire _not_rtl_sBox_8_v_296_949: UInt<1>
+    wire _not_rtl_sBox_8_v_296_951: UInt<1>
+    wire _not_rtl_sBox_8_v_315_600: UInt<8>
+    wire _not_rtl_sBox_8_v_326_602: UInt<8>
+    wire _not_rtl_sBox_8_v_327_603: UInt<8>
+    wire _or_rtl_sBox_8_v_151_799: UInt<1>
+    wire _or_rtl_sBox_8_v_151_804: UInt<1>
+    wire _or_rtl_sBox_8_v_227_700: UInt<1>
+    wire _or_rtl_sBox_8_v_228_691: UInt<1>
+    wire _or_rtl_sBox_8_v_229_682: UInt<1>
+    wire _or_rtl_sBox_8_v_230_667: UInt<1>
+    reg _procdff_2121: UInt<4>, asClock(clk)
+    reg _procdff_2122: UInt<8>, asClock(clk)
+    wire _reduce_xor_rtl_sBox_8_v_133_843: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_133_869: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_149_797: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_150_798: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_155_815: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_204_838: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_204_863: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_204_864: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_224_663: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_224_664: UInt<1>
+    wire _ternary_rtl_sBox_8_v_315_599: UInt<8>
+    wire _xor_rtl_sBox_8_v_121_814: UInt<2>
+    wire _xor_rtl_sBox_8_v_121_820: UInt<2>
+    wire _xor_rtl_sBox_8_v_121_829: UInt<2>
+    wire _xor_rtl_sBox_8_v_121_836: UInt<2>
+    wire _xor_rtl_sBox_8_v_121_855: UInt<2>
+    wire _xor_rtl_sBox_8_v_121_862: UInt<2>
+    wire _xor_rtl_sBox_8_v_133_844: UInt<1>
+    wire _xor_rtl_sBox_8_v_133_870: UInt<1>
+    wire _xor_rtl_sBox_8_v_151_803: UInt<1>
+    wire _xor_rtl_sBox_8_v_151_808: UInt<1>
+    wire _xor_rtl_sBox_8_v_199_847: UInt<2>
+    wire _xor_rtl_sBox_8_v_200_822: UInt<2>
+    wire _xor_rtl_sBox_8_v_200_848: UInt<2>
+    wire _xor_rtl_sBox_8_v_202_824: UInt<1>
+    wire _xor_rtl_sBox_8_v_202_849: UInt<1>
+    wire _xor_rtl_sBox_8_v_202_850: UInt<1>
+    wire _xor_rtl_sBox_8_v_203_831: UInt<1>
+    wire _xor_rtl_sBox_8_v_203_856: UInt<1>
+    wire _xor_rtl_sBox_8_v_203_857: UInt<1>
+    wire _xor_rtl_sBox_8_v_206_845: UInt<2>
+    wire _xor_rtl_sBox_8_v_206_846: UInt<2>
+    wire _xor_rtl_sBox_8_v_206_871: UInt<2>
+    wire _xor_rtl_sBox_8_v_206_872: UInt<2>
+    wire _xor_rtl_sBox_8_v_222_655: UInt<1>
+    wire _xor_rtl_sBox_8_v_222_656: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_698: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_699: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_704: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_705: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_706: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_689: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_690: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_695: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_696: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_697: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_680: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_681: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_686: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_687: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_688: UInt<1>
+    wire _xor_rtl_sBox_8_v_230_673: UInt<1>
+    wire _xor_rtl_sBox_8_v_230_678: UInt<1>
+    wire _xor_rtl_sBox_8_v_230_679: UInt<1>
+    wire _xor_rtl_sBox_8_v_260_619: UInt<1>
+    wire _xor_rtl_sBox_8_v_261_620: UInt<1>
+    wire _xor_rtl_sBox_8_v_262_622: UInt<1>
+    wire _xor_rtl_sBox_8_v_263_623: UInt<1>
+    wire _xor_rtl_sBox_8_v_264_625: UInt<1>
+    wire _xor_rtl_sBox_8_v_265_626: UInt<1>
+    wire _xor_rtl_sBox_8_v_266_627: UInt<1>
+    wire _xor_rtl_sBox_8_v_267_628: UInt<1>
+    wire _xor_rtl_sBox_8_v_268_629: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_630: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_633: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_634: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_635: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_637: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_638: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_640: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_641: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_642: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_644: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_645: UInt<1>
+    wire _xor_rtl_sBox_8_v_282_931: UInt<1>
+    wire _xor_rtl_sBox_8_v_283_932: UInt<1>
+    wire _xor_rtl_sBox_8_v_284_933: UInt<1>
+    wire _xor_rtl_sBox_8_v_285_934: UInt<1>
+    wire _xor_rtl_sBox_8_v_286_936: UInt<1>
+    wire _xor_rtl_sBox_8_v_287_938: UInt<1>
+    wire _xor_rtl_sBox_8_v_288_897: UInt<1>
+    wire _xor_rtl_sBox_8_v_289_899: UInt<1>
+    wire _xor_rtl_sBox_8_v_290_900: UInt<1>
+    wire _xor_rtl_sBox_8_v_291_901: UInt<1>
+    wire _xor_rtl_sBox_8_v_294_904: UInt<1>
+    wire _xor_rtl_sBox_8_v_294_905: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_907: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_909: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_912: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_953: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_956: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_957: UInt<1>
+    wire _74: UInt<1>
+
+
+    _and_rtl_sBox_8_v_121_810 <= and(cat(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 0, 0), bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 1, 1)), asUInt(bits(out_gf_pp, 1, 0)))
+    _and_rtl_sBox_8_v_121_812 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_154_587__in3_0_0__732, asUInt(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_lw_0_0__726))
+    _and_rtl_sBox_8_v_121_816 <= and(cat(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 0, 0), bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 1, 1)), asUInt(bits(out_gf_pp, 3, 2)))
+    _and_rtl_sBox_8_v_121_818 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_154_587__in3_0_0__732, asUInt(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_hg_0_0__725))
+    _and_rtl_sBox_8_v_121_825 <= and(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 3, 2), asUInt(bits(base_new_pp, 3, 2)))
+    _and_rtl_sBox_8_v_121_827 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_202_590__in3_0_0__754, asUInt(_0_func__gf_muls_2_rtl_sBox_8_v_202_590__in4_0_0__755))
+    _and_rtl_sBox_8_v_121_832 <= and(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 1, 0), asUInt(bits(base_new_pp, 1, 0)))
+    _and_rtl_sBox_8_v_121_834 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_203_591__in3_0_0__759, asUInt(_0_func__gf_muls_2_rtl_sBox_8_v_203_591__in4_0_0__760))
+    _and_rtl_sBox_8_v_121_851 <= and(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 3, 2), asUInt(bits(base_new_pp, 7, 6)))
+    _and_rtl_sBox_8_v_121_853 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_202_590__in3_0_0__754, asUInt(_0_func__gf_muls_2_rtl_sBox_8_v_202_594__in4_0_0__784))
+    _and_rtl_sBox_8_v_121_858 <= and(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 1, 0), asUInt(bits(base_new_pp, 5, 4)))
+    _and_rtl_sBox_8_v_121_860 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_203_591__in3_0_0__759, asUInt(_0_func__gf_muls_2_rtl_sBox_8_v_203_595__in4_0_0__789))
+    _and_rtl_sBox_8_v_131_839 <= and(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in1_hl_1_0__746, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in2_hl_1_0__747))
+    _and_rtl_sBox_8_v_131_865 <= and(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in1_hl_1_0__746, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_249_593__xor_in2_hl_1_0__776))
+    _and_rtl_sBox_8_v_132_841 <= and(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in3_0_0__764, asUInt(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in4_0_0__765))
+    _and_rtl_sBox_8_v_132_867 <= and(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in3_0_0__764, asUInt(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__in4_0_0__794))
+    _and_rtl_sBox_8_v_151_801 <= and(bits(out_gf_pp, 2, 2), asUInt(bits(out_gf_pp, 0, 0)))
+    _and_rtl_sBox_8_v_151_806 <= and(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_hg_0_0__725, asUInt(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_lw_0_0__726))
+    _and_rtl_sBox_8_v_222_657 <= and(_xor_rtl_sBox_8_v_222_655_Y, asUInt(_xor_rtl_sBox_8_v_222_656_Y))
+    _and_rtl_sBox_8_v_223_661 <= and(_xor_rtl_sBox_8_v_223_659_Y, asUInt(_xor_rtl_sBox_8_v_223_660_Y))
+    _and_rtl_sBox_8_v_224_665 <= and(_reduce_xor_rtl_sBox_8_v_224_663_Y, asUInt(_reduce_xor_rtl_sBox_8_v_224_664_Y))
+    _and_rtl_sBox_8_v_227_702 <= and(bits(base_new, 7, 7), asUInt(bits(base_new, 3, 3)))
+    _and_rtl_sBox_8_v_228_693 <= and(bits(base_new, 6, 6), asUInt(bits(base_new, 2, 2)))
+    _and_rtl_sBox_8_v_229_684 <= and(bits(base_new, 5, 5), asUInt(bits(base_new, 1, 1)))
+    _and_rtl_sBox_8_v_230_671 <= and(_xor_rtl_sBox_8_v_229_680_Y, asUInt(_xor_rtl_sBox_8_v_229_681_Y))
+    _and_rtl_sBox_8_v_230_676 <= and(_xor_rtl_sBox_8_v_228_689_Y, asUInt(_xor_rtl_sBox_8_v_228_690_Y))
+    _not_rtl_sBox_8_v_121_811 <= not(pad(_and_rtl_sBox_8_v_121_810_Y, 2))
+    _not_rtl_sBox_8_v_121_813 <= not(pad(_and_rtl_sBox_8_v_121_812_Y, 1))
+    _not_rtl_sBox_8_v_121_817 <= not(pad(_and_rtl_sBox_8_v_121_816_Y, 2))
+    _not_rtl_sBox_8_v_121_819 <= not(pad(_and_rtl_sBox_8_v_121_818_Y, 1))
+    _not_rtl_sBox_8_v_121_826 <= not(pad(_and_rtl_sBox_8_v_121_825_Y, 2))
+    _not_rtl_sBox_8_v_121_828 <= not(pad(_and_rtl_sBox_8_v_121_827_Y, 1))
+    _not_rtl_sBox_8_v_121_833 <= not(pad(_and_rtl_sBox_8_v_121_832_Y, 2))
+    _not_rtl_sBox_8_v_121_835 <= not(pad(_and_rtl_sBox_8_v_121_834_Y, 1))
+    _not_rtl_sBox_8_v_121_852 <= not(pad(_and_rtl_sBox_8_v_121_851_Y, 2))
+    _not_rtl_sBox_8_v_121_854 <= not(pad(_and_rtl_sBox_8_v_121_853_Y, 1))
+    _not_rtl_sBox_8_v_121_859 <= not(pad(_and_rtl_sBox_8_v_121_858_Y, 2))
+    _not_rtl_sBox_8_v_121_861 <= not(pad(_and_rtl_sBox_8_v_121_860_Y, 1))
+    _not_rtl_sBox_8_v_131_840 <= not(pad(_and_rtl_sBox_8_v_131_839_Y, 2))
+    _not_rtl_sBox_8_v_131_866 <= not(pad(_and_rtl_sBox_8_v_131_865_Y, 2))
+    _not_rtl_sBox_8_v_132_842 <= not(pad(_and_rtl_sBox_8_v_132_841_Y, 1))
+    _not_rtl_sBox_8_v_132_868 <= not(pad(_and_rtl_sBox_8_v_132_867_Y, 1))
+    _not_rtl_sBox_8_v_151_800 <= not(pad(_or_rtl_sBox_8_v_151_799_Y, 1))
+    _not_rtl_sBox_8_v_151_802 <= not(pad(_and_rtl_sBox_8_v_151_801_Y, 1))
+    _not_rtl_sBox_8_v_151_805 <= not(pad(_or_rtl_sBox_8_v_151_804_Y, 1))
+    _not_rtl_sBox_8_v_151_807 <= not(pad(_and_rtl_sBox_8_v_151_806_Y, 1))
+    _not_rtl_sBox_8_v_222_658 <= not(pad(_and_rtl_sBox_8_v_222_657_Y, 1))
+    _not_rtl_sBox_8_v_223_662 <= not(pad(_and_rtl_sBox_8_v_223_661_Y, 1))
+    _not_rtl_sBox_8_v_224_666 <= not(pad(_and_rtl_sBox_8_v_224_665_Y, 1))
+    _not_rtl_sBox_8_v_227_701 <= not(pad(_or_rtl_sBox_8_v_227_700_Y, 1))
+    _not_rtl_sBox_8_v_227_703 <= not(pad(_and_rtl_sBox_8_v_227_702_Y, 1))
+    _not_rtl_sBox_8_v_228_692 <= not(pad(_or_rtl_sBox_8_v_228_691_Y, 1))
+    _not_rtl_sBox_8_v_228_694 <= not(pad(_and_rtl_sBox_8_v_228_693_Y, 1))
+    _not_rtl_sBox_8_v_229_683 <= not(pad(_or_rtl_sBox_8_v_229_682_Y, 1))
+    _not_rtl_sBox_8_v_229_685 <= not(pad(_and_rtl_sBox_8_v_229_684_Y, 1))
+    _not_rtl_sBox_8_v_230_668 <= not(pad(_or_rtl_sBox_8_v_230_667_Y, 1))
+    _not_rtl_sBox_8_v_230_672 <= not(pad(_and_rtl_sBox_8_v_230_671_Y, 1))
+    _not_rtl_sBox_8_v_230_677 <= not(pad(_and_rtl_sBox_8_v_230_676_Y, 1))
+    _not_rtl_sBox_8_v_261_621 <= not(pad(_xor_rtl_sBox_8_v_261_620_Y, 1))
+    _not_rtl_sBox_8_v_263_624 <= not(pad(_xor_rtl_sBox_8_v_263_623_Y, 1))
+    _not_rtl_sBox_8_v_270_631 <= not(pad(_xor_rtl_sBox_8_v_270_630_Y, 1))
+    _not_rtl_sBox_8_v_270_632 <= not(pad(bits(sbox_in, 0, 0), 1))
+    _not_rtl_sBox_8_v_270_636 <= not(pad(_xor_rtl_sBox_8_v_270_635_Y, 1))
+    _not_rtl_sBox_8_v_270_639 <= not(pad(_xor_rtl_sBox_8_v_270_638_Y, 1))
+    _not_rtl_sBox_8_v_271_643 <= not(pad(_xor_rtl_sBox_8_v_271_642_Y, 1))
+    _not_rtl_sBox_8_v_285_935 <= not(pad(_xor_rtl_sBox_8_v_285_891_Y, 1))
+    _not_rtl_sBox_8_v_286_894 <= not(pad(_xor_rtl_sBox_8_v_286_893_Y, 1))
+    _not_rtl_sBox_8_v_287_939 <= not(pad(_xor_rtl_sBox_8_v_287_895_Y, 1))
+    _not_rtl_sBox_8_v_288_898 <= not(pad(_xor_rtl_sBox_8_v_288_897_Y, 1))
+    _not_rtl_sBox_8_v_296_911 <= not(pad(_xor_rtl_sBox_8_v_296_910_Y, 1))
+    _not_rtl_sBox_8_v_296_915 <= not(pad(_xor_rtl_sBox_8_v_296_914_Y, 1))
+    _not_rtl_sBox_8_v_296_949 <= not(pad(bits(out_gf_inv8_1, 2, 2), 1))
+    _not_rtl_sBox_8_v_296_951 <= not(pad(_xor_rtl_sBox_8_v_296_907_Y, 1))
+    _not_rtl_sBox_8_v_315_600 <= not(pad(_ternary_rtl_sBox_8_v_315_599_Y, 8))
+    _not_rtl_sBox_8_v_326_602 <= not(pad(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 8))
+    _not_rtl_sBox_8_v_327_603 <= not(pad(cat(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_327_581__isomorphism_inv_7_0__917, 7, 2), cat(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r6_0_0__883, bits(_0_func__isomorphism_inv_rtl_sBox_8_v_327_581__isomorphism_inv_7_0__917, 0, 0))), 8))
+    _or_rtl_sBox_8_v_151_799 <= or(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_hg_0_0__725, asUInt(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_lw_0_0__726))
+    _or_rtl_sBox_8_v_151_804 <= or(bits(out_gf_pp, 3, 3), asUInt(bits(out_gf_pp, 1, 1)))
+    _or_rtl_sBox_8_v_227_700 <= or(_xor_rtl_sBox_8_v_223_659_Y, asUInt(_xor_rtl_sBox_8_v_223_660_Y))
+    _or_rtl_sBox_8_v_228_691 <= or(_xor_rtl_sBox_8_v_228_689_Y, asUInt(_xor_rtl_sBox_8_v_228_690_Y))
+    _or_rtl_sBox_8_v_229_682 <= or(_xor_rtl_sBox_8_v_229_680_Y, asUInt(_xor_rtl_sBox_8_v_229_681_Y))
+    _or_rtl_sBox_8_v_230_667 <= or(bits(base_new, 4, 4), asUInt(bits(base_new, 0, 0)))
+    _procdff_2121 <= out_gf_inv8_stage1
+    _procdff_2122 <= base_new
+    _reduce_xor_rtl_sBox_8_v_133_843 <= xorr(pad(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in1_in2_1_0__766, 1))
+    _reduce_xor_rtl_sBox_8_v_133_869 <= xorr(pad(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in1_in2_1_0__795, 1))
+    _reduce_xor_rtl_sBox_8_v_149_797 <= xorr(pad(bits(out_gf_pp, 3, 2), 1))
+    _reduce_xor_rtl_sBox_8_v_150_798 <= xorr(pad(bits(out_gf_pp, 1, 0), 1))
+    _reduce_xor_rtl_sBox_8_v_155_815 <= xorr(pad(cat(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 0, 0), bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 1, 1)), 1))
+    _reduce_xor_rtl_sBox_8_v_204_838 <= xorr(pad(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in2_hl_1_0__747, 1))
+    _reduce_xor_rtl_sBox_8_v_204_863 <= xorr(pad(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in1_hl_1_0__746, 1))
+    _reduce_xor_rtl_sBox_8_v_204_864 <= xorr(pad(_0_func__gf_muls_4_rtl_sBox_8_v_249_593__xor_in2_hl_1_0__776, 1))
+    _reduce_xor_rtl_sBox_8_v_224_663 <= xorr(pad(bits(base_new, 7, 4), 1))
+    _reduce_xor_rtl_sBox_8_v_224_664 <= xorr(pad(bits(base_new, 3, 0), 1))
+    _ternary_rtl_sBox_8_v_315_599 <= mux(enc_dec, base_new_enc, base_new_dec)
+    _xor_rtl_sBox_8_v_121_814 <= xor(_not_rtl_sBox_8_v_121_811_Y, asUInt(cat(_not_rtl_sBox_8_v_121_813_Y, _not_rtl_sBox_8_v_121_813_Y)))
+    _xor_rtl_sBox_8_v_121_820 <= xor(_not_rtl_sBox_8_v_121_817_Y, asUInt(cat(_not_rtl_sBox_8_v_121_819_Y, _not_rtl_sBox_8_v_121_819_Y)))
+    _xor_rtl_sBox_8_v_121_829 <= xor(_not_rtl_sBox_8_v_121_826_Y, asUInt(cat(_not_rtl_sBox_8_v_121_828_Y, _not_rtl_sBox_8_v_121_828_Y)))
+    _xor_rtl_sBox_8_v_121_836 <= xor(_not_rtl_sBox_8_v_121_833_Y, asUInt(cat(_not_rtl_sBox_8_v_121_835_Y, _not_rtl_sBox_8_v_121_835_Y)))
+    _xor_rtl_sBox_8_v_121_855 <= xor(_not_rtl_sBox_8_v_121_852_Y, asUInt(cat(_not_rtl_sBox_8_v_121_854_Y, _not_rtl_sBox_8_v_121_854_Y)))
+    _xor_rtl_sBox_8_v_121_862 <= xor(_not_rtl_sBox_8_v_121_859_Y, asUInt(cat(_not_rtl_sBox_8_v_121_861_Y, _not_rtl_sBox_8_v_121_861_Y)))
+    _xor_rtl_sBox_8_v_133_844 <= xor(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in3_in4_0_0__767, asUInt(bits(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in1_in2_1_0__766, 0, 0)))
+    _xor_rtl_sBox_8_v_133_870 <= xor(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in3_in4_0_0__796, asUInt(bits(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in1_in2_1_0__795, 0, 0)))
+    _xor_rtl_sBox_8_v_151_803 <= xor(_not_rtl_sBox_8_v_151_800_Y, asUInt(_not_rtl_sBox_8_v_151_802_Y))
+    _xor_rtl_sBox_8_v_151_808 <= xor(_not_rtl_sBox_8_v_151_805_Y, asUInt(_not_rtl_sBox_8_v_151_807_Y))
+    _xor_rtl_sBox_8_v_199_847 <= xor(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 3, 2), asUInt(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 1, 0)))
+    _xor_rtl_sBox_8_v_200_822 <= xor(bits(base_new_pp, 3, 2), asUInt(bits(base_new_pp, 1, 0)))
+    _xor_rtl_sBox_8_v_200_848 <= xor(bits(base_new_pp, 7, 6), asUInt(bits(base_new_pp, 5, 4)))
+    _xor_rtl_sBox_8_v_202_824 <= xor(bits(base_new_pp, 3, 3), asUInt(bits(base_new_pp, 2, 2)))
+    _xor_rtl_sBox_8_v_202_849 <= xor(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 3, 3), asUInt(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 2, 2)))
+    _xor_rtl_sBox_8_v_202_850 <= xor(bits(base_new_pp, 7, 7), asUInt(bits(base_new_pp, 6, 6)))
+    _xor_rtl_sBox_8_v_203_831 <= xor(bits(base_new_pp, 1, 1), asUInt(bits(base_new_pp, 0, 0)))
+    _xor_rtl_sBox_8_v_203_856 <= xor(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 1, 1), asUInt(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 0, 0)))
+    _xor_rtl_sBox_8_v_203_857 <= xor(bits(base_new_pp, 5, 5), asUInt(bits(base_new_pp, 4, 4)))
+    _xor_rtl_sBox_8_v_206_845 <= xor(_0_func__gf_muls_2_rtl_sBox_8_v_203_591__gf_muls_2_1_0__756, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__out_gf_mul_scl_1_1_0__750))
+    _xor_rtl_sBox_8_v_206_846 <= xor(_0_func__gf_muls_2_rtl_sBox_8_v_202_590__gf_muls_2_1_0__751, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__out_gf_mul_scl_1_1_0__750))
+    _xor_rtl_sBox_8_v_206_871 <= xor(_0_func__gf_muls_2_rtl_sBox_8_v_203_595__gf_muls_2_1_0__785, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_249_593__out_gf_mul_scl_1_1_0__779))
+    _xor_rtl_sBox_8_v_206_872 <= xor(_0_func__gf_muls_2_rtl_sBox_8_v_202_594__gf_muls_2_1_0__780, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_249_593__out_gf_mul_scl_1_1_0__779))
+    _xor_rtl_sBox_8_v_222_655 <= xor(bits(base_new, 7, 7), asUInt(bits(base_new, 6, 6)))
+    _xor_rtl_sBox_8_v_222_656 <= xor(bits(base_new, 3, 3), asUInt(bits(base_new, 2, 2)))
+    _xor_rtl_sBox_8_v_227_698 <= xor(bits(base_new, 6, 6), asUInt(bits(base_new, 4, 4)))
+    _xor_rtl_sBox_8_v_227_699 <= xor(bits(base_new, 2, 2), asUInt(bits(base_new, 0, 0)))
+    _xor_rtl_sBox_8_v_227_704 <= xor(_not_rtl_sBox_8_v_227_701_Y, asUInt(_not_rtl_sBox_8_v_227_703_Y))
+    _xor_rtl_sBox_8_v_227_705 <= xor(_xor_rtl_sBox_8_v_227_704_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c1_0_0__652))
+    _xor_rtl_sBox_8_v_227_706 <= xor(_xor_rtl_sBox_8_v_227_705_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c3_0_0__654))
+    _xor_rtl_sBox_8_v_228_689 <= xor(bits(base_new, 7, 7), asUInt(bits(base_new, 5, 5)))
+    _xor_rtl_sBox_8_v_228_690 <= xor(bits(base_new, 3, 3), asUInt(bits(base_new, 1, 1)))
+    _xor_rtl_sBox_8_v_228_695 <= xor(_not_rtl_sBox_8_v_228_692_Y, asUInt(_not_rtl_sBox_8_v_228_694_Y))
+    _xor_rtl_sBox_8_v_228_696 <= xor(_xor_rtl_sBox_8_v_228_695_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c1_0_0__652))
+    _xor_rtl_sBox_8_v_228_697 <= xor(_xor_rtl_sBox_8_v_228_696_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c2_0_0__653))
+    _xor_rtl_sBox_8_v_229_680 <= xor(bits(base_new, 5, 5), asUInt(bits(base_new, 4, 4)))
+    _xor_rtl_sBox_8_v_229_681 <= xor(bits(base_new, 1, 1), asUInt(bits(base_new, 0, 0)))
+    _xor_rtl_sBox_8_v_229_686 <= xor(_not_rtl_sBox_8_v_229_683_Y, asUInt(_not_rtl_sBox_8_v_229_685_Y))
+    _xor_rtl_sBox_8_v_229_687 <= xor(_xor_rtl_sBox_8_v_229_686_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c2_0_0__653))
+    _xor_rtl_sBox_8_v_229_688 <= xor(_xor_rtl_sBox_8_v_229_687_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c3_0_0__654))
+    _xor_rtl_sBox_8_v_230_673 <= xor(_not_rtl_sBox_8_v_230_668_Y, asUInt(_not_rtl_sBox_8_v_230_672_Y))
+    _xor_rtl_sBox_8_v_230_678 <= xor(_xor_rtl_sBox_8_v_230_673_Y, asUInt(_not_rtl_sBox_8_v_230_677_Y))
+    _xor_rtl_sBox_8_v_230_679 <= xor(_xor_rtl_sBox_8_v_230_678_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c2_0_0__653))
+    _xor_rtl_sBox_8_v_260_619 <= xor(bits(sbox_in, 7, 7), asUInt(bits(sbox_in, 5, 5)))
+    _xor_rtl_sBox_8_v_261_620 <= xor(bits(sbox_in, 7, 7), asUInt(bits(sbox_in, 4, 4)))
+    _xor_rtl_sBox_8_v_262_622 <= xor(bits(sbox_in, 6, 6), asUInt(bits(sbox_in, 0, 0)))
+    _xor_rtl_sBox_8_v_263_623 <= xor(bits(sbox_in, 5, 5), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r3_0_0__610))
+    _xor_rtl_sBox_8_v_264_625 <= xor(bits(sbox_in, 4, 4), asUInt(bits(base_new_enc, 1, 1)))
+    _xor_rtl_sBox_8_v_265_626 <= xor(bits(sbox_in, 3, 3), asUInt(bits(sbox_in, 0, 0)))
+    _xor_rtl_sBox_8_v_266_627 <= xor(bits(sbox_in, 2, 2), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r1_0_0__608))
+    _xor_rtl_sBox_8_v_267_628 <= xor(bits(sbox_in, 1, 1), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r3_0_0__610))
+    _xor_rtl_sBox_8_v_268_629 <= xor(bits(sbox_in, 3, 3), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r8_0_0__615))
+    _xor_rtl_sBox_8_v_270_630 <= xor(bits(sbox_in, 2, 2), asUInt(bits(base_new_dec, 4, 4)))
+    _xor_rtl_sBox_8_v_270_633 <= xor(bits(sbox_in, 1, 1), asUInt(bits(base_new_dec, 7, 7)))
+    _xor_rtl_sBox_8_v_270_634 <= xor(_xor_rtl_sBox_8_v_270_633_Y, asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r6_0_0__613))
+    _xor_rtl_sBox_8_v_270_635 <= xor(_0_func__isomorphism_rtl_sBox_8_v_313_582__r1_0_0__608, asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r3_0_0__610))
+    _xor_rtl_sBox_8_v_270_637 <= xor(bits(sbox_in, 1, 1), asUInt(bits(base_new_enc, 1, 1)))
+    _xor_rtl_sBox_8_v_270_638 <= xor(bits(base_new_dec, 2, 2), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r8_0_0__615))
+    _xor_rtl_sBox_8_v_271_640 <= xor(bits(sbox_in, 1, 1), asUInt(bits(base_new_enc, 6, 6)))
+    _xor_rtl_sBox_8_v_271_641 <= xor(bits(sbox_in, 4, 4), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r6_0_0__613))
+    _xor_rtl_sBox_8_v_271_642 <= xor(bits(sbox_in, 6, 6), asUInt(bits(base_new_dec, 7, 7)))
+    _xor_rtl_sBox_8_v_271_644 <= xor(bits(sbox_in, 6, 6), asUInt(bits(sbox_in, 4, 4)))
+    _xor_rtl_sBox_8_v_271_645 <= xor(bits(sbox_in, 4, 4), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r8_0_0__615))
+    _xor_rtl_sBox_8_v_282_931 <= xor(bits(out_gf_inv8_1, 7, 7), asUInt(bits(out_gf_inv8_1, 3, 3)))
+    _xor_rtl_sBox_8_v_283_932 <= xor(bits(out_gf_inv8_1, 6, 6), asUInt(bits(out_gf_inv8_1, 4, 4)))
+    _xor_rtl_sBox_8_v_284_933 <= xor(bits(out_gf_inv8_1, 6, 6), asUInt(bits(out_gf_inv8_1, 0, 0)))
+    _xor_rtl_sBox_8_v_285_934 <= xor(bits(out_gf_inv8_1, 5, 5), asUInt(bits(out_gf_inv8_1, 3, 3)))
+    _xor_rtl_sBox_8_v_286_936 <= xor(bits(out_gf_inv8_1, 5, 5), asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 6, 6)))
+    _xor_rtl_sBox_8_v_287_938 <= xor(bits(out_gf_inv8_1, 5, 5), asUInt(bits(out_gf_inv8_1, 1, 1)))
+    _xor_rtl_sBox_8_v_288_897 <= xor(bits(out_gf_inv8_1, 4, 4), asUInt(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r6_0_0__883))
+    _xor_rtl_sBox_8_v_289_899 <= xor(bits(out_gf_inv8_1, 2, 2), asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 7, 7)))
+    _xor_rtl_sBox_8_v_290_900 <= xor(bits(out_gf_inv8_1, 1, 1), asUInt(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r2_0_0__879))
+    _xor_rtl_sBox_8_v_291_901 <= xor(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 5, 5), asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 4, 4)))
+    _xor_rtl_sBox_8_v_294_904 <= xor(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 5, 5), asUInt(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r8_0_0__885))
+    _xor_rtl_sBox_8_v_294_905 <= xor(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r2_0_0__879, asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 4, 4)))
+    _xor_rtl_sBox_8_v_296_907 <= xor(bits(out_gf_inv8_1, 7, 7), asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 1, 1)))
+    _xor_rtl_sBox_8_v_296_909 <= xor(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r8_0_0__885, asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 0, 0)))
+    _xor_rtl_sBox_8_v_296_912 <= xor(bits(out_gf_inv8_1, 2, 2), asUInt(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r10_0_0__887))
+    _xor_rtl_sBox_8_v_296_953 <= xor(bits(out_gf_inv8_1, 6, 6), asUInt(bits(out_gf_inv8_1, 1, 1)))
+    _xor_rtl_sBox_8_v_296_956 <= xor(bits(out_gf_inv8_1, 1, 1), asUInt(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r10_0_0__887))
+    _xor_rtl_sBox_8_v_296_957 <= xor(bits(out_gf_inv8_1, 4, 4), asUInt(bits(out_gf_inv8_1, 1, 1)))
+    _74 <= _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r6_0_0__883
+
+    _0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717 <= cat(bits(_xor_rtl_sBox_8_v_121_814, 1, 0), bits(_xor_rtl_sBox_8_v_121_820, 1, 0))
+    _0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724 <= cat(bits(_xor_rtl_sBox_8_v_151_808, 0, 0), bits(_xor_rtl_sBox_8_v_151_803, 0, 0))
+    _0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_hg_0_0__725 <= bits(_reduce_xor_rtl_sBox_8_v_149_797, 0, 0)
+    _0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_lw_0_0__726 <= bits(_reduce_xor_rtl_sBox_8_v_150_798, 0, 0)
+    _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c1_0_0__652 <= bits(_not_rtl_sBox_8_v_222_658, 0, 0)
+    _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c2_0_0__653 <= bits(_not_rtl_sBox_8_v_223_662, 0, 0)
+    _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c3_0_0__654 <= bits(_not_rtl_sBox_8_v_224_666, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_154_587__in3_0_0__732 <= bits(_reduce_xor_rtl_sBox_8_v_155_815, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_202_590__gf_muls_2_1_0__751 <= bits(_xor_rtl_sBox_8_v_121_829, 1, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_202_590__in3_0_0__754 <= bits(_xor_rtl_sBox_8_v_202_849, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_202_590__in4_0_0__755 <= bits(_xor_rtl_sBox_8_v_202_824, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_202_594__gf_muls_2_1_0__780 <= bits(_xor_rtl_sBox_8_v_121_855, 1, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_202_594__in4_0_0__784 <= bits(_xor_rtl_sBox_8_v_202_850, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_203_591__gf_muls_2_1_0__756 <= bits(_xor_rtl_sBox_8_v_121_836, 1, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_203_591__in3_0_0__759 <= bits(_xor_rtl_sBox_8_v_203_856, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_203_591__in4_0_0__760 <= bits(_xor_rtl_sBox_8_v_203_831, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_203_595__gf_muls_2_1_0__785 <= bits(_xor_rtl_sBox_8_v_121_862, 1, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_203_595__in4_0_0__789 <= bits(_xor_rtl_sBox_8_v_203_857, 0, 0)
+    _0_func__gf_muls_4_rtl_sBox_8_v_248_589__out_gf_mul_scl_1_1_0__750 <= cat(bits(_xor_rtl_sBox_8_v_133_844, 0, 0), bits(_reduce_xor_rtl_sBox_8_v_133_843, 0, 0))
+    _0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in1_hl_1_0__746 <= bits(_xor_rtl_sBox_8_v_199_847, 1, 0)
+    _0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in2_hl_1_0__747 <= bits(_xor_rtl_sBox_8_v_200_822, 1, 0)
+    _0_func__gf_muls_4_rtl_sBox_8_v_249_593__out_gf_mul_scl_1_1_0__779 <= cat(bits(_xor_rtl_sBox_8_v_133_870, 0, 0), bits(_reduce_xor_rtl_sBox_8_v_133_869, 0, 0))
+    _0_func__gf_muls_4_rtl_sBox_8_v_249_593__xor_in2_hl_1_0__776 <= bits(_xor_rtl_sBox_8_v_200_848, 1, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in3_0_0__764 <= bits(_reduce_xor_rtl_sBox_8_v_204_863, 0, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in4_0_0__765 <= bits(_reduce_xor_rtl_sBox_8_v_204_838, 0, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in1_in2_1_0__766 <= bits(_not_rtl_sBox_8_v_131_840, 1, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in3_in4_0_0__767 <= bits(_not_rtl_sBox_8_v_132_842, 0, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__in4_0_0__794 <= bits(_reduce_xor_rtl_sBox_8_v_204_864, 0, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in1_in2_1_0__795 <= bits(_not_rtl_sBox_8_v_131_866, 1, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in3_in4_0_0__796 <= bits(_not_rtl_sBox_8_v_132_868, 0, 0)
+    _0_func__isomorphism_rtl_sBox_8_v_313_582__r1_0_0__608 <= bits(_xor_rtl_sBox_8_v_260_619, 0, 0)
+    _0_func__isomorphism_rtl_sBox_8_v_313_582__r3_0_0__610 <= bits(_xor_rtl_sBox_8_v_262_622, 0, 0)
+    _0_func__isomorphism_rtl_sBox_8_v_313_582__r6_0_0__613 <= bits(_xor_rtl_sBox_8_v_265_626, 0, 0)
+    _0_func__isomorphism_rtl_sBox_8_v_313_582__r8_0_0__615 <= bits(_xor_rtl_sBox_8_v_267_628, 0, 0)
+    _0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874 <= cat(bits(_not_rtl_sBox_8_v_285_935, 0, 0), cat(bits(_xor_rtl_sBox_8_v_282_931, 0, 0), cat(bits(_xor_rtl_sBox_8_v_284_933, 0, 0), cat(bits(_not_rtl_sBox_8_v_286_894, 0, 0), cat(bits(_xor_rtl_sBox_8_v_294_905, 0, 0), cat(bits(_xor_rtl_sBox_8_v_294_904, 0, 0), cat(bits(_not_rtl_sBox_8_v_288_898, 0, 0), bits(_xor_rtl_sBox_8_v_290_900, 0, 0))))))))
+    _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r10_0_0__887 <= bits(_xor_rtl_sBox_8_v_291_901, 0, 0)
+    _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r2_0_0__879 <= bits(_xor_rtl_sBox_8_v_283_932, 0, 0)
+    _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r6_0_0__883 <= bits(_not_rtl_sBox_8_v_287_939, 0, 0)
+    _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r8_0_0__885 <= bits(_xor_rtl_sBox_8_v_289_899, 0, 0)
+    _0_func__isomorphism_inv_rtl_sBox_8_v_327_581__isomorphism_inv_7_0__917 <= cat(bits(_not_rtl_sBox_8_v_296_915, 0, 0), cat(bits(_xor_rtl_sBox_8_v_296_956, 0, 0), cat(bits(_xor_rtl_sBox_8_v_296_912, 0, 0), cat(bits(_not_rtl_sBox_8_v_296_911, 0, 0), cat(bits(_xor_rtl_sBox_8_v_296_909, 0, 0), cat(bits(_not_rtl_sBox_8_v_296_951, 0, 0), cat(bits(_74, 0, 0), bits(_not_rtl_sBox_8_v_296_949, 0, 0))))))))
+    _and_rtl_sBox_8_v_121_810_Y <= bits(_and_rtl_sBox_8_v_121_810, 1, 0)
+    _and_rtl_sBox_8_v_121_812_Y <= bits(_and_rtl_sBox_8_v_121_812, 0, 0)
+    _and_rtl_sBox_8_v_121_816_Y <= bits(_and_rtl_sBox_8_v_121_816, 1, 0)
+    _and_rtl_sBox_8_v_121_818_Y <= bits(_and_rtl_sBox_8_v_121_818, 0, 0)
+    _and_rtl_sBox_8_v_121_825_Y <= bits(_and_rtl_sBox_8_v_121_825, 1, 0)
+    _and_rtl_sBox_8_v_121_827_Y <= bits(_and_rtl_sBox_8_v_121_827, 0, 0)
+    _and_rtl_sBox_8_v_121_832_Y <= bits(_and_rtl_sBox_8_v_121_832, 1, 0)
+    _and_rtl_sBox_8_v_121_834_Y <= bits(_and_rtl_sBox_8_v_121_834, 0, 0)
+    _and_rtl_sBox_8_v_121_851_Y <= bits(_and_rtl_sBox_8_v_121_851, 1, 0)
+    _and_rtl_sBox_8_v_121_853_Y <= bits(_and_rtl_sBox_8_v_121_853, 0, 0)
+    _and_rtl_sBox_8_v_121_858_Y <= bits(_and_rtl_sBox_8_v_121_858, 1, 0)
+    _and_rtl_sBox_8_v_121_860_Y <= bits(_and_rtl_sBox_8_v_121_860, 0, 0)
+    _and_rtl_sBox_8_v_131_839_Y <= bits(_and_rtl_sBox_8_v_131_839, 1, 0)
+    _and_rtl_sBox_8_v_131_865_Y <= bits(_and_rtl_sBox_8_v_131_865, 1, 0)
+    _and_rtl_sBox_8_v_132_841_Y <= bits(_and_rtl_sBox_8_v_132_841, 0, 0)
+    _and_rtl_sBox_8_v_132_867_Y <= bits(_and_rtl_sBox_8_v_132_867, 0, 0)
+    _and_rtl_sBox_8_v_151_801_Y <= bits(_and_rtl_sBox_8_v_151_801, 0, 0)
+    _and_rtl_sBox_8_v_151_806_Y <= bits(_and_rtl_sBox_8_v_151_806, 0, 0)
+    _and_rtl_sBox_8_v_222_657_Y <= bits(_and_rtl_sBox_8_v_222_657, 0, 0)
+    _and_rtl_sBox_8_v_223_661_Y <= bits(_and_rtl_sBox_8_v_223_661, 0, 0)
+    _and_rtl_sBox_8_v_224_665_Y <= bits(_and_rtl_sBox_8_v_224_665, 0, 0)
+    _and_rtl_sBox_8_v_227_702_Y <= bits(_and_rtl_sBox_8_v_227_702, 0, 0)
+    _and_rtl_sBox_8_v_228_693_Y <= bits(_and_rtl_sBox_8_v_228_693, 0, 0)
+    _and_rtl_sBox_8_v_229_684_Y <= bits(_and_rtl_sBox_8_v_229_684, 0, 0)
+    _and_rtl_sBox_8_v_230_671_Y <= bits(_and_rtl_sBox_8_v_230_671, 0, 0)
+    _and_rtl_sBox_8_v_230_676_Y <= bits(_and_rtl_sBox_8_v_230_676, 0, 0)
+    _not_rtl_sBox_8_v_121_811_Y <= bits(_not_rtl_sBox_8_v_121_811, 1, 0)
+    _not_rtl_sBox_8_v_121_813_Y <= bits(_not_rtl_sBox_8_v_121_813, 0, 0)
+    _not_rtl_sBox_8_v_121_817_Y <= bits(_not_rtl_sBox_8_v_121_817, 1, 0)
+    _not_rtl_sBox_8_v_121_819_Y <= bits(_not_rtl_sBox_8_v_121_819, 0, 0)
+    _not_rtl_sBox_8_v_121_826_Y <= bits(_not_rtl_sBox_8_v_121_826, 1, 0)
+    _not_rtl_sBox_8_v_121_828_Y <= bits(_not_rtl_sBox_8_v_121_828, 0, 0)
+    _not_rtl_sBox_8_v_121_833_Y <= bits(_not_rtl_sBox_8_v_121_833, 1, 0)
+    _not_rtl_sBox_8_v_121_835_Y <= bits(_not_rtl_sBox_8_v_121_835, 0, 0)
+    _not_rtl_sBox_8_v_121_852_Y <= bits(_not_rtl_sBox_8_v_121_852, 1, 0)
+    _not_rtl_sBox_8_v_121_854_Y <= bits(_not_rtl_sBox_8_v_121_854, 0, 0)
+    _not_rtl_sBox_8_v_121_859_Y <= bits(_not_rtl_sBox_8_v_121_859, 1, 0)
+    _not_rtl_sBox_8_v_121_861_Y <= bits(_not_rtl_sBox_8_v_121_861, 0, 0)
+    _not_rtl_sBox_8_v_151_800_Y <= bits(_not_rtl_sBox_8_v_151_800, 0, 0)
+    _not_rtl_sBox_8_v_151_802_Y <= bits(_not_rtl_sBox_8_v_151_802, 0, 0)
+    _not_rtl_sBox_8_v_151_805_Y <= bits(_not_rtl_sBox_8_v_151_805, 0, 0)
+    _not_rtl_sBox_8_v_151_807_Y <= bits(_not_rtl_sBox_8_v_151_807, 0, 0)
+    _not_rtl_sBox_8_v_227_701_Y <= bits(_not_rtl_sBox_8_v_227_701, 0, 0)
+    _not_rtl_sBox_8_v_227_703_Y <= bits(_not_rtl_sBox_8_v_227_703, 0, 0)
+    _not_rtl_sBox_8_v_228_692_Y <= bits(_not_rtl_sBox_8_v_228_692, 0, 0)
+    _not_rtl_sBox_8_v_228_694_Y <= bits(_not_rtl_sBox_8_v_228_694, 0, 0)
+    _not_rtl_sBox_8_v_229_683_Y <= bits(_not_rtl_sBox_8_v_229_683, 0, 0)
+    _not_rtl_sBox_8_v_229_685_Y <= bits(_not_rtl_sBox_8_v_229_685, 0, 0)
+    _not_rtl_sBox_8_v_230_668_Y <= bits(_not_rtl_sBox_8_v_230_668, 0, 0)
+    _not_rtl_sBox_8_v_230_672_Y <= bits(_not_rtl_sBox_8_v_230_672, 0, 0)
+    _not_rtl_sBox_8_v_230_677_Y <= bits(_not_rtl_sBox_8_v_230_677, 0, 0)
+    _or_rtl_sBox_8_v_151_799_Y <= bits(_or_rtl_sBox_8_v_151_799, 0, 0)
+    _or_rtl_sBox_8_v_151_804_Y <= bits(_or_rtl_sBox_8_v_151_804, 0, 0)
+    _or_rtl_sBox_8_v_227_700_Y <= bits(_or_rtl_sBox_8_v_227_700, 0, 0)
+    _or_rtl_sBox_8_v_228_691_Y <= bits(_or_rtl_sBox_8_v_228_691, 0, 0)
+    _or_rtl_sBox_8_v_229_682_Y <= bits(_or_rtl_sBox_8_v_229_682, 0, 0)
+    _or_rtl_sBox_8_v_230_667_Y <= bits(_or_rtl_sBox_8_v_230_667, 0, 0)
+    _reduce_xor_rtl_sBox_8_v_224_663_Y <= bits(_reduce_xor_rtl_sBox_8_v_224_663, 0, 0)
+    _reduce_xor_rtl_sBox_8_v_224_664_Y <= bits(_reduce_xor_rtl_sBox_8_v_224_664, 0, 0)
+    _ternary_rtl_sBox_8_v_315_599_Y <= bits(_ternary_rtl_sBox_8_v_315_599, 7, 0)
+    _xor_rtl_sBox_8_v_222_655_Y <= bits(_xor_rtl_sBox_8_v_222_655, 0, 0)
+    _xor_rtl_sBox_8_v_222_656_Y <= bits(_xor_rtl_sBox_8_v_222_656, 0, 0)
+    _xor_rtl_sBox_8_v_223_659_Y <= bits(_xor_rtl_sBox_8_v_227_698, 0, 0)
+    _xor_rtl_sBox_8_v_223_660_Y <= bits(_xor_rtl_sBox_8_v_227_699, 0, 0)
+    _xor_rtl_sBox_8_v_227_704_Y <= bits(_xor_rtl_sBox_8_v_227_704, 0, 0)
+    _xor_rtl_sBox_8_v_227_705_Y <= bits(_xor_rtl_sBox_8_v_227_705, 0, 0)
+    _xor_rtl_sBox_8_v_228_689_Y <= bits(_xor_rtl_sBox_8_v_228_689, 0, 0)
+    _xor_rtl_sBox_8_v_228_690_Y <= bits(_xor_rtl_sBox_8_v_228_690, 0, 0)
+    _xor_rtl_sBox_8_v_228_695_Y <= bits(_xor_rtl_sBox_8_v_228_695, 0, 0)
+    _xor_rtl_sBox_8_v_228_696_Y <= bits(_xor_rtl_sBox_8_v_228_696, 0, 0)
+    _xor_rtl_sBox_8_v_229_680_Y <= bits(_xor_rtl_sBox_8_v_229_680, 0, 0)
+    _xor_rtl_sBox_8_v_229_681_Y <= bits(_xor_rtl_sBox_8_v_229_681, 0, 0)
+    _xor_rtl_sBox_8_v_229_686_Y <= bits(_xor_rtl_sBox_8_v_229_686, 0, 0)
+    _xor_rtl_sBox_8_v_229_687_Y <= bits(_xor_rtl_sBox_8_v_229_687, 0, 0)
+    _xor_rtl_sBox_8_v_230_673_Y <= bits(_xor_rtl_sBox_8_v_230_673, 0, 0)
+    _xor_rtl_sBox_8_v_230_678_Y <= bits(_xor_rtl_sBox_8_v_230_678, 0, 0)
+    _xor_rtl_sBox_8_v_261_620_Y <= bits(_xor_rtl_sBox_8_v_261_620, 0, 0)
+    _xor_rtl_sBox_8_v_263_623_Y <= bits(_xor_rtl_sBox_8_v_263_623, 0, 0)
+    _xor_rtl_sBox_8_v_270_630_Y <= bits(_xor_rtl_sBox_8_v_270_630, 0, 0)
+    _xor_rtl_sBox_8_v_270_633_Y <= bits(_xor_rtl_sBox_8_v_270_633, 0, 0)
+    _xor_rtl_sBox_8_v_270_635_Y <= bits(_xor_rtl_sBox_8_v_270_635, 0, 0)
+    _xor_rtl_sBox_8_v_270_638_Y <= bits(_xor_rtl_sBox_8_v_270_638, 0, 0)
+    _xor_rtl_sBox_8_v_271_642_Y <= bits(_xor_rtl_sBox_8_v_271_642, 0, 0)
+    _xor_rtl_sBox_8_v_285_891_Y <= bits(_xor_rtl_sBox_8_v_285_934, 0, 0)
+    _xor_rtl_sBox_8_v_286_893_Y <= bits(_xor_rtl_sBox_8_v_286_936, 0, 0)
+    _xor_rtl_sBox_8_v_287_895_Y <= bits(_xor_rtl_sBox_8_v_287_938, 0, 0)
+    _xor_rtl_sBox_8_v_288_897_Y <= bits(_xor_rtl_sBox_8_v_288_897, 0, 0)
+    _xor_rtl_sBox_8_v_296_907_Y <= bits(_xor_rtl_sBox_8_v_296_907, 0, 0)
+    _xor_rtl_sBox_8_v_296_910_Y <= bits(_xor_rtl_sBox_8_v_296_953, 0, 0)
+    _xor_rtl_sBox_8_v_296_914_Y <= bits(_xor_rtl_sBox_8_v_296_957, 0, 0)
+    base_new <= bits(_not_rtl_sBox_8_v_315_600, 7, 0)
+    base_new_dec <= cat(bits(_not_rtl_sBox_8_v_261_621, 0, 0), cat(bits(_xor_rtl_sBox_8_v_271_645, 0, 0), cat(bits(_xor_rtl_sBox_8_v_271_644, 0, 0), cat(bits(_xor_rtl_sBox_8_v_268_629, 0, 0), cat(bits(_not_rtl_sBox_8_v_271_643, 0, 0), cat(bits(_xor_rtl_sBox_8_v_266_627, 0, 0), cat(bits(_xor_rtl_sBox_8_v_271_641, 0, 0), bits(_xor_rtl_sBox_8_v_271_640, 0, 0))))))))
+    base_new_enc <= cat(bits(_not_rtl_sBox_8_v_270_639, 0, 0), cat(bits(_xor_rtl_sBox_8_v_264_625, 0, 0), cat(bits(_xor_rtl_sBox_8_v_270_637, 0, 0), cat(bits(_not_rtl_sBox_8_v_270_636, 0, 0), cat(bits(_xor_rtl_sBox_8_v_270_634, 0, 0), cat(bits(_not_rtl_sBox_8_v_270_632, 0, 0), cat(bits(_not_rtl_sBox_8_v_263_624, 0, 0), bits(_not_rtl_sBox_8_v_270_631, 0, 0))))))))
+    base_new_pp <= bits(_procdff_2122, 7, 0)
+    out_gf_inv8_1 <= cat(bits(_xor_rtl_sBox_8_v_206_846, 1, 0), cat(bits(_xor_rtl_sBox_8_v_206_845, 1, 0), cat(bits(_xor_rtl_sBox_8_v_206_872, 1, 0), bits(_xor_rtl_sBox_8_v_206_871, 1, 0))))
+    out_gf_inv8_stage1 <= cat(bits(_xor_rtl_sBox_8_v_227_706, 0, 0), cat(bits(_xor_rtl_sBox_8_v_228_697, 0, 0), cat(bits(_xor_rtl_sBox_8_v_229_688, 0, 0), bits(_xor_rtl_sBox_8_v_230_679, 0, 0))))
+    out_gf_pp <= bits(_procdff_2121, 3, 0)
+    sbox_out_dec <= bits(_not_rtl_sBox_8_v_327_603, 7, 0)
+    sbox_out_enc <= bits(_not_rtl_sBox_8_v_326_602, 7, 0)
+
+
+
+
+  module sBox_8_3:
+    input clk: UInt<1>
+    input enc_dec: UInt<1>
+    input sbox_in: UInt<8>
+    output sbox_out_dec: UInt<8>
+    output sbox_out_enc: UInt<8>
+
+    wire _0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717: UInt<4>
+    wire _0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724: UInt<2>
+    wire _0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_hg_0_0__725: UInt<1>
+    wire _0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_lw_0_0__726: UInt<1>
+    wire _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c1_0_0__652: UInt<1>
+    wire _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c2_0_0__653: UInt<1>
+    wire _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c3_0_0__654: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_154_587__in3_0_0__732: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_202_590__gf_muls_2_1_0__751: UInt<2>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_202_590__in3_0_0__754: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_202_590__in4_0_0__755: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_202_594__gf_muls_2_1_0__780: UInt<2>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_202_594__in4_0_0__784: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_203_591__gf_muls_2_1_0__756: UInt<2>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_203_591__in3_0_0__759: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_203_591__in4_0_0__760: UInt<1>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_203_595__gf_muls_2_1_0__785: UInt<2>
+    wire _0_func__gf_muls_2_rtl_sBox_8_v_203_595__in4_0_0__789: UInt<1>
+    wire _0_func__gf_muls_4_rtl_sBox_8_v_248_589__out_gf_mul_scl_1_1_0__750: UInt<2>
+    wire _0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in1_hl_1_0__746: UInt<2>
+    wire _0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in2_hl_1_0__747: UInt<2>
+    wire _0_func__gf_muls_4_rtl_sBox_8_v_249_593__out_gf_mul_scl_1_1_0__779: UInt<2>
+    wire _0_func__gf_muls_4_rtl_sBox_8_v_249_593__xor_in2_hl_1_0__776: UInt<2>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in3_0_0__764: UInt<1>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in4_0_0__765: UInt<1>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in1_in2_1_0__766: UInt<2>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in3_in4_0_0__767: UInt<1>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__in4_0_0__794: UInt<1>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in1_in2_1_0__795: UInt<2>
+    wire _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in3_in4_0_0__796: UInt<1>
+    wire _0_func__isomorphism_rtl_sBox_8_v_313_582__r1_0_0__608: UInt<1>
+    wire _0_func__isomorphism_rtl_sBox_8_v_313_582__r3_0_0__610: UInt<1>
+    wire _0_func__isomorphism_rtl_sBox_8_v_313_582__r6_0_0__613: UInt<1>
+    wire _0_func__isomorphism_rtl_sBox_8_v_313_582__r8_0_0__615: UInt<1>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874: UInt<8>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r10_0_0__887: UInt<1>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r2_0_0__879: UInt<1>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r6_0_0__883: UInt<1>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r8_0_0__885: UInt<1>
+    wire _0_func__isomorphism_inv_rtl_sBox_8_v_327_581__isomorphism_inv_7_0__917: UInt<8>
+    wire _and_rtl_sBox_8_v_121_810_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_812_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_121_816_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_818_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_121_825_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_827_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_121_832_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_834_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_121_851_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_853_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_121_858_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_121_860_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_131_839_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_131_865_Y: UInt<2>
+    wire _and_rtl_sBox_8_v_132_841_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_132_867_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_151_801_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_151_806_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_222_657_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_223_661_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_224_665_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_227_702_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_228_693_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_229_684_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_230_671_Y: UInt<1>
+    wire _and_rtl_sBox_8_v_230_676_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_811_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_813_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_817_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_819_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_826_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_828_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_833_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_835_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_852_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_854_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_121_859_Y: UInt<2>
+    wire _not_rtl_sBox_8_v_121_861_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_151_800_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_151_802_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_151_805_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_151_807_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_227_701_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_227_703_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_228_692_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_228_694_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_229_683_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_229_685_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_230_668_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_230_672_Y: UInt<1>
+    wire _not_rtl_sBox_8_v_230_677_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_151_799_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_151_804_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_227_700_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_228_691_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_229_682_Y: UInt<1>
+    wire _or_rtl_sBox_8_v_230_667_Y: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_224_663_Y: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_224_664_Y: UInt<1>
+    wire _ternary_rtl_sBox_8_v_315_599_Y: UInt<8>
+    wire _xor_rtl_sBox_8_v_222_655_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_222_656_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_223_659_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_223_660_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_704_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_705_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_689_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_690_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_695_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_696_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_680_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_681_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_686_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_687_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_230_673_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_230_678_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_261_620_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_263_623_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_630_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_633_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_635_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_638_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_642_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_285_891_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_286_893_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_287_895_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_288_897_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_907_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_910_Y: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_914_Y: UInt<1>
+    wire base_new: UInt<8>
+    wire base_new_dec: UInt<8>
+    wire base_new_enc: UInt<8>
+    wire base_new_pp: UInt<8>
+    wire out_gf_inv8_1: UInt<8>
+    wire out_gf_inv8_stage1: UInt<4>
+    wire out_gf_pp: UInt<4>
+    wire _and_rtl_sBox_8_v_121_810: UInt<2>
+    wire _and_rtl_sBox_8_v_121_812: UInt<1>
+    wire _and_rtl_sBox_8_v_121_816: UInt<2>
+    wire _and_rtl_sBox_8_v_121_818: UInt<1>
+    wire _and_rtl_sBox_8_v_121_825: UInt<2>
+    wire _and_rtl_sBox_8_v_121_827: UInt<1>
+    wire _and_rtl_sBox_8_v_121_832: UInt<2>
+    wire _and_rtl_sBox_8_v_121_834: UInt<1>
+    wire _and_rtl_sBox_8_v_121_851: UInt<2>
+    wire _and_rtl_sBox_8_v_121_853: UInt<1>
+    wire _and_rtl_sBox_8_v_121_858: UInt<2>
+    wire _and_rtl_sBox_8_v_121_860: UInt<1>
+    wire _and_rtl_sBox_8_v_131_839: UInt<2>
+    wire _and_rtl_sBox_8_v_131_865: UInt<2>
+    wire _and_rtl_sBox_8_v_132_841: UInt<1>
+    wire _and_rtl_sBox_8_v_132_867: UInt<1>
+    wire _and_rtl_sBox_8_v_151_801: UInt<1>
+    wire _and_rtl_sBox_8_v_151_806: UInt<1>
+    wire _and_rtl_sBox_8_v_222_657: UInt<1>
+    wire _and_rtl_sBox_8_v_223_661: UInt<1>
+    wire _and_rtl_sBox_8_v_224_665: UInt<1>
+    wire _and_rtl_sBox_8_v_227_702: UInt<1>
+    wire _and_rtl_sBox_8_v_228_693: UInt<1>
+    wire _and_rtl_sBox_8_v_229_684: UInt<1>
+    wire _and_rtl_sBox_8_v_230_671: UInt<1>
+    wire _and_rtl_sBox_8_v_230_676: UInt<1>
+    wire _not_rtl_sBox_8_v_121_811: UInt<2>
+    wire _not_rtl_sBox_8_v_121_813: UInt<1>
+    wire _not_rtl_sBox_8_v_121_817: UInt<2>
+    wire _not_rtl_sBox_8_v_121_819: UInt<1>
+    wire _not_rtl_sBox_8_v_121_826: UInt<2>
+    wire _not_rtl_sBox_8_v_121_828: UInt<1>
+    wire _not_rtl_sBox_8_v_121_833: UInt<2>
+    wire _not_rtl_sBox_8_v_121_835: UInt<1>
+    wire _not_rtl_sBox_8_v_121_852: UInt<2>
+    wire _not_rtl_sBox_8_v_121_854: UInt<1>
+    wire _not_rtl_sBox_8_v_121_859: UInt<2>
+    wire _not_rtl_sBox_8_v_121_861: UInt<1>
+    wire _not_rtl_sBox_8_v_131_840: UInt<2>
+    wire _not_rtl_sBox_8_v_131_866: UInt<2>
+    wire _not_rtl_sBox_8_v_132_842: UInt<1>
+    wire _not_rtl_sBox_8_v_132_868: UInt<1>
+    wire _not_rtl_sBox_8_v_151_800: UInt<1>
+    wire _not_rtl_sBox_8_v_151_802: UInt<1>
+    wire _not_rtl_sBox_8_v_151_805: UInt<1>
+    wire _not_rtl_sBox_8_v_151_807: UInt<1>
+    wire _not_rtl_sBox_8_v_222_658: UInt<1>
+    wire _not_rtl_sBox_8_v_223_662: UInt<1>
+    wire _not_rtl_sBox_8_v_224_666: UInt<1>
+    wire _not_rtl_sBox_8_v_227_701: UInt<1>
+    wire _not_rtl_sBox_8_v_227_703: UInt<1>
+    wire _not_rtl_sBox_8_v_228_692: UInt<1>
+    wire _not_rtl_sBox_8_v_228_694: UInt<1>
+    wire _not_rtl_sBox_8_v_229_683: UInt<1>
+    wire _not_rtl_sBox_8_v_229_685: UInt<1>
+    wire _not_rtl_sBox_8_v_230_668: UInt<1>
+    wire _not_rtl_sBox_8_v_230_672: UInt<1>
+    wire _not_rtl_sBox_8_v_230_677: UInt<1>
+    wire _not_rtl_sBox_8_v_261_621: UInt<1>
+    wire _not_rtl_sBox_8_v_263_624: UInt<1>
+    wire _not_rtl_sBox_8_v_270_631: UInt<1>
+    wire _not_rtl_sBox_8_v_270_632: UInt<1>
+    wire _not_rtl_sBox_8_v_270_636: UInt<1>
+    wire _not_rtl_sBox_8_v_270_639: UInt<1>
+    wire _not_rtl_sBox_8_v_271_643: UInt<1>
+    wire _not_rtl_sBox_8_v_285_935: UInt<1>
+    wire _not_rtl_sBox_8_v_286_894: UInt<1>
+    wire _not_rtl_sBox_8_v_287_939: UInt<1>
+    wire _not_rtl_sBox_8_v_288_898: UInt<1>
+    wire _not_rtl_sBox_8_v_296_911: UInt<1>
+    wire _not_rtl_sBox_8_v_296_915: UInt<1>
+    wire _not_rtl_sBox_8_v_296_949: UInt<1>
+    wire _not_rtl_sBox_8_v_296_951: UInt<1>
+    wire _not_rtl_sBox_8_v_315_600: UInt<8>
+    wire _not_rtl_sBox_8_v_326_602: UInt<8>
+    wire _not_rtl_sBox_8_v_327_603: UInt<8>
+    wire _or_rtl_sBox_8_v_151_799: UInt<1>
+    wire _or_rtl_sBox_8_v_151_804: UInt<1>
+    wire _or_rtl_sBox_8_v_227_700: UInt<1>
+    wire _or_rtl_sBox_8_v_228_691: UInt<1>
+    wire _or_rtl_sBox_8_v_229_682: UInt<1>
+    wire _or_rtl_sBox_8_v_230_667: UInt<1>
+    reg _procdff_2121: UInt<4>, asClock(clk)
+    reg _procdff_2122: UInt<8>, asClock(clk)
+    wire _reduce_xor_rtl_sBox_8_v_133_843: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_133_869: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_149_797: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_150_798: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_155_815: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_204_838: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_204_863: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_204_864: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_224_663: UInt<1>
+    wire _reduce_xor_rtl_sBox_8_v_224_664: UInt<1>
+    wire _ternary_rtl_sBox_8_v_315_599: UInt<8>
+    wire _xor_rtl_sBox_8_v_121_814: UInt<2>
+    wire _xor_rtl_sBox_8_v_121_820: UInt<2>
+    wire _xor_rtl_sBox_8_v_121_829: UInt<2>
+    wire _xor_rtl_sBox_8_v_121_836: UInt<2>
+    wire _xor_rtl_sBox_8_v_121_855: UInt<2>
+    wire _xor_rtl_sBox_8_v_121_862: UInt<2>
+    wire _xor_rtl_sBox_8_v_133_844: UInt<1>
+    wire _xor_rtl_sBox_8_v_133_870: UInt<1>
+    wire _xor_rtl_sBox_8_v_151_803: UInt<1>
+    wire _xor_rtl_sBox_8_v_151_808: UInt<1>
+    wire _xor_rtl_sBox_8_v_199_847: UInt<2>
+    wire _xor_rtl_sBox_8_v_200_822: UInt<2>
+    wire _xor_rtl_sBox_8_v_200_848: UInt<2>
+    wire _xor_rtl_sBox_8_v_202_824: UInt<1>
+    wire _xor_rtl_sBox_8_v_202_849: UInt<1>
+    wire _xor_rtl_sBox_8_v_202_850: UInt<1>
+    wire _xor_rtl_sBox_8_v_203_831: UInt<1>
+    wire _xor_rtl_sBox_8_v_203_856: UInt<1>
+    wire _xor_rtl_sBox_8_v_203_857: UInt<1>
+    wire _xor_rtl_sBox_8_v_206_845: UInt<2>
+    wire _xor_rtl_sBox_8_v_206_846: UInt<2>
+    wire _xor_rtl_sBox_8_v_206_871: UInt<2>
+    wire _xor_rtl_sBox_8_v_206_872: UInt<2>
+    wire _xor_rtl_sBox_8_v_222_655: UInt<1>
+    wire _xor_rtl_sBox_8_v_222_656: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_698: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_699: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_704: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_705: UInt<1>
+    wire _xor_rtl_sBox_8_v_227_706: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_689: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_690: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_695: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_696: UInt<1>
+    wire _xor_rtl_sBox_8_v_228_697: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_680: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_681: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_686: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_687: UInt<1>
+    wire _xor_rtl_sBox_8_v_229_688: UInt<1>
+    wire _xor_rtl_sBox_8_v_230_673: UInt<1>
+    wire _xor_rtl_sBox_8_v_230_678: UInt<1>
+    wire _xor_rtl_sBox_8_v_230_679: UInt<1>
+    wire _xor_rtl_sBox_8_v_260_619: UInt<1>
+    wire _xor_rtl_sBox_8_v_261_620: UInt<1>
+    wire _xor_rtl_sBox_8_v_262_622: UInt<1>
+    wire _xor_rtl_sBox_8_v_263_623: UInt<1>
+    wire _xor_rtl_sBox_8_v_264_625: UInt<1>
+    wire _xor_rtl_sBox_8_v_265_626: UInt<1>
+    wire _xor_rtl_sBox_8_v_266_627: UInt<1>
+    wire _xor_rtl_sBox_8_v_267_628: UInt<1>
+    wire _xor_rtl_sBox_8_v_268_629: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_630: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_633: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_634: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_635: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_637: UInt<1>
+    wire _xor_rtl_sBox_8_v_270_638: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_640: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_641: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_642: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_644: UInt<1>
+    wire _xor_rtl_sBox_8_v_271_645: UInt<1>
+    wire _xor_rtl_sBox_8_v_282_931: UInt<1>
+    wire _xor_rtl_sBox_8_v_283_932: UInt<1>
+    wire _xor_rtl_sBox_8_v_284_933: UInt<1>
+    wire _xor_rtl_sBox_8_v_285_934: UInt<1>
+    wire _xor_rtl_sBox_8_v_286_936: UInt<1>
+    wire _xor_rtl_sBox_8_v_287_938: UInt<1>
+    wire _xor_rtl_sBox_8_v_288_897: UInt<1>
+    wire _xor_rtl_sBox_8_v_289_899: UInt<1>
+    wire _xor_rtl_sBox_8_v_290_900: UInt<1>
+    wire _xor_rtl_sBox_8_v_291_901: UInt<1>
+    wire _xor_rtl_sBox_8_v_294_904: UInt<1>
+    wire _xor_rtl_sBox_8_v_294_905: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_907: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_909: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_912: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_953: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_956: UInt<1>
+    wire _xor_rtl_sBox_8_v_296_957: UInt<1>
+    wire _74: UInt<1>
+
+
+    _and_rtl_sBox_8_v_121_810 <= and(cat(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 0, 0), bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 1, 1)), asUInt(bits(out_gf_pp, 1, 0)))
+    _and_rtl_sBox_8_v_121_812 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_154_587__in3_0_0__732, asUInt(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_lw_0_0__726))
+    _and_rtl_sBox_8_v_121_816 <= and(cat(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 0, 0), bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 1, 1)), asUInt(bits(out_gf_pp, 3, 2)))
+    _and_rtl_sBox_8_v_121_818 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_154_587__in3_0_0__732, asUInt(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_hg_0_0__725))
+    _and_rtl_sBox_8_v_121_825 <= and(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 3, 2), asUInt(bits(base_new_pp, 3, 2)))
+    _and_rtl_sBox_8_v_121_827 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_202_590__in3_0_0__754, asUInt(_0_func__gf_muls_2_rtl_sBox_8_v_202_590__in4_0_0__755))
+    _and_rtl_sBox_8_v_121_832 <= and(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 1, 0), asUInt(bits(base_new_pp, 1, 0)))
+    _and_rtl_sBox_8_v_121_834 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_203_591__in3_0_0__759, asUInt(_0_func__gf_muls_2_rtl_sBox_8_v_203_591__in4_0_0__760))
+    _and_rtl_sBox_8_v_121_851 <= and(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 3, 2), asUInt(bits(base_new_pp, 7, 6)))
+    _and_rtl_sBox_8_v_121_853 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_202_590__in3_0_0__754, asUInt(_0_func__gf_muls_2_rtl_sBox_8_v_202_594__in4_0_0__784))
+    _and_rtl_sBox_8_v_121_858 <= and(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 1, 0), asUInt(bits(base_new_pp, 5, 4)))
+    _and_rtl_sBox_8_v_121_860 <= and(_0_func__gf_muls_2_rtl_sBox_8_v_203_591__in3_0_0__759, asUInt(_0_func__gf_muls_2_rtl_sBox_8_v_203_595__in4_0_0__789))
+    _and_rtl_sBox_8_v_131_839 <= and(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in1_hl_1_0__746, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in2_hl_1_0__747))
+    _and_rtl_sBox_8_v_131_865 <= and(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in1_hl_1_0__746, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_249_593__xor_in2_hl_1_0__776))
+    _and_rtl_sBox_8_v_132_841 <= and(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in3_0_0__764, asUInt(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in4_0_0__765))
+    _and_rtl_sBox_8_v_132_867 <= and(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in3_0_0__764, asUInt(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__in4_0_0__794))
+    _and_rtl_sBox_8_v_151_801 <= and(bits(out_gf_pp, 2, 2), asUInt(bits(out_gf_pp, 0, 0)))
+    _and_rtl_sBox_8_v_151_806 <= and(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_hg_0_0__725, asUInt(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_lw_0_0__726))
+    _and_rtl_sBox_8_v_222_657 <= and(_xor_rtl_sBox_8_v_222_655_Y, asUInt(_xor_rtl_sBox_8_v_222_656_Y))
+    _and_rtl_sBox_8_v_223_661 <= and(_xor_rtl_sBox_8_v_223_659_Y, asUInt(_xor_rtl_sBox_8_v_223_660_Y))
+    _and_rtl_sBox_8_v_224_665 <= and(_reduce_xor_rtl_sBox_8_v_224_663_Y, asUInt(_reduce_xor_rtl_sBox_8_v_224_664_Y))
+    _and_rtl_sBox_8_v_227_702 <= and(bits(base_new, 7, 7), asUInt(bits(base_new, 3, 3)))
+    _and_rtl_sBox_8_v_228_693 <= and(bits(base_new, 6, 6), asUInt(bits(base_new, 2, 2)))
+    _and_rtl_sBox_8_v_229_684 <= and(bits(base_new, 5, 5), asUInt(bits(base_new, 1, 1)))
+    _and_rtl_sBox_8_v_230_671 <= and(_xor_rtl_sBox_8_v_229_680_Y, asUInt(_xor_rtl_sBox_8_v_229_681_Y))
+    _and_rtl_sBox_8_v_230_676 <= and(_xor_rtl_sBox_8_v_228_689_Y, asUInt(_xor_rtl_sBox_8_v_228_690_Y))
+    _not_rtl_sBox_8_v_121_811 <= not(pad(_and_rtl_sBox_8_v_121_810_Y, 2))
+    _not_rtl_sBox_8_v_121_813 <= not(pad(_and_rtl_sBox_8_v_121_812_Y, 1))
+    _not_rtl_sBox_8_v_121_817 <= not(pad(_and_rtl_sBox_8_v_121_816_Y, 2))
+    _not_rtl_sBox_8_v_121_819 <= not(pad(_and_rtl_sBox_8_v_121_818_Y, 1))
+    _not_rtl_sBox_8_v_121_826 <= not(pad(_and_rtl_sBox_8_v_121_825_Y, 2))
+    _not_rtl_sBox_8_v_121_828 <= not(pad(_and_rtl_sBox_8_v_121_827_Y, 1))
+    _not_rtl_sBox_8_v_121_833 <= not(pad(_and_rtl_sBox_8_v_121_832_Y, 2))
+    _not_rtl_sBox_8_v_121_835 <= not(pad(_and_rtl_sBox_8_v_121_834_Y, 1))
+    _not_rtl_sBox_8_v_121_852 <= not(pad(_and_rtl_sBox_8_v_121_851_Y, 2))
+    _not_rtl_sBox_8_v_121_854 <= not(pad(_and_rtl_sBox_8_v_121_853_Y, 1))
+    _not_rtl_sBox_8_v_121_859 <= not(pad(_and_rtl_sBox_8_v_121_858_Y, 2))
+    _not_rtl_sBox_8_v_121_861 <= not(pad(_and_rtl_sBox_8_v_121_860_Y, 1))
+    _not_rtl_sBox_8_v_131_840 <= not(pad(_and_rtl_sBox_8_v_131_839_Y, 2))
+    _not_rtl_sBox_8_v_131_866 <= not(pad(_and_rtl_sBox_8_v_131_865_Y, 2))
+    _not_rtl_sBox_8_v_132_842 <= not(pad(_and_rtl_sBox_8_v_132_841_Y, 1))
+    _not_rtl_sBox_8_v_132_868 <= not(pad(_and_rtl_sBox_8_v_132_867_Y, 1))
+    _not_rtl_sBox_8_v_151_800 <= not(pad(_or_rtl_sBox_8_v_151_799_Y, 1))
+    _not_rtl_sBox_8_v_151_802 <= not(pad(_and_rtl_sBox_8_v_151_801_Y, 1))
+    _not_rtl_sBox_8_v_151_805 <= not(pad(_or_rtl_sBox_8_v_151_804_Y, 1))
+    _not_rtl_sBox_8_v_151_807 <= not(pad(_and_rtl_sBox_8_v_151_806_Y, 1))
+    _not_rtl_sBox_8_v_222_658 <= not(pad(_and_rtl_sBox_8_v_222_657_Y, 1))
+    _not_rtl_sBox_8_v_223_662 <= not(pad(_and_rtl_sBox_8_v_223_661_Y, 1))
+    _not_rtl_sBox_8_v_224_666 <= not(pad(_and_rtl_sBox_8_v_224_665_Y, 1))
+    _not_rtl_sBox_8_v_227_701 <= not(pad(_or_rtl_sBox_8_v_227_700_Y, 1))
+    _not_rtl_sBox_8_v_227_703 <= not(pad(_and_rtl_sBox_8_v_227_702_Y, 1))
+    _not_rtl_sBox_8_v_228_692 <= not(pad(_or_rtl_sBox_8_v_228_691_Y, 1))
+    _not_rtl_sBox_8_v_228_694 <= not(pad(_and_rtl_sBox_8_v_228_693_Y, 1))
+    _not_rtl_sBox_8_v_229_683 <= not(pad(_or_rtl_sBox_8_v_229_682_Y, 1))
+    _not_rtl_sBox_8_v_229_685 <= not(pad(_and_rtl_sBox_8_v_229_684_Y, 1))
+    _not_rtl_sBox_8_v_230_668 <= not(pad(_or_rtl_sBox_8_v_230_667_Y, 1))
+    _not_rtl_sBox_8_v_230_672 <= not(pad(_and_rtl_sBox_8_v_230_671_Y, 1))
+    _not_rtl_sBox_8_v_230_677 <= not(pad(_and_rtl_sBox_8_v_230_676_Y, 1))
+    _not_rtl_sBox_8_v_261_621 <= not(pad(_xor_rtl_sBox_8_v_261_620_Y, 1))
+    _not_rtl_sBox_8_v_263_624 <= not(pad(_xor_rtl_sBox_8_v_263_623_Y, 1))
+    _not_rtl_sBox_8_v_270_631 <= not(pad(_xor_rtl_sBox_8_v_270_630_Y, 1))
+    _not_rtl_sBox_8_v_270_632 <= not(pad(bits(sbox_in, 0, 0), 1))
+    _not_rtl_sBox_8_v_270_636 <= not(pad(_xor_rtl_sBox_8_v_270_635_Y, 1))
+    _not_rtl_sBox_8_v_270_639 <= not(pad(_xor_rtl_sBox_8_v_270_638_Y, 1))
+    _not_rtl_sBox_8_v_271_643 <= not(pad(_xor_rtl_sBox_8_v_271_642_Y, 1))
+    _not_rtl_sBox_8_v_285_935 <= not(pad(_xor_rtl_sBox_8_v_285_891_Y, 1))
+    _not_rtl_sBox_8_v_286_894 <= not(pad(_xor_rtl_sBox_8_v_286_893_Y, 1))
+    _not_rtl_sBox_8_v_287_939 <= not(pad(_xor_rtl_sBox_8_v_287_895_Y, 1))
+    _not_rtl_sBox_8_v_288_898 <= not(pad(_xor_rtl_sBox_8_v_288_897_Y, 1))
+    _not_rtl_sBox_8_v_296_911 <= not(pad(_xor_rtl_sBox_8_v_296_910_Y, 1))
+    _not_rtl_sBox_8_v_296_915 <= not(pad(_xor_rtl_sBox_8_v_296_914_Y, 1))
+    _not_rtl_sBox_8_v_296_949 <= not(pad(bits(out_gf_inv8_1, 2, 2), 1))
+    _not_rtl_sBox_8_v_296_951 <= not(pad(_xor_rtl_sBox_8_v_296_907_Y, 1))
+    _not_rtl_sBox_8_v_315_600 <= not(pad(_ternary_rtl_sBox_8_v_315_599_Y, 8))
+    _not_rtl_sBox_8_v_326_602 <= not(pad(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 8))
+    _not_rtl_sBox_8_v_327_603 <= not(pad(cat(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_327_581__isomorphism_inv_7_0__917, 7, 2), cat(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r6_0_0__883, bits(_0_func__isomorphism_inv_rtl_sBox_8_v_327_581__isomorphism_inv_7_0__917, 0, 0))), 8))
+    _or_rtl_sBox_8_v_151_799 <= or(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_hg_0_0__725, asUInt(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_lw_0_0__726))
+    _or_rtl_sBox_8_v_151_804 <= or(bits(out_gf_pp, 3, 3), asUInt(bits(out_gf_pp, 1, 1)))
+    _or_rtl_sBox_8_v_227_700 <= or(_xor_rtl_sBox_8_v_223_659_Y, asUInt(_xor_rtl_sBox_8_v_223_660_Y))
+    _or_rtl_sBox_8_v_228_691 <= or(_xor_rtl_sBox_8_v_228_689_Y, asUInt(_xor_rtl_sBox_8_v_228_690_Y))
+    _or_rtl_sBox_8_v_229_682 <= or(_xor_rtl_sBox_8_v_229_680_Y, asUInt(_xor_rtl_sBox_8_v_229_681_Y))
+    _or_rtl_sBox_8_v_230_667 <= or(bits(base_new, 4, 4), asUInt(bits(base_new, 0, 0)))
+    _procdff_2121 <= out_gf_inv8_stage1
+    _procdff_2122 <= base_new
+    _reduce_xor_rtl_sBox_8_v_133_843 <= xorr(pad(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in1_in2_1_0__766, 1))
+    _reduce_xor_rtl_sBox_8_v_133_869 <= xorr(pad(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in1_in2_1_0__795, 1))
+    _reduce_xor_rtl_sBox_8_v_149_797 <= xorr(pad(bits(out_gf_pp, 3, 2), 1))
+    _reduce_xor_rtl_sBox_8_v_150_798 <= xorr(pad(bits(out_gf_pp, 1, 0), 1))
+    _reduce_xor_rtl_sBox_8_v_155_815 <= xorr(pad(cat(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 0, 0), bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724, 1, 1)), 1))
+    _reduce_xor_rtl_sBox_8_v_204_838 <= xorr(pad(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in2_hl_1_0__747, 1))
+    _reduce_xor_rtl_sBox_8_v_204_863 <= xorr(pad(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in1_hl_1_0__746, 1))
+    _reduce_xor_rtl_sBox_8_v_204_864 <= xorr(pad(_0_func__gf_muls_4_rtl_sBox_8_v_249_593__xor_in2_hl_1_0__776, 1))
+    _reduce_xor_rtl_sBox_8_v_224_663 <= xorr(pad(bits(base_new, 7, 4), 1))
+    _reduce_xor_rtl_sBox_8_v_224_664 <= xorr(pad(bits(base_new, 3, 0), 1))
+    _ternary_rtl_sBox_8_v_315_599 <= mux(enc_dec, base_new_enc, base_new_dec)
+    _xor_rtl_sBox_8_v_121_814 <= xor(_not_rtl_sBox_8_v_121_811_Y, asUInt(cat(_not_rtl_sBox_8_v_121_813_Y, _not_rtl_sBox_8_v_121_813_Y)))
+    _xor_rtl_sBox_8_v_121_820 <= xor(_not_rtl_sBox_8_v_121_817_Y, asUInt(cat(_not_rtl_sBox_8_v_121_819_Y, _not_rtl_sBox_8_v_121_819_Y)))
+    _xor_rtl_sBox_8_v_121_829 <= xor(_not_rtl_sBox_8_v_121_826_Y, asUInt(cat(_not_rtl_sBox_8_v_121_828_Y, _not_rtl_sBox_8_v_121_828_Y)))
+    _xor_rtl_sBox_8_v_121_836 <= xor(_not_rtl_sBox_8_v_121_833_Y, asUInt(cat(_not_rtl_sBox_8_v_121_835_Y, _not_rtl_sBox_8_v_121_835_Y)))
+    _xor_rtl_sBox_8_v_121_855 <= xor(_not_rtl_sBox_8_v_121_852_Y, asUInt(cat(_not_rtl_sBox_8_v_121_854_Y, _not_rtl_sBox_8_v_121_854_Y)))
+    _xor_rtl_sBox_8_v_121_862 <= xor(_not_rtl_sBox_8_v_121_859_Y, asUInt(cat(_not_rtl_sBox_8_v_121_861_Y, _not_rtl_sBox_8_v_121_861_Y)))
+    _xor_rtl_sBox_8_v_133_844 <= xor(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in3_in4_0_0__767, asUInt(bits(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in1_in2_1_0__766, 0, 0)))
+    _xor_rtl_sBox_8_v_133_870 <= xor(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in3_in4_0_0__796, asUInt(bits(_0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in1_in2_1_0__795, 0, 0)))
+    _xor_rtl_sBox_8_v_151_803 <= xor(_not_rtl_sBox_8_v_151_800_Y, asUInt(_not_rtl_sBox_8_v_151_802_Y))
+    _xor_rtl_sBox_8_v_151_808 <= xor(_not_rtl_sBox_8_v_151_805_Y, asUInt(_not_rtl_sBox_8_v_151_807_Y))
+    _xor_rtl_sBox_8_v_199_847 <= xor(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 3, 2), asUInt(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 1, 0)))
+    _xor_rtl_sBox_8_v_200_822 <= xor(bits(base_new_pp, 3, 2), asUInt(bits(base_new_pp, 1, 0)))
+    _xor_rtl_sBox_8_v_200_848 <= xor(bits(base_new_pp, 7, 6), asUInt(bits(base_new_pp, 5, 4)))
+    _xor_rtl_sBox_8_v_202_824 <= xor(bits(base_new_pp, 3, 3), asUInt(bits(base_new_pp, 2, 2)))
+    _xor_rtl_sBox_8_v_202_849 <= xor(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 3, 3), asUInt(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 2, 2)))
+    _xor_rtl_sBox_8_v_202_850 <= xor(bits(base_new_pp, 7, 7), asUInt(bits(base_new_pp, 6, 6)))
+    _xor_rtl_sBox_8_v_203_831 <= xor(bits(base_new_pp, 1, 1), asUInt(bits(base_new_pp, 0, 0)))
+    _xor_rtl_sBox_8_v_203_856 <= xor(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 1, 1), asUInt(bits(_0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717, 0, 0)))
+    _xor_rtl_sBox_8_v_203_857 <= xor(bits(base_new_pp, 5, 5), asUInt(bits(base_new_pp, 4, 4)))
+    _xor_rtl_sBox_8_v_206_845 <= xor(_0_func__gf_muls_2_rtl_sBox_8_v_203_591__gf_muls_2_1_0__756, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__out_gf_mul_scl_1_1_0__750))
+    _xor_rtl_sBox_8_v_206_846 <= xor(_0_func__gf_muls_2_rtl_sBox_8_v_202_590__gf_muls_2_1_0__751, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_248_589__out_gf_mul_scl_1_1_0__750))
+    _xor_rtl_sBox_8_v_206_871 <= xor(_0_func__gf_muls_2_rtl_sBox_8_v_203_595__gf_muls_2_1_0__785, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_249_593__out_gf_mul_scl_1_1_0__779))
+    _xor_rtl_sBox_8_v_206_872 <= xor(_0_func__gf_muls_2_rtl_sBox_8_v_202_594__gf_muls_2_1_0__780, asUInt(_0_func__gf_muls_4_rtl_sBox_8_v_249_593__out_gf_mul_scl_1_1_0__779))
+    _xor_rtl_sBox_8_v_222_655 <= xor(bits(base_new, 7, 7), asUInt(bits(base_new, 6, 6)))
+    _xor_rtl_sBox_8_v_222_656 <= xor(bits(base_new, 3, 3), asUInt(bits(base_new, 2, 2)))
+    _xor_rtl_sBox_8_v_227_698 <= xor(bits(base_new, 6, 6), asUInt(bits(base_new, 4, 4)))
+    _xor_rtl_sBox_8_v_227_699 <= xor(bits(base_new, 2, 2), asUInt(bits(base_new, 0, 0)))
+    _xor_rtl_sBox_8_v_227_704 <= xor(_not_rtl_sBox_8_v_227_701_Y, asUInt(_not_rtl_sBox_8_v_227_703_Y))
+    _xor_rtl_sBox_8_v_227_705 <= xor(_xor_rtl_sBox_8_v_227_704_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c1_0_0__652))
+    _xor_rtl_sBox_8_v_227_706 <= xor(_xor_rtl_sBox_8_v_227_705_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c3_0_0__654))
+    _xor_rtl_sBox_8_v_228_689 <= xor(bits(base_new, 7, 7), asUInt(bits(base_new, 5, 5)))
+    _xor_rtl_sBox_8_v_228_690 <= xor(bits(base_new, 3, 3), asUInt(bits(base_new, 1, 1)))
+    _xor_rtl_sBox_8_v_228_695 <= xor(_not_rtl_sBox_8_v_228_692_Y, asUInt(_not_rtl_sBox_8_v_228_694_Y))
+    _xor_rtl_sBox_8_v_228_696 <= xor(_xor_rtl_sBox_8_v_228_695_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c1_0_0__652))
+    _xor_rtl_sBox_8_v_228_697 <= xor(_xor_rtl_sBox_8_v_228_696_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c2_0_0__653))
+    _xor_rtl_sBox_8_v_229_680 <= xor(bits(base_new, 5, 5), asUInt(bits(base_new, 4, 4)))
+    _xor_rtl_sBox_8_v_229_681 <= xor(bits(base_new, 1, 1), asUInt(bits(base_new, 0, 0)))
+    _xor_rtl_sBox_8_v_229_686 <= xor(_not_rtl_sBox_8_v_229_683_Y, asUInt(_not_rtl_sBox_8_v_229_685_Y))
+    _xor_rtl_sBox_8_v_229_687 <= xor(_xor_rtl_sBox_8_v_229_686_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c2_0_0__653))
+    _xor_rtl_sBox_8_v_229_688 <= xor(_xor_rtl_sBox_8_v_229_687_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c3_0_0__654))
+    _xor_rtl_sBox_8_v_230_673 <= xor(_not_rtl_sBox_8_v_230_668_Y, asUInt(_not_rtl_sBox_8_v_230_672_Y))
+    _xor_rtl_sBox_8_v_230_678 <= xor(_xor_rtl_sBox_8_v_230_673_Y, asUInt(_not_rtl_sBox_8_v_230_677_Y))
+    _xor_rtl_sBox_8_v_230_679 <= xor(_xor_rtl_sBox_8_v_230_678_Y, asUInt(_0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c2_0_0__653))
+    _xor_rtl_sBox_8_v_260_619 <= xor(bits(sbox_in, 7, 7), asUInt(bits(sbox_in, 5, 5)))
+    _xor_rtl_sBox_8_v_261_620 <= xor(bits(sbox_in, 7, 7), asUInt(bits(sbox_in, 4, 4)))
+    _xor_rtl_sBox_8_v_262_622 <= xor(bits(sbox_in, 6, 6), asUInt(bits(sbox_in, 0, 0)))
+    _xor_rtl_sBox_8_v_263_623 <= xor(bits(sbox_in, 5, 5), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r3_0_0__610))
+    _xor_rtl_sBox_8_v_264_625 <= xor(bits(sbox_in, 4, 4), asUInt(bits(base_new_enc, 1, 1)))
+    _xor_rtl_sBox_8_v_265_626 <= xor(bits(sbox_in, 3, 3), asUInt(bits(sbox_in, 0, 0)))
+    _xor_rtl_sBox_8_v_266_627 <= xor(bits(sbox_in, 2, 2), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r1_0_0__608))
+    _xor_rtl_sBox_8_v_267_628 <= xor(bits(sbox_in, 1, 1), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r3_0_0__610))
+    _xor_rtl_sBox_8_v_268_629 <= xor(bits(sbox_in, 3, 3), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r8_0_0__615))
+    _xor_rtl_sBox_8_v_270_630 <= xor(bits(sbox_in, 2, 2), asUInt(bits(base_new_dec, 4, 4)))
+    _xor_rtl_sBox_8_v_270_633 <= xor(bits(sbox_in, 1, 1), asUInt(bits(base_new_dec, 7, 7)))
+    _xor_rtl_sBox_8_v_270_634 <= xor(_xor_rtl_sBox_8_v_270_633_Y, asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r6_0_0__613))
+    _xor_rtl_sBox_8_v_270_635 <= xor(_0_func__isomorphism_rtl_sBox_8_v_313_582__r1_0_0__608, asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r3_0_0__610))
+    _xor_rtl_sBox_8_v_270_637 <= xor(bits(sbox_in, 1, 1), asUInt(bits(base_new_enc, 1, 1)))
+    _xor_rtl_sBox_8_v_270_638 <= xor(bits(base_new_dec, 2, 2), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r8_0_0__615))
+    _xor_rtl_sBox_8_v_271_640 <= xor(bits(sbox_in, 1, 1), asUInt(bits(base_new_enc, 6, 6)))
+    _xor_rtl_sBox_8_v_271_641 <= xor(bits(sbox_in, 4, 4), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r6_0_0__613))
+    _xor_rtl_sBox_8_v_271_642 <= xor(bits(sbox_in, 6, 6), asUInt(bits(base_new_dec, 7, 7)))
+    _xor_rtl_sBox_8_v_271_644 <= xor(bits(sbox_in, 6, 6), asUInt(bits(sbox_in, 4, 4)))
+    _xor_rtl_sBox_8_v_271_645 <= xor(bits(sbox_in, 4, 4), asUInt(_0_func__isomorphism_rtl_sBox_8_v_313_582__r8_0_0__615))
+    _xor_rtl_sBox_8_v_282_931 <= xor(bits(out_gf_inv8_1, 7, 7), asUInt(bits(out_gf_inv8_1, 3, 3)))
+    _xor_rtl_sBox_8_v_283_932 <= xor(bits(out_gf_inv8_1, 6, 6), asUInt(bits(out_gf_inv8_1, 4, 4)))
+    _xor_rtl_sBox_8_v_284_933 <= xor(bits(out_gf_inv8_1, 6, 6), asUInt(bits(out_gf_inv8_1, 0, 0)))
+    _xor_rtl_sBox_8_v_285_934 <= xor(bits(out_gf_inv8_1, 5, 5), asUInt(bits(out_gf_inv8_1, 3, 3)))
+    _xor_rtl_sBox_8_v_286_936 <= xor(bits(out_gf_inv8_1, 5, 5), asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 6, 6)))
+    _xor_rtl_sBox_8_v_287_938 <= xor(bits(out_gf_inv8_1, 5, 5), asUInt(bits(out_gf_inv8_1, 1, 1)))
+    _xor_rtl_sBox_8_v_288_897 <= xor(bits(out_gf_inv8_1, 4, 4), asUInt(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r6_0_0__883))
+    _xor_rtl_sBox_8_v_289_899 <= xor(bits(out_gf_inv8_1, 2, 2), asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 7, 7)))
+    _xor_rtl_sBox_8_v_290_900 <= xor(bits(out_gf_inv8_1, 1, 1), asUInt(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r2_0_0__879))
+    _xor_rtl_sBox_8_v_291_901 <= xor(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 5, 5), asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 4, 4)))
+    _xor_rtl_sBox_8_v_294_904 <= xor(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 5, 5), asUInt(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r8_0_0__885))
+    _xor_rtl_sBox_8_v_294_905 <= xor(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r2_0_0__879, asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 4, 4)))
+    _xor_rtl_sBox_8_v_296_907 <= xor(bits(out_gf_inv8_1, 7, 7), asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 1, 1)))
+    _xor_rtl_sBox_8_v_296_909 <= xor(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r8_0_0__885, asUInt(bits(_0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874, 0, 0)))
+    _xor_rtl_sBox_8_v_296_912 <= xor(bits(out_gf_inv8_1, 2, 2), asUInt(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r10_0_0__887))
+    _xor_rtl_sBox_8_v_296_953 <= xor(bits(out_gf_inv8_1, 6, 6), asUInt(bits(out_gf_inv8_1, 1, 1)))
+    _xor_rtl_sBox_8_v_296_956 <= xor(bits(out_gf_inv8_1, 1, 1), asUInt(_0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r10_0_0__887))
+    _xor_rtl_sBox_8_v_296_957 <= xor(bits(out_gf_inv8_1, 4, 4), asUInt(bits(out_gf_inv8_1, 1, 1)))
+    _74 <= _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r6_0_0__883
+
+    _0_func__gf_inv_4_rtl_sBox_8_v_247_585__gf_inv_4_3_0__717 <= cat(bits(_xor_rtl_sBox_8_v_121_814, 1, 0), bits(_xor_rtl_sBox_8_v_121_820, 1, 0))
+    _0_func__gf_inv_4_rtl_sBox_8_v_247_585__in_sq2_3_1_0__724 <= cat(bits(_xor_rtl_sBox_8_v_151_808, 0, 0), bits(_xor_rtl_sBox_8_v_151_803, 0, 0))
+    _0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_hg_0_0__725 <= bits(_reduce_xor_rtl_sBox_8_v_149_797, 0, 0)
+    _0_func__gf_inv_4_rtl_sBox_8_v_247_585__xor_in_lw_0_0__726 <= bits(_reduce_xor_rtl_sBox_8_v_150_798, 0, 0)
+    _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c1_0_0__652 <= bits(_not_rtl_sBox_8_v_222_658, 0, 0)
+    _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c2_0_0__653 <= bits(_not_rtl_sBox_8_v_223_662, 0, 0)
+    _0_func__gf_inv_8_stage1_rtl_sBox_8_v_316_583__c3_0_0__654 <= bits(_not_rtl_sBox_8_v_224_666, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_154_587__in3_0_0__732 <= bits(_reduce_xor_rtl_sBox_8_v_155_815, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_202_590__gf_muls_2_1_0__751 <= bits(_xor_rtl_sBox_8_v_121_829, 1, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_202_590__in3_0_0__754 <= bits(_xor_rtl_sBox_8_v_202_849, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_202_590__in4_0_0__755 <= bits(_xor_rtl_sBox_8_v_202_824, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_202_594__gf_muls_2_1_0__780 <= bits(_xor_rtl_sBox_8_v_121_855, 1, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_202_594__in4_0_0__784 <= bits(_xor_rtl_sBox_8_v_202_850, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_203_591__gf_muls_2_1_0__756 <= bits(_xor_rtl_sBox_8_v_121_836, 1, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_203_591__in3_0_0__759 <= bits(_xor_rtl_sBox_8_v_203_856, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_203_591__in4_0_0__760 <= bits(_xor_rtl_sBox_8_v_203_831, 0, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_203_595__gf_muls_2_1_0__785 <= bits(_xor_rtl_sBox_8_v_121_862, 1, 0)
+    _0_func__gf_muls_2_rtl_sBox_8_v_203_595__in4_0_0__789 <= bits(_xor_rtl_sBox_8_v_203_857, 0, 0)
+    _0_func__gf_muls_4_rtl_sBox_8_v_248_589__out_gf_mul_scl_1_1_0__750 <= cat(bits(_xor_rtl_sBox_8_v_133_844, 0, 0), bits(_reduce_xor_rtl_sBox_8_v_133_843, 0, 0))
+    _0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in1_hl_1_0__746 <= bits(_xor_rtl_sBox_8_v_199_847, 1, 0)
+    _0_func__gf_muls_4_rtl_sBox_8_v_248_589__xor_in2_hl_1_0__747 <= bits(_xor_rtl_sBox_8_v_200_822, 1, 0)
+    _0_func__gf_muls_4_rtl_sBox_8_v_249_593__out_gf_mul_scl_1_1_0__779 <= cat(bits(_xor_rtl_sBox_8_v_133_870, 0, 0), bits(_reduce_xor_rtl_sBox_8_v_133_869, 0, 0))
+    _0_func__gf_muls_4_rtl_sBox_8_v_249_593__xor_in2_hl_1_0__776 <= bits(_xor_rtl_sBox_8_v_200_848, 1, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in3_0_0__764 <= bits(_reduce_xor_rtl_sBox_8_v_204_863, 0, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__in4_0_0__765 <= bits(_reduce_xor_rtl_sBox_8_v_204_838, 0, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in1_in2_1_0__766 <= bits(_not_rtl_sBox_8_v_131_840, 1, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_592__nand_in3_in4_0_0__767 <= bits(_not_rtl_sBox_8_v_132_842, 0, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__in4_0_0__794 <= bits(_reduce_xor_rtl_sBox_8_v_204_864, 0, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in1_in2_1_0__795 <= bits(_not_rtl_sBox_8_v_131_866, 1, 0)
+    _0_func__gf_muls_scl_2_rtl_sBox_8_v_204_596__nand_in3_in4_0_0__796 <= bits(_not_rtl_sBox_8_v_132_868, 0, 0)
+    _0_func__isomorphism_rtl_sBox_8_v_313_582__r1_0_0__608 <= bits(_xor_rtl_sBox_8_v_260_619, 0, 0)
+    _0_func__isomorphism_rtl_sBox_8_v_313_582__r3_0_0__610 <= bits(_xor_rtl_sBox_8_v_262_622, 0, 0)
+    _0_func__isomorphism_rtl_sBox_8_v_313_582__r6_0_0__613 <= bits(_xor_rtl_sBox_8_v_265_626, 0, 0)
+    _0_func__isomorphism_rtl_sBox_8_v_313_582__r8_0_0__615 <= bits(_xor_rtl_sBox_8_v_267_628, 0, 0)
+    _0_func__isomorphism_inv_rtl_sBox_8_v_326_580__isomorphism_inv_7_0__874 <= cat(bits(_not_rtl_sBox_8_v_285_935, 0, 0), cat(bits(_xor_rtl_sBox_8_v_282_931, 0, 0), cat(bits(_xor_rtl_sBox_8_v_284_933, 0, 0), cat(bits(_not_rtl_sBox_8_v_286_894, 0, 0), cat(bits(_xor_rtl_sBox_8_v_294_905, 0, 0), cat(bits(_xor_rtl_sBox_8_v_294_904, 0, 0), cat(bits(_not_rtl_sBox_8_v_288_898, 0, 0), bits(_xor_rtl_sBox_8_v_290_900, 0, 0))))))))
+    _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r10_0_0__887 <= bits(_xor_rtl_sBox_8_v_291_901, 0, 0)
+    _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r2_0_0__879 <= bits(_xor_rtl_sBox_8_v_283_932, 0, 0)
+    _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r6_0_0__883 <= bits(_not_rtl_sBox_8_v_287_939, 0, 0)
+    _0_func__isomorphism_inv_rtl_sBox_8_v_326_597__r8_0_0__885 <= bits(_xor_rtl_sBox_8_v_289_899, 0, 0)
+    _0_func__isomorphism_inv_rtl_sBox_8_v_327_581__isomorphism_inv_7_0__917 <= cat(bits(_not_rtl_sBox_8_v_296_915, 0, 0), cat(bits(_xor_rtl_sBox_8_v_296_956, 0, 0), cat(bits(_xor_rtl_sBox_8_v_296_912, 0, 0), cat(bits(_not_rtl_sBox_8_v_296_911, 0, 0), cat(bits(_xor_rtl_sBox_8_v_296_909, 0, 0), cat(bits(_not_rtl_sBox_8_v_296_951, 0, 0), cat(bits(_74, 0, 0), bits(_not_rtl_sBox_8_v_296_949, 0, 0))))))))
+    _and_rtl_sBox_8_v_121_810_Y <= bits(_and_rtl_sBox_8_v_121_810, 1, 0)
+    _and_rtl_sBox_8_v_121_812_Y <= bits(_and_rtl_sBox_8_v_121_812, 0, 0)
+    _and_rtl_sBox_8_v_121_816_Y <= bits(_and_rtl_sBox_8_v_121_816, 1, 0)
+    _and_rtl_sBox_8_v_121_818_Y <= bits(_and_rtl_sBox_8_v_121_818, 0, 0)
+    _and_rtl_sBox_8_v_121_825_Y <= bits(_and_rtl_sBox_8_v_121_825, 1, 0)
+    _and_rtl_sBox_8_v_121_827_Y <= bits(_and_rtl_sBox_8_v_121_827, 0, 0)
+    _and_rtl_sBox_8_v_121_832_Y <= bits(_and_rtl_sBox_8_v_121_832, 1, 0)
+    _and_rtl_sBox_8_v_121_834_Y <= bits(_and_rtl_sBox_8_v_121_834, 0, 0)
+    _and_rtl_sBox_8_v_121_851_Y <= bits(_and_rtl_sBox_8_v_121_851, 1, 0)
+    _and_rtl_sBox_8_v_121_853_Y <= bits(_and_rtl_sBox_8_v_121_853, 0, 0)
+    _and_rtl_sBox_8_v_121_858_Y <= bits(_and_rtl_sBox_8_v_121_858, 1, 0)
+    _and_rtl_sBox_8_v_121_860_Y <= bits(_and_rtl_sBox_8_v_121_860, 0, 0)
+    _and_rtl_sBox_8_v_131_839_Y <= bits(_and_rtl_sBox_8_v_131_839, 1, 0)
+    _and_rtl_sBox_8_v_131_865_Y <= bits(_and_rtl_sBox_8_v_131_865, 1, 0)
+    _and_rtl_sBox_8_v_132_841_Y <= bits(_and_rtl_sBox_8_v_132_841, 0, 0)
+    _and_rtl_sBox_8_v_132_867_Y <= bits(_and_rtl_sBox_8_v_132_867, 0, 0)
+    _and_rtl_sBox_8_v_151_801_Y <= bits(_and_rtl_sBox_8_v_151_801, 0, 0)
+    _and_rtl_sBox_8_v_151_806_Y <= bits(_and_rtl_sBox_8_v_151_806, 0, 0)
+    _and_rtl_sBox_8_v_222_657_Y <= bits(_and_rtl_sBox_8_v_222_657, 0, 0)
+    _and_rtl_sBox_8_v_223_661_Y <= bits(_and_rtl_sBox_8_v_223_661, 0, 0)
+    _and_rtl_sBox_8_v_224_665_Y <= bits(_and_rtl_sBox_8_v_224_665, 0, 0)
+    _and_rtl_sBox_8_v_227_702_Y <= bits(_and_rtl_sBox_8_v_227_702, 0, 0)
+    _and_rtl_sBox_8_v_228_693_Y <= bits(_and_rtl_sBox_8_v_228_693, 0, 0)
+    _and_rtl_sBox_8_v_229_684_Y <= bits(_and_rtl_sBox_8_v_229_684, 0, 0)
+    _and_rtl_sBox_8_v_230_671_Y <= bits(_and_rtl_sBox_8_v_230_671, 0, 0)
+    _and_rtl_sBox_8_v_230_676_Y <= bits(_and_rtl_sBox_8_v_230_676, 0, 0)
+    _not_rtl_sBox_8_v_121_811_Y <= bits(_not_rtl_sBox_8_v_121_811, 1, 0)
+    _not_rtl_sBox_8_v_121_813_Y <= bits(_not_rtl_sBox_8_v_121_813, 0, 0)
+    _not_rtl_sBox_8_v_121_817_Y <= bits(_not_rtl_sBox_8_v_121_817, 1, 0)
+    _not_rtl_sBox_8_v_121_819_Y <= bits(_not_rtl_sBox_8_v_121_819, 0, 0)
+    _not_rtl_sBox_8_v_121_826_Y <= bits(_not_rtl_sBox_8_v_121_826, 1, 0)
+    _not_rtl_sBox_8_v_121_828_Y <= bits(_not_rtl_sBox_8_v_121_828, 0, 0)
+    _not_rtl_sBox_8_v_121_833_Y <= bits(_not_rtl_sBox_8_v_121_833, 1, 0)
+    _not_rtl_sBox_8_v_121_835_Y <= bits(_not_rtl_sBox_8_v_121_835, 0, 0)
+    _not_rtl_sBox_8_v_121_852_Y <= bits(_not_rtl_sBox_8_v_121_852, 1, 0)
+    _not_rtl_sBox_8_v_121_854_Y <= bits(_not_rtl_sBox_8_v_121_854, 0, 0)
+    _not_rtl_sBox_8_v_121_859_Y <= bits(_not_rtl_sBox_8_v_121_859, 1, 0)
+    _not_rtl_sBox_8_v_121_861_Y <= bits(_not_rtl_sBox_8_v_121_861, 0, 0)
+    _not_rtl_sBox_8_v_151_800_Y <= bits(_not_rtl_sBox_8_v_151_800, 0, 0)
+    _not_rtl_sBox_8_v_151_802_Y <= bits(_not_rtl_sBox_8_v_151_802, 0, 0)
+    _not_rtl_sBox_8_v_151_805_Y <= bits(_not_rtl_sBox_8_v_151_805, 0, 0)
+    _not_rtl_sBox_8_v_151_807_Y <= bits(_not_rtl_sBox_8_v_151_807, 0, 0)
+    _not_rtl_sBox_8_v_227_701_Y <= bits(_not_rtl_sBox_8_v_227_701, 0, 0)
+    _not_rtl_sBox_8_v_227_703_Y <= bits(_not_rtl_sBox_8_v_227_703, 0, 0)
+    _not_rtl_sBox_8_v_228_692_Y <= bits(_not_rtl_sBox_8_v_228_692, 0, 0)
+    _not_rtl_sBox_8_v_228_694_Y <= bits(_not_rtl_sBox_8_v_228_694, 0, 0)
+    _not_rtl_sBox_8_v_229_683_Y <= bits(_not_rtl_sBox_8_v_229_683, 0, 0)
+    _not_rtl_sBox_8_v_229_685_Y <= bits(_not_rtl_sBox_8_v_229_685, 0, 0)
+    _not_rtl_sBox_8_v_230_668_Y <= bits(_not_rtl_sBox_8_v_230_668, 0, 0)
+    _not_rtl_sBox_8_v_230_672_Y <= bits(_not_rtl_sBox_8_v_230_672, 0, 0)
+    _not_rtl_sBox_8_v_230_677_Y <= bits(_not_rtl_sBox_8_v_230_677, 0, 0)
+    _or_rtl_sBox_8_v_151_799_Y <= bits(_or_rtl_sBox_8_v_151_799, 0, 0)
+    _or_rtl_sBox_8_v_151_804_Y <= bits(_or_rtl_sBox_8_v_151_804, 0, 0)
+    _or_rtl_sBox_8_v_227_700_Y <= bits(_or_rtl_sBox_8_v_227_700, 0, 0)
+    _or_rtl_sBox_8_v_228_691_Y <= bits(_or_rtl_sBox_8_v_228_691, 0, 0)
+    _or_rtl_sBox_8_v_229_682_Y <= bits(_or_rtl_sBox_8_v_229_682, 0, 0)
+    _or_rtl_sBox_8_v_230_667_Y <= bits(_or_rtl_sBox_8_v_230_667, 0, 0)
+    _reduce_xor_rtl_sBox_8_v_224_663_Y <= bits(_reduce_xor_rtl_sBox_8_v_224_663, 0, 0)
+    _reduce_xor_rtl_sBox_8_v_224_664_Y <= bits(_reduce_xor_rtl_sBox_8_v_224_664, 0, 0)
+    _ternary_rtl_sBox_8_v_315_599_Y <= bits(_ternary_rtl_sBox_8_v_315_599, 7, 0)
+    _xor_rtl_sBox_8_v_222_655_Y <= bits(_xor_rtl_sBox_8_v_222_655, 0, 0)
+    _xor_rtl_sBox_8_v_222_656_Y <= bits(_xor_rtl_sBox_8_v_222_656, 0, 0)
+    _xor_rtl_sBox_8_v_223_659_Y <= bits(_xor_rtl_sBox_8_v_227_698, 0, 0)
+    _xor_rtl_sBox_8_v_223_660_Y <= bits(_xor_rtl_sBox_8_v_227_699, 0, 0)
+    _xor_rtl_sBox_8_v_227_704_Y <= bits(_xor_rtl_sBox_8_v_227_704, 0, 0)
+    _xor_rtl_sBox_8_v_227_705_Y <= bits(_xor_rtl_sBox_8_v_227_705, 0, 0)
+    _xor_rtl_sBox_8_v_228_689_Y <= bits(_xor_rtl_sBox_8_v_228_689, 0, 0)
+    _xor_rtl_sBox_8_v_228_690_Y <= bits(_xor_rtl_sBox_8_v_228_690, 0, 0)
+    _xor_rtl_sBox_8_v_228_695_Y <= bits(_xor_rtl_sBox_8_v_228_695, 0, 0)
+    _xor_rtl_sBox_8_v_228_696_Y <= bits(_xor_rtl_sBox_8_v_228_696, 0, 0)
+    _xor_rtl_sBox_8_v_229_680_Y <= bits(_xor_rtl_sBox_8_v_229_680, 0, 0)
+    _xor_rtl_sBox_8_v_229_681_Y <= bits(_xor_rtl_sBox_8_v_229_681, 0, 0)
+    _xor_rtl_sBox_8_v_229_686_Y <= bits(_xor_rtl_sBox_8_v_229_686, 0, 0)
+    _xor_rtl_sBox_8_v_229_687_Y <= bits(_xor_rtl_sBox_8_v_229_687, 0, 0)
+    _xor_rtl_sBox_8_v_230_673_Y <= bits(_xor_rtl_sBox_8_v_230_673, 0, 0)
+    _xor_rtl_sBox_8_v_230_678_Y <= bits(_xor_rtl_sBox_8_v_230_678, 0, 0)
+    _xor_rtl_sBox_8_v_261_620_Y <= bits(_xor_rtl_sBox_8_v_261_620, 0, 0)
+    _xor_rtl_sBox_8_v_263_623_Y <= bits(_xor_rtl_sBox_8_v_263_623, 0, 0)
+    _xor_rtl_sBox_8_v_270_630_Y <= bits(_xor_rtl_sBox_8_v_270_630, 0, 0)
+    _xor_rtl_sBox_8_v_270_633_Y <= bits(_xor_rtl_sBox_8_v_270_633, 0, 0)
+    _xor_rtl_sBox_8_v_270_635_Y <= bits(_xor_rtl_sBox_8_v_270_635, 0, 0)
+    _xor_rtl_sBox_8_v_270_638_Y <= bits(_xor_rtl_sBox_8_v_270_638, 0, 0)
+    _xor_rtl_sBox_8_v_271_642_Y <= bits(_xor_rtl_sBox_8_v_271_642, 0, 0)
+    _xor_rtl_sBox_8_v_285_891_Y <= bits(_xor_rtl_sBox_8_v_285_934, 0, 0)
+    _xor_rtl_sBox_8_v_286_893_Y <= bits(_xor_rtl_sBox_8_v_286_936, 0, 0)
+    _xor_rtl_sBox_8_v_287_895_Y <= bits(_xor_rtl_sBox_8_v_287_938, 0, 0)
+    _xor_rtl_sBox_8_v_288_897_Y <= bits(_xor_rtl_sBox_8_v_288_897, 0, 0)
+    _xor_rtl_sBox_8_v_296_907_Y <= bits(_xor_rtl_sBox_8_v_296_907, 0, 0)
+    _xor_rtl_sBox_8_v_296_910_Y <= bits(_xor_rtl_sBox_8_v_296_953, 0, 0)
+    _xor_rtl_sBox_8_v_296_914_Y <= bits(_xor_rtl_sBox_8_v_296_957, 0, 0)
+    base_new <= bits(_not_rtl_sBox_8_v_315_600, 7, 0)
+    base_new_dec <= cat(bits(_not_rtl_sBox_8_v_261_621, 0, 0), cat(bits(_xor_rtl_sBox_8_v_271_645, 0, 0), cat(bits(_xor_rtl_sBox_8_v_271_644, 0, 0), cat(bits(_xor_rtl_sBox_8_v_268_629, 0, 0), cat(bits(_not_rtl_sBox_8_v_271_643, 0, 0), cat(bits(_xor_rtl_sBox_8_v_266_627, 0, 0), cat(bits(_xor_rtl_sBox_8_v_271_641, 0, 0), bits(_xor_rtl_sBox_8_v_271_640, 0, 0))))))))
+    base_new_enc <= cat(bits(_not_rtl_sBox_8_v_270_639, 0, 0), cat(bits(_xor_rtl_sBox_8_v_264_625, 0, 0), cat(bits(_xor_rtl_sBox_8_v_270_637, 0, 0), cat(bits(_not_rtl_sBox_8_v_270_636, 0, 0), cat(bits(_xor_rtl_sBox_8_v_270_634, 0, 0), cat(bits(_not_rtl_sBox_8_v_270_632, 0, 0), cat(bits(_not_rtl_sBox_8_v_263_624, 0, 0), bits(_not_rtl_sBox_8_v_270_631, 0, 0))))))))
+    base_new_pp <= bits(_procdff_2122, 7, 0)
+    out_gf_inv8_1 <= cat(bits(_xor_rtl_sBox_8_v_206_846, 1, 0), cat(bits(_xor_rtl_sBox_8_v_206_845, 1, 0), cat(bits(_xor_rtl_sBox_8_v_206_872, 1, 0), bits(_xor_rtl_sBox_8_v_206_871, 1, 0))))
+    out_gf_inv8_stage1 <= cat(bits(_xor_rtl_sBox_8_v_227_706, 0, 0), cat(bits(_xor_rtl_sBox_8_v_228_697, 0, 0), cat(bits(_xor_rtl_sBox_8_v_229_688, 0, 0), bits(_xor_rtl_sBox_8_v_230_679, 0, 0))))
+    out_gf_pp <= bits(_procdff_2121, 3, 0)
+    sbox_out_dec <= bits(_not_rtl_sBox_8_v_327_603, 7, 0)
+    sbox_out_enc <= bits(_not_rtl_sBox_8_v_326_602, 7, 0)
+
+
+
+
+
+
+
+
+
+
+
+
+
   module shift_rows:
     input data_in: UInt<128>
     output data_out_dec: UInt<128>
