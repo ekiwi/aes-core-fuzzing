@@ -96,8 +96,8 @@ module aes_core
 	input write_en,
 	input read_en,
 	input first_block,
-	input rst_n,
-	input clk
+	input reset,
+	input clock
 );
 
 wire [ 1:0] rk_sel;
@@ -162,8 +162,8 @@ datapath AES_CORE_DATAPATH
 	.key_gen           ( key_gen           ),
 	.key_derivation_en ( key_derivation_en ),
 	.end_comp          ( end_comp          ),
-	.rst_n		   ( rst_n             ),
-	.clk		   ( clk	       )
+	.rst_n		   ( !reset             ),
+	.clk		   ( clock	       )
 );
 
 control_unit AES_CORE_CONTROL_UNIT
@@ -192,8 +192,8 @@ control_unit AES_CORE_CONTROL_UNIT
 	.start		   ( start 	       ),
 	.key_derivation_en ( key_derivation_en ),
 	.disable_core      ( disable_core      ),
-	.clk		   ( clk               ),
-	.rst_n		   ( rst_n             )
+	.clk		   ( clock               ),
+	.rst_n		   ( !reset             )
 );
 
 endmodule

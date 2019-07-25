@@ -1995,7 +1995,7 @@ circuit aes_core:
     input addr: UInt<2>
     input aes_mode: UInt<2>
     input bus_in: UInt<32>
-    input clk: UInt<1>
+    input clock: UInt<1>
     output col_out: UInt<32>
     input data_type: UInt<2>
     input disable_core: UInt<1>
@@ -2009,7 +2009,7 @@ circuit aes_core:
     input key_sel_rd: UInt<2>
     input op_mode: UInt<2>
     input read_en: UInt<1>
-    input rst_n: UInt<1>
+    input reset: UInt<1>
     input start: UInt<1>
     input write_en: UInt<1>
 
@@ -2079,7 +2079,7 @@ circuit aes_core:
     AES_CORE_CONTROL_UNIT.aes_mode <= aes_mode
     bypass_key_en <= AES_CORE_CONTROL_UNIT.bypass_key_en
     bypass_rk <= AES_CORE_CONTROL_UNIT.bypass_rk
-    AES_CORE_CONTROL_UNIT.clk <= clk
+    AES_CORE_CONTROL_UNIT.clk <= clock
     col_en_cnt_unit <= AES_CORE_CONTROL_UNIT.col_en
     col_sel <= AES_CORE_CONTROL_UNIT.col_sel
     AES_CORE_CONTROL_UNIT.disable_core <= disable_core
@@ -2099,14 +2099,14 @@ circuit aes_core:
     AES_CORE_CONTROL_UNIT.operation_mode <= op_mode
     rk_sel <= AES_CORE_CONTROL_UNIT.rk_sel
     round <= AES_CORE_CONTROL_UNIT.round
-    AES_CORE_CONTROL_UNIT.rst_n <= rst_n
+    AES_CORE_CONTROL_UNIT.rst_n <= not(reset)
     sbox_sel <= AES_CORE_CONTROL_UNIT.sbox_sel
     AES_CORE_CONTROL_UNIT.start <= start
     inst AES_CORE_DATAPATH of datapath
     AES_CORE_DATAPATH.bus_in <= bus_in
     AES_CORE_DATAPATH.bypass_key_en <= bypass_key_en
     AES_CORE_DATAPATH.bypass_rk <= bypass_rk
-    AES_CORE_DATAPATH.clk <= clk
+    AES_CORE_DATAPATH.clk <= clock
     col_out <= AES_CORE_DATAPATH.col_bus
     AES_CORE_DATAPATH.col_en_cnt_unit <= col_en_cnt_unit
     AES_CORE_DATAPATH.col_en_host <= col_en_host
@@ -2136,7 +2136,7 @@ circuit aes_core:
     AES_CORE_DATAPATH.mode_ctr <= mode_ctr
     AES_CORE_DATAPATH.rk_sel <= rk_sel
     AES_CORE_DATAPATH.round <= round
-    AES_CORE_DATAPATH.rst_n <= rst_n
+    AES_CORE_DATAPATH.rst_n <= not(reset)
     AES_CORE_DATAPATH.sbox_sel <= sbox_sel
     _shl_rtl_aes_core_v_125_335_Y <= bits(_shl_rtl_aes_core_v_125_335, 3, 0)
     col_addr_host <= bits(_and_rtl_aes_core_v_126_337, 1, 0)
